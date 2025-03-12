@@ -1,0 +1,1 @@
+python -m backend.main --mode curriculum --prompt "Need to improve my chinese, am going to pitch my startup to chinese investors next month"

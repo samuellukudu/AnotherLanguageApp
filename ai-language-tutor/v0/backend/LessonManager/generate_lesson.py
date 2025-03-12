@@ -1,7 +1,7 @@
 import json
 import os
 from openai import OpenAI
-from backend.config import config, CURRICULUM_INSTRUCTION
+from backend.config import config
 from backend.utils import write_json_file, ensure_directory
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -17,7 +17,7 @@ def get_completion(prompt: str):
     response = client.chat.completions.create(
         model=config.get('model'),
         messages=[
-            {"role": "system", "content": CURRICULUM_INSTRUCTION},
+            {"role": "system", "content": config.get('lesson_instruction')},
             {"role": "user", "content": prompt},
         ],
         response_format={"type": "json_object"},
@@ -25,14 +25,12 @@ def get_completion(prompt: str):
 
     try:
         data = json.loads(response.choices[0].message.content)
-        filename = os.path.join(output_dir, "curriculum.json")
+        filename = f"{output_dir}/lesson.json"
         
         if write_json_file(filename, data):
             print(f"JSON data saved to {filename}")
-            return True
-        print("Failed to save data")
-        return False
+        else:
+            print("Failed to save data")
             
     except json.JSONDecodeError as e:
         print(f"Error decoding JSON: {e}")
-        return False

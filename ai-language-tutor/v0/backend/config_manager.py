@@ -19,7 +19,7 @@ class Config:
             self.save()
         except json.JSONDecodeError:
             print(
-                f"Error: Invalid JSON format in config file at {self.file_path}. Creating a new one"
+                f"Error: Invalid JSON format in config file at {self.file_path}. The file will be reset."
             )
             self.data = {}
             self.save()

@@ -1,0 +1,112 @@
+{
+    "week": 1,
+    "theme": "Basic Business Phrases and Introductions",
+    "estimated_duration": "15-20 hours",
+    "daily_lessons": [
+        {
+            "day": 1,
+            "focus": "Startup Vocabulary & Introductions",
+            "duration": "3 hours",
+            "activities": [
+                {
+                    "type": "Vocabulary Building",
+                    "description": "Learn and practice vocabulary related to startup concepts.  The AI will provide a list of 10 startup terms. For each term, the student will provide a Chinese translation, and the AI will provide feedback on accuracy. The AI will then generate example sentences using the vocabulary."
+                },
+                {
+                    "type": "Introduction Practice",
+                    "description": "Practice introducing oneself and one's startup using a series of prompts. The student will describe their startup, their role, and why they need investment.  The AI will provide feedback on grammar, vocabulary, and fluency, generating appropriate responses."
+                }
+            ]
+        },
+        {
+            "day": 2,
+            "focus": "Formal Business Phrases",
+            "duration": "3 hours",
+            "activities": [
+                {
+                    "type": "Grammar Study",
+                    "description": "Learn and practice polite speech structures in Mandarin.  The AI will provide examples of polite requests, and the student will provide the Chinese equivalent.  The AI will provide feedback on grammar and tone. Focus on phrases like '请', '谢谢', '请问', '能够' etc."
+                },
+                {
+                    "type": "Role-Playing",
+                    "description": "Engage in simulated conversations with the AI about requesting information.  The AI will play the role of an investor, asking about the startup's problem, solution, market, team, and financials."
+                }
+            ]
+        },
+        {
+            "day": 3,
+            "focus": "Investment Terms",
+            "duration": "3 hours",
+            "activities": [
+                {
+                    "type": "Vocabulary Building",
+                    "description": "Learn and practice vocabulary related to investment terms like '投资', '回报', '估值', '融资'.  The AI will provide definitions, example sentences, and translations.  The AI will create a quiz with these terms."
+                },
+                {
+                    "type": "Interactive Quiz",
+                    "description": "Take an interactive quiz on the week's vocabulary and grammar. The AI will provide immediate feedback on responses."
+                }
+            ]
+        },
+        {
+            "day": 4,
+            "focus": "Cultural Nuances",
+            "duration": "3 hours",
+            "activities": [
+                {
+                    "type": "Cultural Immersion",
+                    "description": "The AI will present scenarios of business meetings and interactions in Chinese culture.  The student will analyze and explain the proper responses and behaviors. Examples: appropriate formality levels, greetings, and non-verbal communication."
+                },
+                {
+                    "type": "Question Answering",
+                    "description": "Answer questions from the AI about Chinese business etiquette and norms.  The AI will provide further examples and explanations."
+                }
+            ]
+        },
+        {
+            "day": 5,
+            "focus": "Review and Refinement",
+            "duration": "3 hours",
+            "activities": [
+                {
+                    "type": "Practice Scenarios",
+                    "description": "The AI will present a series of short business scenarios.  The student will practice their Mandarin speaking skills by explaining the situation, providing solutions, and negotiating terms. The AI will provide feedback on both content and delivery."
+                },
+                {
+                    "type": "Gap Fill",
+                    "description": "Practice filling in the blanks in business conversation examples provided by the AI"
+                }
+            ]
+        },
+        {
+            "day": 6,
+            "focus": "Recap and Review",
+            "duration": "2 hours",
+            "activities": [
+                {
+                    "type": "Vocabulary Review",
+                    "description": "Review essential vocabulary learned this week through a game-like format. The AI will create a matching exercise."
+                },
+                {
+                    "type": "Pronunciation Practice",
+                    "description": "Review and practice pronunciation of key phrases and sentences with the AI's audio feedback."
+                }
+            ]
+        },
+        {
+            "day": 7,
+            "focus": "Personal Pitch Practice",
+            "duration": "2 hours",
+            "activities": [
+                {
+                    "type": "Personalized Pitch",
+                    "description": "The AI will create a personalized business pitch scenario based on the student's startup. The student will rehearse and deliver the pitch in Mandarin to the AI.  The AI provides feedback on the content, language use, and overall presentation."
+                },
+                {
+                    "type": "Self-Assessment",
+                    "description": "The AI will provide a self-assessment questionnaire to evaluate the student's progress in the week. The student answers the questions, reflecting on their strengths and areas for improvement."
+                }
+            ]
+        }
+    ]
+}

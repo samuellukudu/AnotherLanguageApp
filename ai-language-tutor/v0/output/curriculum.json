@@ -1,130 +1,101 @@
 {
     "language": "Chinese",
-    "learning_goal": "Effective communication with investors",
-    "current_level": "Intermediate",
+    "learning_goal": "Prepare for a startup pitch to Chinese investors",
+    "current_level": "Not specified",
     "weeks": [
         {
             "week": 1,
-            "theme": "Business Essentials",
-            "estimated_duration": "20 hours",
+            "theme": "Basic Business Phrases and Introductions",
+            "estimated_duration": "15-20 hours",
             "activities": [
                 {
                     "type": "Vocabulary Building",
-                    "description": "Learn essential business vocabulary related to finance, investments, and negotiations.",
-                    "resources": [
-                        "Chinese business vocabulary lists",
-                        "Online flashcards",
-                        "Business-related Chinese news articles"
-                    ]
+                    "description": "Learn essential business vocabulary related to startups, investment, and financial terms. Utilize AI-powered flashcard apps for personalized learning."
                 },
                 {
-                    "type": "Grammar Focus",
-                    "description": "Review and practice grammar structures crucial for business conversations, including expressing opinions, negotiating terms, and asking clarifying questions.",
-                    "resources": [
-                        "Business Chinese grammar textbook",
-                        "Online grammar resources"
-                    ]
+                    "type": "Grammar Study",
+                    "description": "Focus on polite speech structures and sentence patterns used in formal business settings. Use AI-powered grammar exercises and interactive tools."
                 },
                 {
                     "type": "Listening Practice",
-                    "description": "Listen to audio clips of business presentations, investor pitches, and negotiation simulations. Focus on understanding key takeaways and expressions.",
-                    "resources": [
-                        "Business Chinese podcasts",
-                        "YouTube videos on Chinese business"
-                    ]
+                    "description": "Listen to recordings of business presentations and interviews in Mandarin. Practice active listening and note-taking skills."
+                },
+                {
+                    "type": "Role-Playing",
+                    "description": "Practice introducing yourself, your startup, and your business plan in Mandarin. Use AI-powered voice assistants for pronunciation feedback."
+                },
+                {
+                    "type": "Cultural Immersion",
+                    "description": "Research common Chinese business etiquette. Find out about typical cultural expectations and norms for meetings and negotiations"
                 }
             ]
         },
         {
             "week": 2,
-            "theme": "Investment Discussions",
-            "estimated_duration": "20 hours",
+            "theme": "Startup Pitch Structure and Investment Terms",
+            "estimated_duration": "15-20 hours",
             "activities": [
                 {
-                    "type": "Role-Playing",
-                    "description": "Practice role-playing scenarios with a language partner or tutor, focusing on asking questions, making proposals, and responding to investor concerns.",
-                    "resources": [
-                        "Language exchange platform",
-                        "Tutoring services"
-                    ]
+                    "type": "Vocabulary Building",
+                    "description": "Learn Chinese vocabulary related to business plans, investment models, financial metrics, and your specific industry. Utilize AI-powered vocabulary builders."
                 },
                 {
-                    "type": "Reading Comprehension",
-                    "description": "Read articles or reports related to investment strategies. Focus on identifying key information and understanding the nuances of business language.",
-                    "resources": [
-                        "Chinese business publications",
-                        "Financial news websites in Chinese"
-                    ]
+                    "type": "Reading Practice",
+                    "description": "Read articles or summaries about successful Chinese startups and venture capital firms. Understand their approaches and styles."
+                },
+                {
+                    "type": "Role-Playing",
+                    "description": "Practice your startup pitch in Mandarin. Use AI-powered feedback tools to improve your delivery and content."
                 },
                 {
                     "type": "Presentation Preparation",
-                    "description": "Prepare a short presentation about a business idea, focusing on clear and concise delivery. Practice using business vocabulary and grammatical structures.",
-                    "resources": [
-                        "Presentation templates",
-                        "Online Chinese presentation courses"
-                    ]
+                    "description": "Outline your pitch and practice delivering it in Mandarin. Prepare visuals/slides in Chinese."
                 }
             ]
         },
         {
             "week": 3,
-            "theme": "Negotiation & Dealmaking",
-            "estimated_duration": "20 hours",
+            "theme": "Negotiation and Q&A",
+            "estimated_duration": "15-20 hours",
             "activities": [
                 {
-                    "type": "Negotiation Simulation",
-                    "description": "Engage in negotiation simulations to practice handling objections, counteroffers, and reaching agreements. Practice using assertive yet respectful language.",
-                    "resources": [
-                        "Business negotiation simulations",
-                        "Case studies of business negotiations"
-                    ]
+                    "type": "Vocabulary Building",
+                    "description": "Learn vocabulary related to negotiation techniques, objections, and answering questions in Mandarin. Utilize AI-powered vocabulary builders."
                 },
                 {
-                    "type": "Formal Letter Writing",
-                    "description": "Practice writing formal letters or emails for business communication, including proposals, confirmations, and follow-ups.",
-                    "resources": [
-                        "Examples of formal business letters",
-                        "Chinese grammar guides for business correspondence"
-                    ]
+                    "type": "Video Analysis",
+                    "description": "Analyze and transcribe sample business negotiation videos in Mandarin, paying attention to tone and body language."
                 },
                 {
-                    "type": "Cultural Sensitivity",
-                    "description": "Research Chinese business culture. Understand common business etiquette and communication styles. Identify cultural differences that might impact negotiations.",
-                    "resources": [
-                        "Articles on Chinese business culture",
-                        "Books on cross-cultural communication"
-                    ]
+                    "type": "Role-Playing",
+                    "description": "Practice handling potential objections and Q&A during your pitch using AI-powered role-playing tools."
+                },
+                {
+                    "type": "Mock Pitch",
+                    "description": "Rehearse your pitch with feedback from a native speaker (or an AI-powered tutor) and a mock audience. Focus on delivering your presentation fluently, and managing unexpected situations. Use AI-powered tools to practice and get feedback."
                 }
             ]
         },
         {
             "week": 4,
-            "theme": "Advanced Communication",
-            "estimated_duration": "20 hours",
+            "theme": "Refine and Practice",
+            "estimated_duration": "10-15 hours",
             "activities": [
                 {
-                    "type": "Refined Conversation Practice",
-                    "description": "Engage in more advanced conversations about investment strategies, market trends, and industry analysis.",
-                    "resources": [
-                        "Conversation partners",
-                        "Business discussion groups"
-                    ]
+                    "type": "Review",
+                    "description": "Review all learned vocabulary, grammar, and phrases. Use AI-powered tools to create personalized reviews."
                 },
                 {
-                    "type": "Advanced Reading Material",
-                    "description": "Read complex financial reports and news articles related to investments to expand vocabulary and understanding of current events.",
-                    "resources": [
-                        "Complex Chinese financial reports",
-                        "Investment analysis reports"
-                    ]
+                    "type": "Practice",
+                    "description": "Record and review your pitch multiple times, focusing on fluency and clarity. Use AI-powered tools for pronunciation and intonation feedback."
                 },
                 {
-                    "type": "Progress Evaluation",
-                    "description": "Record your progress through this month. Assess current capabilities and prioritize areas for further development.",
-                    "resources": [
-                        "Self-reflection journal",
-                        "Progress tracking tools"
-                    ]
+                    "type": "Mock Investor Meetings",
+                    "description": "Practice your pitch with native Mandarin speakers simulating investor meetings. Record these meetings for self-assessment."
+                },
+                {
+                    "type": "Final Preparation",
+                    "description": "Finalize your pitch and presentation materials. Do thorough research about the investors and their investment interests. This should include practicing potential questions from the investors."
                 }
             ]
         }
