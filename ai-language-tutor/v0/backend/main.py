@@ -1,43 +1,47 @@
 import json
 import os
-from openai import OpenAI
-from backend import config
+from backend.CurriculumManager import generate_curriculum
 
-client = OpenAI(
-    api_key=config.API_KEY,
-    base_url=config.BASE_URL,
-)
+with open("/home/samu2505/AnotherLanguageApp/ai-language-tutor/v0/backend/config.json", "r") as f:
+    config = json.load(f)
 
-def get_completion(prompt: str):
-    response = client.chat.completions.create(
-        model=config.MODEL,
-        messages=[
-            {"role": "system", "content": config.SYSTEM_INSTRUCTION},
-            {"role": "user", "content": "I would like to improve my chinese so as i can talk to investors"},
-        ],
-        # max_tokens=512,
-        response_format={"type": "json_object"},
-    )
+DATA_PATH = "/home/samu2505/AnotherLanguageApp/ai-language-tutor/v0/output/curriculum.json"
 
-    data = None
-    try:
-        data = json.dumps(response.choices[0].message.content, indent=4)
-    except Exception as e:
-        print(f"Error decoding JSON: {e}")
-        data = None
-        
-    output_dir = "output"
-    os.makedirs(output_dir, exist_ok=True)
+def load_curriculum(file_path):
+    """Loads the curriculum data from the specified JSON file.
 
-    filename = f"{output_dir}/curriculum.json"
-    with open(filename, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=4)
-    print(f"JSON data saved to {filename}")
+    Args:
+        file_path (str): The path to the curriculum JSON file.
 
-if __name__ == "__main__":
-    prompt = """
-    I would like to improve my chinese so as i can talk to investors. 
-
-    I can communicate with people about daily stuff and i would consider myself as an intermediate chinese learner
+    Returns:
+        dict or None: The curriculum data as a Python dictionary,
+                      or None if there was an error.
     """
-    get_completion(prompt)
+    try:
+        with open(file_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            return data
+    except FileNotFoundError:
+        print(f"Error: Curriculum file not found at {file_path}")
+        return None
+    except json.JSONDecodeError:
+        print(f"Error: Invalid JSON format in curriculum file at {file_path}")
+        return None
+
+curriculum_data = load_curriculum(DATA_PATH)
+
+weekly_data = curriculum_data["weeks"]
+
+LessonInstuction = weekly_data[0]
+
+
+
+# if __name__ == "__main__":
+#     prompt = """
+#     I would like to improve my chinese so as i can talk to investors. 
+
+#     I can communicate with people about daily stuff and i would consider myself as an intermediate chinese learner
+#     """
+#     generate_curriculum.get_completion(prompt)
+#     # config.user_input = prompt
+#     config.update({"user_input": prompt})

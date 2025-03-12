@@ -1,7 +1,12 @@
 from dotenv import load_dotenv
+from backend.config_manager import Config
 import os
 
 load_dotenv()
+
+base_directory = os.path.abspath(os.path.dirname(__file__))
+config_path = os.path.join(base_directory, "config.json")
+config = Config(config_path)
 
 # Access environment variables
 API_KEY = os.getenv('GEMINI_API_KEY')
@@ -30,58 +35,43 @@ You are an expert language learning curriculum designer. Your task is to create 
   "current_level": "user_provided_level",
   "weeks": [
     {
-      "week_number": 1,
+      "week": 1,
       "theme": "week_theme",
       "estimated_duration": "estimated_weekly_time",
       "activities": [
         {
           "type": "activity_type",
           "description": "activity_description",
-          "resources": ["resource1", "resource2"]
+          "resources": ["resource1", "resource2", ...]
         },
         {
           "type": "activity_type",
           "description": "activity_description",
-          "resources": ["resource1", "resource2"]
-        }
+          "resources": ["resource1", "resource2", ...]
+        },
+        ...
       ]
     },
     {
-      "week_number": 2,
+      "week": 2,
       "theme": "week_theme",
       "estimated_duration": "estimated_weekly_time",
       "activities": [
         {
           "type": "activity_type",
           "description": "activity_description",
-          "resources": ["resource1", "resource2"]
-        }
+          "resources": ["resource1", "resource2", ...]
+        },
+        ...
       ]
     },
-    {
-        "week_number": 3,
-        "theme": "week_theme",
-        "estimated_duration": "estimated_weekly_time",
-        "activities": [
-            {
-                "type": "activity_type",
-                "description": "activity_description",
-                "resources": ["resource1", "resource2"]
-            }
-        ]
-    },
-    {
-        "week_number": 4,
-        "theme": "week_theme",
-        "estimated_duration": "estimated_weekly_time",
-        "activities": [
-            {
-                "type": "activity_type",
-                "description": "activity_description",
-                "resources": ["resource1", "resource2"]
-            }
-        ]
-    }
+    ...
   ]
 }
 """
+
+config.set("system_instruction", SYSTEM_INSTRUCTION)
+config.set("model", MODEL)
+config.set("base_url", BASE_URL)
+config.set("api_key", API_KEY)
+config.save()

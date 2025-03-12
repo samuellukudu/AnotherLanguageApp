@@ -1,1 +1,132 @@
-"\"{\\n  \\\"language\\\": \\\"Chinese\\\",\\n  \\\"learning_goal\\\": \\\"Improve Chinese communication skills for investor interactions\\\",\\n  \\\"current_level\\\": \\\"Not specified\\\",\\n  \\\"weeks\\\": [\\n    {\\n      \\\"week_number\\\": 1,\\n      \\\"theme\\\": \\\"Fundamentals of Business Chinese\\\",\\n      \\\"estimated_duration\\\": \\\"20 hours\\\",\\n      \\\"activities\\\": [\\n        {\\n          \\\"type\\\": \\\"Vocabulary Building\\\",\\n          \\\"description\\\": \\\"Learn basic business vocabulary related to introductions, negotiations, and presentations. Focus on common phrases and expressions.\\\",\\n          \\\"resources\\\": [\\n            \\\"Online Chinese dictionary\\\",\\n            \\\"Business Chinese vocabulary lists\\\"\\n          ]\\n        },\\n        {\\n          \\\"type\\\": \\\"Grammar Review\\\",\\n          \\\"description\\\": \\\"Review basic Chinese grammar structures for sentence construction and question-forming, focusing on practical business applications.\\\",\\n          \\\"resources\\\": [\\n            \\\"Chinese grammar textbooks\\\",\\n            \\\"Online grammar resources\\\"\\n          ]\\n        },\\n        {\\n          \\\"type\\\": \\\"Listening Practice\\\",\\n          \\\"description\\\": \\\"Listen to recordings of business Chinese conversations. Practice identifying key words and phrases.\\\",\\n          \\\"resources\\\": [\\n            \\\"Chinese podcasts for business\\\",\\n            \\\"YouTube videos on business Chinese\\\"\\n          ]\\n        }\\n      ]\\n    },\\n    {\\n      \\\"week_number\\\": 2,\\n      \\\"theme\\\": \\\"Negotiation & Presentation Skills\\\",\\n      \\\"estimated_duration\\\": \\\"20 hours\\\",\\n      \\\"activities\\\": [\\n        {\\n          \\\"type\\\": \\\"Role-Playing\\\",\\n          \\\"description\\\": \\\"Practice negotiating and presenting in Chinese. Role-play scenarios with a language partner or tutor.\\\",\\n          \\\"resources\\\": [\\n            \\\"Language exchange partner\\\",\\n            \\\"Online Chinese tutor\\\"\\n          ]\\n        },\\n        {\\n          \\\"type\\\": \\\"Reading Comprehension\\\",\\n          \\\"description\\\": \\\"Read business-related articles and documents in Chinese. Focus on understanding key information and business contexts.\\\",\\n          \\\"resources\\\": [\\n            \\\"Business news websites in Chinese\\\",\\n            \\\"Chinese business magazines\\\"\\n          ]\\n        },\\n\\t\\t{\\n          \\\"type\\\": \\\"Conversation Practice\\\",\\n          \\\"description\\\": \\\"Engage in conversations with native speakers of Chinese, or online language partners to practice using Chinese business vocabulary.\\\",\\n          \\\"resources\\\": [\\n            \\\"Online language exchange platforms\\\",\\n            \\\"Chinese conversation groups\\\"\\n          ]\\n        }\\n      ]\\n    },\\n    {\\n      \\\"week_number\\\": 3,\\n      \\\"theme\\\": \\\"Cultural Nuances & Advanced Vocabulary\\\",\\n      \\\"estimated_duration\\\": \\\"20 hours\\\",\\n      \\\"activities\\\": [\\n        {\\n          \\\"type\\\": \\\"Cultural Awareness\\\",\\n          \\\"description\\\": \\\"Learn about Chinese business culture and etiquette. Understand unspoken rules and expectations in business settings.\\\",\\n          \\\"resources\\\": [\\n            \\\"Articles on Chinese business culture\\\",\\n            \\\"Cultural guides\\\"\\n          ]\\n        },\\n\\t\\t{\\n          \\\"type\\\": \\\"Advanced Vocabulary\\\",\\n          \\\"description\\\": \\\"Expand business-related vocabulary focusing on specific industry terminology relevant to your professional interests.  (e.g., finance, tech).\\\",\\n          \\\"resources\\\": [\\n            \\\"Industry-specific Chinese vocabulary lists\\\",\\n            \\\"Specialized Chinese dictionaries\\\"\\n          ]\\n        }\\n      ]\\n    },\\n    {\\n      \\\"week_number\\\": 4,\\n      \\\"theme\\\": \\\"Refining Communication & Application\\\",\\n      \\\"estimated_duration\\\": \\\"20 hours\\\",\\n      \\\"activities\\\": [\\n        {\\n          \\\"type\\\": \\\"Mock Investor Meetings\\\",\\n          \\\"description\\\": \\\"Simulate investor meetings in Chinese to practice negotiation and presentation skills.\\\",\\n          \\\"resources\\\": [\\n            \\\"Business role-play partners\\\",\\n            \\\"Language partners\\\"\\n          ]\\n        },\\n\\t\\t{\\n          \\\"type\\\": \\\"Record & Review\\\",\\n          \\\"description\\\": \\\"Record and review your conversations. Identify areas for improvement and seek feedback.\\\",\\n          \\\"resources\\\": [\\n            \\\"Audio/video recording tools\\\",\\n            \\\"Language tutors/partners for feedback\\\"\\n          ]\\n        }\\n      ]\\n    }\\n  ]\\n}\""
+{
+    "language": "Chinese",
+    "learning_goal": "Effective communication with investors",
+    "current_level": "Intermediate",
+    "weeks": [
+        {
+            "week": 1,
+            "theme": "Business Essentials",
+            "estimated_duration": "20 hours",
+            "activities": [
+                {
+                    "type": "Vocabulary Building",
+                    "description": "Learn essential business vocabulary related to finance, investments, and negotiations.",
+                    "resources": [
+                        "Chinese business vocabulary lists",
+                        "Online flashcards",
+                        "Business-related Chinese news articles"
+                    ]
+                },
+                {
+                    "type": "Grammar Focus",
+                    "description": "Review and practice grammar structures crucial for business conversations, including expressing opinions, negotiating terms, and asking clarifying questions.",
+                    "resources": [
+                        "Business Chinese grammar textbook",
+                        "Online grammar resources"
+                    ]
+                },
+                {
+                    "type": "Listening Practice",
+                    "description": "Listen to audio clips of business presentations, investor pitches, and negotiation simulations. Focus on understanding key takeaways and expressions.",
+                    "resources": [
+                        "Business Chinese podcasts",
+                        "YouTube videos on Chinese business"
+                    ]
+                }
+            ]
+        },
+        {
+            "week": 2,
+            "theme": "Investment Discussions",
+            "estimated_duration": "20 hours",
+            "activities": [
+                {
+                    "type": "Role-Playing",
+                    "description": "Practice role-playing scenarios with a language partner or tutor, focusing on asking questions, making proposals, and responding to investor concerns.",
+                    "resources": [
+                        "Language exchange platform",
+                        "Tutoring services"
+                    ]
+                },
+                {
+                    "type": "Reading Comprehension",
+                    "description": "Read articles or reports related to investment strategies. Focus on identifying key information and understanding the nuances of business language.",
+                    "resources": [
+                        "Chinese business publications",
+                        "Financial news websites in Chinese"
+                    ]
+                },
+                {
+                    "type": "Presentation Preparation",
+                    "description": "Prepare a short presentation about a business idea, focusing on clear and concise delivery. Practice using business vocabulary and grammatical structures.",
+                    "resources": [
+                        "Presentation templates",
+                        "Online Chinese presentation courses"
+                    ]
+                }
+            ]
+        },
+        {
+            "week": 3,
+            "theme": "Negotiation & Dealmaking",
+            "estimated_duration": "20 hours",
+            "activities": [
+                {
+                    "type": "Negotiation Simulation",
+                    "description": "Engage in negotiation simulations to practice handling objections, counteroffers, and reaching agreements. Practice using assertive yet respectful language.",
+                    "resources": [
+                        "Business negotiation simulations",
+                        "Case studies of business negotiations"
+                    ]
+                },
+                {
+                    "type": "Formal Letter Writing",
+                    "description": "Practice writing formal letters or emails for business communication, including proposals, confirmations, and follow-ups.",
+                    "resources": [
+                        "Examples of formal business letters",
+                        "Chinese grammar guides for business correspondence"
+                    ]
+                },
+                {
+                    "type": "Cultural Sensitivity",
+                    "description": "Research Chinese business culture. Understand common business etiquette and communication styles. Identify cultural differences that might impact negotiations.",
+                    "resources": [
+                        "Articles on Chinese business culture",
+                        "Books on cross-cultural communication"
+                    ]
+                }
+            ]
+        },
+        {
+            "week": 4,
+            "theme": "Advanced Communication",
+            "estimated_duration": "20 hours",
+            "activities": [
+                {
+                    "type": "Refined Conversation Practice",
+                    "description": "Engage in more advanced conversations about investment strategies, market trends, and industry analysis.",
+                    "resources": [
+                        "Conversation partners",
+                        "Business discussion groups"
+                    ]
+                },
+                {
+                    "type": "Advanced Reading Material",
+                    "description": "Read complex financial reports and news articles related to investments to expand vocabulary and understanding of current events.",
+                    "resources": [
+                        "Complex Chinese financial reports",
+                        "Investment analysis reports"
+                    ]
+                },
+                {
+                    "type": "Progress Evaluation",
+                    "description": "Record your progress through this month. Assess current capabilities and prioritize areas for further development.",
+                    "resources": [
+                        "Self-reflection journal",
+                        "Progress tracking tools"
+                    ]
+                }
+            ]
+        }
+    ]
+}
