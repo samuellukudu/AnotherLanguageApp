@@ -1,0 +1,116 @@
+{
+    "lesson_plan": {
+        "day": 1,
+        "focus": "Startup Vocabulary & Introductions",
+        "duration": "3 hours",
+        "activities": [
+            {
+                "type": "Vocabulary Building",
+                "description": "Learn and practice vocabulary related to startup concepts.  The AI will provide a list of 10 startup terms. For each term, the student will provide a Chinese translation, and the AI will provide feedback on accuracy. The AI will then generate example sentences using the vocabulary.",
+                "vocabulary": [
+                    {
+                        "term": "prototype",
+                        "translation": "原型",
+                        "pinyin": "yuánxíng",
+                        "example_sentence_en": "We've developed a prototype for the new app.",
+                        "example_sentence_zh": "我们为新应用开发了一个原型。",
+                        "pinyin_example_zh": "Wǒmen wèi xīn yìngyòng kāifāle yígè yuánxíng."
+                    },
+                    {
+                        "term": "investor",
+                        "translation": "投资者",
+                        "pinyin": "tóuzhě",
+                        "example_sentence_en": "We're looking for investors to help fund our startup.",
+                        "example_sentence_zh": "我们正在寻找投资者帮助资助我们的创业公司。",
+                        "pinyin_example_zh": "Wǒmen zhèngzài xúnzhǎo tóuzhě bāngzhù zīzhù wǒmen de chuàngyè gōngsī."
+                    },
+                    {
+                        "term": "funding",
+                        "translation": "资金",
+                        "pinyin": "zījīn",
+                        "example_sentence_en": "Securing funding is crucial for any startup.",
+                        "example_sentence_zh": "获得资金对于任何创业公司来说都是至关重要的。",
+                        "pinyin_example_zh": "Huòdé zījīn duìyú rènhé chuàngyè gōngsī láishuō dōu shì zhìguān zhòngyào de."
+                    },
+                    {
+                        "term": "market share",
+                        "translation": "市场份额",
+                        "pinyin": "shìchǎng fèngé",
+                        "example_sentence_en": "We aim to capture a significant market share in the next year.",
+                        "example_sentence_zh": "我们计划在明年获得显著的市场份额。",
+                        "pinyin_example_zh": "Wǒmen jìhuà zài míngnián huòdé xiǎnzhù de shìchǎng fèngé."
+                    },
+                    {
+                        "term": "revenue",
+                        "translation": "收入",
+                        "pinyin": "shōurù",
+                        "example_sentence_en": "The startup generated substantial revenue in its first year.",
+                        "example_sentence_zh": "这家创业公司在其第一年获得了可观的收入。",
+                        "pinyin_example_zh": "Zhè jiā chuàngyè gōngsī zài qí dì yī nián huòdéle kěguān de shōurù."
+                    },
+                    {
+                        "term": "scalable",
+                        "translation": "可扩展的",
+                        "pinyin": "kě kuòzhàn de",
+                        "example_sentence_en": "Our business model is scalable and can handle significant growth.",
+                        "example_sentence_zh": "我们的商业模式是可扩展的，并且能够应对显著的增长。",
+                        "pinyin_example_zh": "Wǒmen de shāngyè móshì shì kě kuòzhàn de, bìngqiě nénggòu yìngyìng xiǎnzhù de zēngzhǎng."
+                    },
+                    {
+                        "term": "venture capital",
+                        "translation": "风险投资",
+                        "pinyin": "fēngxiǎn tóuzī",
+                        "example_sentence_en": "We're seeking venture capital to fuel our growth.",
+                        "example_sentence_zh": "我们正在寻求风险投资来推动我们的增长。",
+                        "pinyin_example_zh": "Wǒmen zhèngzài xúnqiú fēngxiǎn tóuzī lái tuīdòng wǒmen de zēngzhǎng."
+                    },
+                    {
+                        "term": "growth",
+                        "translation": "增长",
+                        "pinyin": "zēngzhǎng",
+                        "example_sentence_en": "Sustained growth is essential for any successful startup.",
+                        "example_sentence_zh": "持续的增长对于任何成功的创业公司来说都是至关重要的。",
+                        "pinyin_example_zh": "Chíxù de zēngzhǎng duìyú rènhé chénggōng de chuàngyè gōngsī láishuō dōu shì zhìguān zhòngyào de."
+                    },
+                    {
+                        "term": "product",
+                        "translation": "产品",
+                        "pinyin": "chǎnpin",
+                        "example_sentence_en": "Our product is innovative and addresses a key market need.",
+                        "example_sentence_zh": "我们的产品具有创新性，并满足了关键的市场需求。",
+                        "pinyin_example_zh": "Wǒmen de chǎnpin jùyǒu chuàngxīn xìng, bìng mǎnzúle guānjiàn de shìchǎng xūqiú."
+                    },
+                    {
+                        "term": "team",
+                        "translation": "团队",
+                        "pinyin": "tuánduī",
+                        "example_sentence_en": "We have a highly skilled and motivated team.",
+                        "example_sentence_zh": "我们拥有一支高技能且积极主动的团队。",
+                        "pinyin_example_zh": "Wǒmen yōngyǒu yī zhī gāo jìnéng qiě jījí zhǔdòng de tuánduī."
+                    }
+                ]
+            },
+            {
+                "type": "Introduction Practice",
+                "description": "Practice introducing oneself and one's startup using a series of prompts. The student will describe their startup, their role, and why they need investment.  The AI will provide feedback on grammar, vocabulary, and fluency, generating appropriate responses.",
+                "prompts": [
+                    {
+                        "prompt_en": "Describe your startup in one sentence.",
+                        "prompt_zh": "用一句话描述你的创业公司。",
+                        "pinyin": "Yòng yī juǎ zimiáo shù nǐ de chuàngyè gōngsī."
+                    },
+                    {
+                        "prompt_en": "What is your role in the startup?",
+                        "prompt_zh": "你在创业公司中担任什么角色？",
+                        "pinyin": "Nǐ zài chuàngyè gōngsī zhōng dānrèn shénme jiǎosè?"
+                    },
+                    {
+                        "prompt_en": "Why do you need investment?",
+                        "prompt_zh": "你为什么需要投资？",
+                        "pinyin": "Nǐ wèishéme xūyào tóuzī?"
+                    }
+                ]
+            }
+        ]
+    }
+}

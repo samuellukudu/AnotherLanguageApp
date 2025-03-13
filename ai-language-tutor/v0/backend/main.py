@@ -2,6 +2,7 @@ import os
 import argparse
 from backend.CurriculumManager.generate_curriculum import get_completion as generate_curriculum
 from backend.LessonManager.generate_lesson import get_completion as generate_lesson
+from backend.LessonManager.generate_daily_lesson import get_completion as generate_daily_lesson
 from backend.config_manager import Config
 from backend.utils import read_json_file, ensure_directory
 
@@ -10,6 +11,7 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CONFIG_PATH = os.path.join(PROJECT_ROOT, "backend", "config.json")
 OUTPUT_DIR = os.path.join(PROJECT_ROOT, "output")
 CURRICULUM_PATH = os.path.join(OUTPUT_DIR, "curriculum.json")
+LESSON_PATH = os.path.join(OUTPUT_DIR, "lesson.json")
 
 # Ensure output directory exists
 ensure_directory(OUTPUT_DIR)
@@ -82,43 +84,60 @@ def setup_lesson_instruction():
     Generate a detailed, AI-driven lesson plan following the instruction format.
     """.format(curriculum=week)
 
+    config.set("target_language", language)
     config.set("lesson_instruction", lesson_instruction)
     config.set("lesson_prompt", lesson_prompt)
     return True
 
 setup_lesson_instruction()
-generate_lesson(config.get("lesson_prompt"))
+# generate_lesson(config.get("lesson_prompt"))
 
-# def test_curriculum_generation(user_prompt: str):
-#     """Test curriculum generation with a user prompt"""
-#     print("Generating curriculum...")
-#     generate_curriculum(user_prompt)
-#     print("Curriculum generation completed")
+lesson_data = read_json_file(LESSON_PATH)
+theme = lesson_data["theme"]
+lessons = lesson_data["daily_lessons"]
+# print("Theme:", theme)
+# print("Lessons: ", lessons[0])
 
-# def test_lesson_generation(user_prompt: str):
-#     """Test lesson generation with a user prompt"""
-#     try:
-#         setup_lesson_instruction()
-#         print("Generating lesson...")
-#         generate_lesson(user_prompt)
-#         print("Lesson generation completed")
-#     except FileNotFoundError as e:
-#         print(f"Error: {e}")
-#         print("Please generate a curriculum first using --mode curriculum")
+daily_lesson_instruction = """
+You are an AI assistant tasked with curating today's lesson to help the user improve their skills in the target language.
 
-# def main():
-#     parser = argparse.ArgumentParser(description='Language Learning App CLI')
-#     parser.add_argument('--mode', choices=['curriculum', 'lesson'], required=True,
-#                       help='Mode of operation: curriculum or lesson generation')
-#     parser.add_argument('--prompt', type=str, required=True,
-#                       help='User prompt for generation')
+Instructions:
+1. Determine the target language based on the user's input.
+2. Create a bilingual lesson (English and the target language) to enable the user to achieve their learning goal.
+3. For vocabulary sections:
+   - Provide terms in English, their translations in the target language, and example sentences in both languages.
+   - For character-based languages (e.g., Chinese, Japanese, Korean, Arabic), include phonetic aids alongside the target language:
+     - Chinese: Include Pinyin for Mandarin terms.
+     - Japanese: Include Romaji for Japanese terms.
+     - Korean: Include Romanized Korean (Revised Romanization).
+     - Arabic: Include transliteration using the Latin alphabet.
+   - Example format:
+     - Term: "prototype"
+     - Translation: "原型" (Chinese), Pinyin: "yuánxíng"
+     - Example Sentence: 
+       - English: "We've developed a prototype for the new app."
+       - Target Language: "我们为新应用开发了一个原型。" (Chinese), Pinyin: "Wǒmen wèi xīn yìngyòng kāifāle yígè yuánxíng."
+4. For practice activities:
+   - Include prompts in both English and the target language.
+   - Provide example responses in both languages, including phonetic aids for character-based languages.
+5. Provide feedback on the user's input, focusing on grammar, vocabulary, and fluency. If applicable, include corrections with phonetic aids.
+6. Always remember to include both English and the target language for all cases, along with phonetic aids for character-based languages.
 
-#     args = parser.parse_args()
+The lesson should be engaging, interactive, and tailored to the user's proficiency level.
+"""
 
-#     if args.mode == 'curriculum':
-#         test_curriculum_generation(args.prompt)
-#     elif args.mode == 'lesson':
-#         test_lesson_generation(args.prompt)
+lesson_prompt = """
+Theme: {theme}
 
-# if __name__ == "__main__":
-#     main()
+Based on today's lesson plan, create a bilingual lesson (English and {target_language}) with the following structure:
+
+Lesson Plan: {lesson_plan}
+""".format(theme=theme, target_language=config.get("target_language"), lesson_plan=lessons[0])
+
+config.set("daily_lesson_instruction", daily_lesson_instruction)
+config.set("daily_lesson_prompt", lesson_prompt)
+
+# print(config.get("daily_lesson_instruction"))
+# print(config.get("daily_lesson_prompt"))
+generate_daily_lesson(lesson_prompt)
+# generate_lesson(config.get("daily_lesson_prompt"))
