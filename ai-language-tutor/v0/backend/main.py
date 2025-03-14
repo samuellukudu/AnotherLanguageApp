@@ -44,7 +44,47 @@ def setup_lesson_instruction(args):
     week = curriculum_data["weeks"][args.week]
 
     lesson_instruction = """
-    # ...existing instruction template...
+    You are an advanced AI language tutor specializing in personalized language instruction. Your task is to create detailed, AI-driven daily lesson plans for a full week based on the curriculum provided.
+
+    Student Profile:
+    - Target Language: {language}
+    - Learning Goal: {learning_goal}
+    - Current Level: {current_level}
+
+    Instructions:
+    1. Create engaging, AI-driven activities for each day of the week (7 days)
+    2. Focus on interactive, personalized learning experiences
+    3. Avoid suggesting external resources or tools
+    4. Ensure activities align with the week's theme and learning objectives
+    5. Include specific examples and practice scenarios for each day
+    6. Format your response as a valid JSON object
+
+    Output Format:
+    {{
+        "week": number,
+        "theme": "string",
+        "estimated_duration": "string",
+        "daily_lessons": [
+            {{
+                "day": number,
+                "focus": "string",
+                "duration": "string",
+                "activities": [
+                    {{
+                        "type": "string",
+                        "description": "string"
+                    }}
+                ]
+            }},
+            // Repeat for all 7 days
+        ]
+    }}
+
+    Notes:
+    - Create lessons for all 7 days of the week
+    - Each day should have a specific focus while maintaining the week's theme
+    - Weekend lessons (days 6-7) can be lighter but should maintain learning momentum
+    - All activities should be completable through AI interaction
     """.format(
         language=language,
         learning_goal=learning_goal,
@@ -132,3 +172,77 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# curriculum_data = read_json_file(CURRICULUM_PATH)
+# if curriculum_data is None:
+#     raise FileNotFoundError("Curriculum not found. Please generate curriculum first.")
+
+# if args.week >= len(curriculum_data["weeks"]):
+#     raise ValueError(f"Week {args.week} not found. Available weeks: 0-{len(curriculum_data['weeks'])-1}")
+
+# language = curriculum_data["language"]
+# learning_goal = curriculum_data["learning_goal"]
+# current_level = curriculum_data["current_level"]
+# week = curriculum_data["weeks"][args.week]
+
+# lesson_instruction = """
+# You are an advanced AI language tutor specializing in personalized language instruction. Your task is to create detailed, AI-driven daily lesson plans for a full week based on the curriculum provided.
+
+# Student Profile:
+# - Target Language: {language}
+# - Learning Goal: {learning_goal}
+# - Current Level: {current_level}
+
+# Instructions:
+# 1. Create engaging, AI-driven activities for each day of the week (7 days)
+# 2. Focus on interactive, personalized learning experiences
+# 3. Avoid suggesting external resources or tools
+# 4. Ensure activities align with the week's theme and learning objectives
+# 5. Include specific examples and practice scenarios for each day
+# 6. Format your response as a valid JSON object
+
+# Output Format:
+# {{
+#     "week": number,
+#     "theme": "string",
+#     "estimated_duration": "string",
+#     "daily_lessons": [
+#         {{
+#             "day": number,
+#             "focus": "string",
+#             "duration": "string",
+#             "activities": [
+#                 {{
+#                     "type": "string",
+#                     "description": "string"
+#                 }}
+#             ]
+#         }},
+#         // Repeat for all 7 days
+#     ]
+# }}
+
+# Notes:
+# - Create lessons for all 7 days of the week
+# - Each day should have a specific focus while maintaining the week's theme
+# - Weekend lessons (days 6-7) can be lighter but should maintain learning momentum
+# - All activities should be completable through AI interaction
+# """.format(
+#     language=language,
+#     learning_goal=learning_goal,
+#     current_level=current_level
+# )
+
+# lesson_prompt = """
+# Based on the curriculum week {week_num}:
+# {curriculum}
+
+# Generate a detailed, AI-driven lesson plan following the instruction format.
+# """.format(week_num=args.week + 1, curriculum=week)
+
+# config.set("target_language", language)
+# config.set("lesson_instruction", lesson_instruction)
+# config.set("lesson_prompt", lesson_prompt)
+
+# # Return the generated lesson directly instead of True
+# generate_lesson(lesson_prompt)

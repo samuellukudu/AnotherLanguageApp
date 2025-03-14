@@ -5,106 +5,106 @@
     "daily_lessons": [
         {
             "day": 1,
-            "focus": "Presentation Structure and Language",
+            "focus": "Presentation Structure and Delivery",
             "duration": "3 hours",
             "activities": [
                 {
-                    "type": "AI-Guided Presentation Structure",
-                    "description": "The AI will provide a framework for a presentation on a machine learning algorithm. Students will choose one of several algorithms and outline their presentation structure. The AI will offer feedback on structure, logical flow and clarity, and provide suggestions for more impactful language."
+                    "type": "AI-Guided Practice",
+                    "description": "Practice constructing a presentation outline on a specific machine learning algorithm (e.g., Support Vector Machines).  The AI assistant will provide feedback on logical flow and clarity of language.  Focus on concise, clear language and technical terms related to machine learning."
                 },
                 {
-                    "type": "Vocabulary Building",
-                    "description": "AI will present 10 machine learning terms related to the chosen topic. Students will define them in Chinese, provide examples, and use them in sentences. The AI will evaluate usage and suggest more accurate and nuanced vocabulary."
+                    "type": "Mock Presentation",
+                    "description": "Deliver a mock presentation to an AI assistant, receiving immediate feedback on pronunciation, pace, and use of technical vocabulary.  The AI can simulate a virtual audience."
                 }
             ]
         },
         {
             "day": 2,
-            "focus": "Debate Strategies",
+            "focus": "Debate Strategies and Argumentation",
             "duration": "3 hours",
             "activities": [
                 {
-                    "type": "AI-Guided Argumentation",
-                    "description": "The AI will present a machine learning concept with opposing viewpoints.  Students will craft arguments for and against each position, focusing on formal and informal Chinese expressions for debate."
+                    "type": "AI-Based Debate Simulation",
+                    "description": "Engage in a simulated debate with the AI assistant on a machine learning concept (e.g., deep learning vs. traditional methods).  Practice formulating arguments and rebuttals, focusing on respectful and effective communication in Chinese. The AI will analyze argument structure, logic, and language use."
                 },
                 {
-                    "type": "Counter-Argument Practice",
-                    "description": "The AI will present a counter-argument to the student's position. The student will formulate a response and engage with the AI in a simulated debate. The AI will provide feedback on argument structure, logic, and persuasive language usage."
+                    "type": "Vocabulary Expansion",
+                    "description": "Review and expand vocabulary related to machine learning concepts and debate strategies. The AI assistant can provide definitions, example sentences, and synonyms for technical terms."
                 }
             ]
         },
         {
             "day": 3,
-            "focus": "Technical Language Refinement",
+            "focus": "Application and Real-World Scenarios",
             "duration": "4 hours",
             "activities": [
                 {
-                    "type": "AI-Driven Vocabulary Expansion",
-                    "description": "The AI will present a list of technical terms related to machine learning algorithms. Students will translate, define, and provide examples in formal Chinese. The AI will assess accuracy and offer synonyms for better expression."
+                    "type": "Application Focus",
+                    "description": "Use an AI-simulated scenario where you need to explain the use of a specific machine learning tool or algorithm. This requires applying your learned vocabulary and debate strategies in a problem-solving discussion context. The AI provides scenarios and prompts.  Focus on concise, clear explanations and solutions."
                 },
                 {
-                    "type": "Advanced Grammar Practice",
-                    "description": "Students will create concise sentences using advanced grammar structures relevant to machine learning discussions. The AI will evaluate sentence structure, clarity, and precision."
+                    "type": "Interactive Discussion",
+                    "description": "Participate in an AI-simulated discussion about a machine learning project. You are required to contribute to the conversation, summarizing past learnings and discussing potential issues. The AI assistant guides the discussion."
                 }
             ]
         },
         {
             "day": 4,
-            "focus": "Presentation Practice",
-            "duration": "4 hours",
+            "focus": "Presentation Refinement",
+            "duration": "3 hours",
             "activities": [
                 {
-                    "type": "Presentation Rehearsal",
-                    "description": "Students will practice their presentation on the pre-selected machine learning algorithm, using the AI for recording, playback, and feedback. The AI will evaluate delivery, pronunciation, and fluency."
+                    "type": "Presentation Feedback",
+                    "description": "Revise a previous presentation based on AI feedback. Pay attention to clarity, grammar, and vocabulary. Practice delivering the revised presentation again, and get refined feedback."
                 },
                 {
-                    "type": "Simulated Q&A",
-                    "description": "Students will rehearse answering questions about their presentation topic from an AI-generated question pool.  The AI will assess the student's ability to answer complex questions with clarity and accuracy."
+                    "type": "Advanced Vocabulary Review",
+                    "description": "Review and expand vocabulary related to advanced machine learning concepts.  The AI assistant provides a quiz to test comprehension."
                 }
             ]
         },
         {
             "day": 5,
-            "focus": "Debate Role-Playing",
+            "focus": "Debate Structure and Refinement",
             "duration": "3 hours",
             "activities": [
                 {
-                    "type": "Simulated Debates",
-                    "description": "The AI will present a series of debate scenarios. Students will role-play both sides of the argument, focusing on concise, clear expressions."
+                    "type": "Debate Practice",
+                    "description": "Refine your debating skills in an AI-assisted format.  Focus on counterarguments and adapting to different perspectives in the Chinese language.  The AI will help track your progress."
                 },
                 {
-                    "type": "Argument Analysis",
-                    "description": "Students will analyze the language and persuasive techniques used in the simulated debates, highlighting effective arguments and identifying potential weaknesses."
+                    "type": "Reflection and Goal Setting",
+                    "description": "Reflect on your presentation and debate performance from the week.  Set specific goals and objectives for future learning, focusing on further development of your Chinese technical communication skills."
                 }
             ]
         },
         {
             "day": 6,
-            "focus": "Review and Reflection",
+            "focus": "Review and Consolidation",
             "duration": "2 hours",
             "activities": [
                 {
-                    "type": "Weekly Summary",
-                    "description": "The AI will summarize the key concepts and vocabulary learned throughout the week, providing a concise review of presentation and debate strategies."
+                    "type": "Vocabulary Quiz",
+                    "description": "Complete a vocabulary quiz covering technical machine learning terms in Chinese. The AI will provide immediate feedback and further study materials based on your answers."
                 },
                 {
-                    "type": "Personalized Goal Setting",
-                    "description": "Students will reflect on their progress, identify areas for improvement, and set specific, achievable goals for next week."
+                    "type": "Interactive Dialogue",
+                    "description": "Engage in a conversational practice with the AI assistant on the week's learnings, practicing informal Chinese communication."
                 }
             ]
         },
         {
             "day": 7,
-            "focus": "Application and Consolidation",
+            "focus": "Progress Assessment and Preparation",
             "duration": "2 hours",
             "activities": [
                 {
-                    "type": "Application Scenarios",
-                    "description": "The AI will provide application scenarios requiring the use of learned skills in technical Chinese. Students will practice applying concepts and techniques in these real-world contexts."
+                    "type": "Progress Review",
+                    "description": "Reflect on the week's learning and identify areas for further improvement. The AI assistant provides a summary of your progress and personalized suggestions."
                 },
                 {
-                    "type": "Final Feedback Session",
-                    "description": "The AI will provide comprehensive feedback on the student's presentation and debate performance, outlining areas of strength and weakness."
+                    "type": "Preparation for Next Week",
+                    "description": "Start planning for next week's topics. Review the concepts from past lessons to keep the learning momentum."
                 }
             ]
         }
