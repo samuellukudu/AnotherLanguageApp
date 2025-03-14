@@ -29,10 +29,13 @@ def get_completion(prompt: str):
         
         if write_json_file(filename, data):
             print(f"JSON data saved to {filename}")
-            return True
+            # Reset the config when new curriculum is generated
+            config.set("current_week", 0)
+            config.save()
+            return data  # Return the data instead of True
         print("Failed to save data")
-        return False
+        return None
             
     except json.JSONDecodeError as e:
         print(f"Error decoding JSON: {e}")
-        return False
+        return None

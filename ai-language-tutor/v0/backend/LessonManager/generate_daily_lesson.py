@@ -31,6 +31,8 @@ def get_completion(prompt: str):
             print(f"JSON data saved to {filename}")
         else:
             print("Failed to save data")
+        return data
             
     except json.JSONDecodeError as e:
         print(f"Error decoding JSON: {e}")
+        return None

@@ -1,110 +1,110 @@
 {
-    "week": 1,
-    "theme": "Basic Business Phrases and Introductions",
-    "estimated_duration": "7 hours per week",
+    "week": 4,
+    "theme": "Presentations and Debates",
+    "estimated_duration": "20-25 hours",
     "daily_lessons": [
         {
             "day": 1,
-            "focus": "Startup Vocabulary & Introductions",
+            "focus": "Presentation Structure and Language",
             "duration": "3 hours",
             "activities": [
                 {
-                    "type": "Vocabulary Building",
-                    "description": "Learn and practice vocabulary related to startup concepts.  The AI will provide a list of 10 startup terms. For each term, the student will provide a Chinese translation, and the AI will provide feedback on accuracy. The AI will then generate example sentences using the vocabulary."
+                    "type": "AI-Guided Presentation Structure",
+                    "description": "The AI will provide a framework for a presentation on a machine learning algorithm. Students will choose one of several algorithms and outline their presentation structure. The AI will offer feedback on structure, logical flow and clarity, and provide suggestions for more impactful language."
                 },
                 {
-                    "type": "Introduction Practice",
-                    "description": "Practice introducing oneself and one's startup using a series of prompts. The student will describe their startup, their role, and why they need investment.  The AI will provide feedback on grammar, vocabulary, and fluency, generating appropriate responses."
+                    "type": "Vocabulary Building",
+                    "description": "AI will present 10 machine learning terms related to the chosen topic. Students will define them in Chinese, provide examples, and use them in sentences. The AI will evaluate usage and suggest more accurate and nuanced vocabulary."
                 }
             ]
         },
         {
             "day": 2,
-            "focus": "Investment Terms",
+            "focus": "Debate Strategies",
             "duration": "3 hours",
             "activities": [
                 {
-                    "type": "Vocabulary Building",
-                    "description": "Learn and practice vocabulary related to investment.  The AI will provide a list of 10 investment terms.  The student will provide Chinese translations and example sentences.  The AI will provide feedback on accuracy."
+                    "type": "AI-Guided Argumentation",
+                    "description": "The AI will present a machine learning concept with opposing viewpoints.  Students will craft arguments for and against each position, focusing on formal and informal Chinese expressions for debate."
                 },
                 {
-                    "type": "Investment Pitch Practice",
-                    "description": "Practice pitching your startup's investment needs.  The AI will present potential investor profiles.  The student will tailor their pitch to each investor profile, explaining their business plan and highlighting key investment opportunities."
+                    "type": "Counter-Argument Practice",
+                    "description": "The AI will present a counter-argument to the student's position. The student will formulate a response and engage with the AI in a simulated debate. The AI will provide feedback on argument structure, logic, and persuasive language usage."
                 }
             ]
         },
         {
             "day": 3,
-            "focus": "Common Business Phrases",
-            "duration": "3 hours",
+            "focus": "Technical Language Refinement",
+            "duration": "4 hours",
             "activities": [
                 {
-                    "type": "Phrase Practice",
-                    "description": "Learn and practice common business phrases for meetings and negotiations.  The AI will provide a list of 15 phrases.  The student will provide Chinese translations and usage examples.  The AI will provide feedback."
+                    "type": "AI-Driven Vocabulary Expansion",
+                    "description": "The AI will present a list of technical terms related to machine learning algorithms. Students will translate, define, and provide examples in formal Chinese. The AI will assess accuracy and offer synonyms for better expression."
                 },
                 {
-                    "type": "Simulated Negotiation",
-                    "description": "Engage in simulated negotiations with the AI. The AI will present negotiation scenarios. The student will practice using common business phrases and persuasive language in Chinese to achieve desired outcomes."
+                    "type": "Advanced Grammar Practice",
+                    "description": "Students will create concise sentences using advanced grammar structures relevant to machine learning discussions. The AI will evaluate sentence structure, clarity, and precision."
                 }
             ]
         },
         {
             "day": 4,
-            "focus": "Networking & Introductions",
-            "duration": "3 hours",
+            "focus": "Presentation Practice",
+            "duration": "4 hours",
             "activities": [
                 {
-                    "type": "Networking Vocabulary",
-                    "description": "Learn and practice vocabulary for introductions and networking.  The AI will present a list of 15 networking terms. The student will provide Chinese translations."
+                    "type": "Presentation Rehearsal",
+                    "description": "Students will practice their presentation on the pre-selected machine learning algorithm, using the AI for recording, playback, and feedback. The AI will evaluate delivery, pronunciation, and fluency."
                 },
                 {
-                    "type": "Networking Simulation",
-                    "description": "Engage in a simulated networking session with the AI. The AI will present different networking scenarios. The student will practice introductions and small talk in Chinese."
+                    "type": "Simulated Q&A",
+                    "description": "Students will rehearse answering questions about their presentation topic from an AI-generated question pool.  The AI will assess the student's ability to answer complex questions with clarity and accuracy."
                 }
             ]
         },
         {
             "day": 5,
-            "focus": "Review & Application",
+            "focus": "Debate Role-Playing",
             "duration": "3 hours",
             "activities": [
                 {
-                    "type": "Review Session",
-                    "description": "Review previously learned vocabulary and phrases. The AI will randomly generate questions using previously learned vocabulary and phrases, checking for understanding."
+                    "type": "Simulated Debates",
+                    "description": "The AI will present a series of debate scenarios. Students will role-play both sides of the argument, focusing on concise, clear expressions."
                 },
                 {
-                    "type": "Scenario-Based Practice",
-                    "description": "The AI will present various scenario-based questions, testing the student's ability to apply learned vocabulary in conversation. The student will respond in Chinese."
+                    "type": "Argument Analysis",
+                    "description": "Students will analyze the language and persuasive techniques used in the simulated debates, highlighting effective arguments and identifying potential weaknesses."
                 }
             ]
         },
         {
             "day": 6,
-            "focus": "Weekend Wrap-up",
+            "focus": "Review and Reflection",
             "duration": "2 hours",
             "activities": [
                 {
-                    "type": "Vocabulary Quiz",
-                    "description": "A brief vocabulary quiz focusing on previously learned terms. The AI will ask questions testing comprehension of terms."
+                    "type": "Weekly Summary",
+                    "description": "The AI will summarize the key concepts and vocabulary learned throughout the week, providing a concise review of presentation and debate strategies."
                 },
                 {
-                    "type": "Reflection & Feedback",
-                    "description": "Reflection on the week's learning and receiving personalized feedback on areas for improvement from the AI."
+                    "type": "Personalized Goal Setting",
+                    "description": "Students will reflect on their progress, identify areas for improvement, and set specific, achievable goals for next week."
                 }
             ]
         },
         {
             "day": 7,
-            "focus": "Final Practice",
+            "focus": "Application and Consolidation",
             "duration": "2 hours",
             "activities": [
                 {
-                    "type": "Final Pitch Simulation",
-                    "description": "A comprehensive simulated startup pitch to Chinese investors. The AI will provide feedback on delivery, grammar, and overall effectiveness."
+                    "type": "Application Scenarios",
+                    "description": "The AI will provide application scenarios requiring the use of learned skills in technical Chinese. Students will practice applying concepts and techniques in these real-world contexts."
                 },
                 {
-                    "type": "Review & Adjustments",
-                    "description": "Review and make adjustments to the simulated pitch based on feedback received.  Students can also choose to rehearse their pitch with the AI."
+                    "type": "Final Feedback Session",
+                    "description": "The AI will provide comprehensive feedback on the student's presentation and debate performance, outlining areas of strength and weakness."
                 }
             ]
         }
