@@ -2,3 +2,4 @@
 venv/
 .venv/
 *.venv/
+/home/samuel-lukudu/AnotherLanguageApp/ai-language-tutor/v0/backend/config.json
