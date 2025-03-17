@@ -20,6 +20,17 @@ venv/
 ENV/
 lang_env/
 
+# Virtual Environment - more comprehensive
+*env/
+*venv/
+.env/
+.venv/
+lang_env/
+ENV/
+env.bak/
+venv.bak/
+pythonenv*
+
 # IDE
 .idea/
 .vscode/

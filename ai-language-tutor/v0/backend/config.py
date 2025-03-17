@@ -25,6 +25,9 @@ if not API_KEY:
 MODEL = "gemini-1.5-flash-8b"
 BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
 
+# Add API port configuration
+API_PORT = int(os.getenv('API_PORT', 8000))
+
 CURRICULUM_INSTRUCTION = """
 You are an expert AI language learning curriculum designer. Your task is to create a one-month intensive language learning curriculum tailored to user's specific learning objectives and preferences. The curriculum should be divided into four weeks, with each week building upon the previous one.
 
@@ -81,7 +84,7 @@ You are an expert AI language learning curriculum designer. Your task is to crea
 """
 
 # Export CURRICULUM_INSTRUCTION
-__all__ = ['config', 'CURRICULUM_INSTRUCTION']
+__all__ = ['config', 'CURRICULUM_INSTRUCTION', 'API_PORT']
 
 # Initialize config with default values if not exists
 if not config.data:
@@ -89,4 +92,5 @@ if not config.data:
     config.set("model", MODEL)
     config.set("base_url", BASE_URL)
     config.set("api_key", API_KEY)
+    config.set("api_port", API_PORT)
     config.save()
