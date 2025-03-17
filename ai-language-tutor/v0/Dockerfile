@@ -1,26 +1,15 @@
-FROM python:3.11.7-slim-bullseye
-
-# Create a non-root user
-RUN useradd -m -u 1000 appuser
-
-WORKDIR /app
+FROM python:3.9
+WORKDIR /code
 
 # Install dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY ./requirements.txt /code/requirements.txt
+RUN pip install --no-cache --upgrade -r /code/requirements.txt
 
-# Copy application code
-COPY backend/ backend/
+# Copy application code and .env file
+COPY ./backend /code/backend
+COPY .env /code/.env
 
-# Set ownership
-RUN chown -R appuser:appuser /app
+ENV PYTHONPATH=/code
+ENV PORT=8004
 
-# Switch to non-root user
-USER appuser
-
-# Environment variables
-ENV PYTHONPATH=/app
-ENV PYTHONUNBUFFERED=1
-
-# Run the API server
-CMD ["uvicorn", "backend.api.app:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["sh", "-c", "uvicorn backend.api.app:app --host 0.0.0.0 --port ${PORT}"]

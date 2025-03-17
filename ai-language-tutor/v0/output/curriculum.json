@@ -1,93 +1,97 @@
 {
     "language": "Chinese",
-    "learning_goal": "Advanced fluency in technical Chinese communication for machine learning roles",
-    "current_level": "Intermediate",
+    "learning_goal": "Business Chinese for pitching a startup to Chinese investors",
+    "current_level": "Beginner",
     "weeks": [
         {
             "week": 1,
-            "theme": "Foundational Technical Vocabulary",
-            "estimated_duration": "15-20 hours",
+            "theme": "Fundamentals of Business Chinese & Startup Introduction",
+            "estimated_duration": "20 hours",
             "activities": [
                 {
                     "type": "Vocabulary Building",
-                    "description": "Learn 50-75 essential machine learning terms. Utilize AI flashcards or language learning apps for focused memorization. Focus on pronunciation and writing, not just translation."
+                    "description": "Learn essential business vocabulary related to startups, investment, finance, and presentation. Use AI tools for personalized flashcards and vocabulary quizzes."
                 },
                 {
-                    "type": "Grammar Review",
-                    "description": "Review basic grammar structures related to technical discussion including: expressing cause and effect, describing procedures, comparing and contrasting concepts, and using quantifiers and measures. Use online resources and grammar guides targeting technical discourse."
+                    "type": "Grammar Study",
+                    "description": "Focus on sentence structures used in formal business settings.  Learn how to express ideas clearly and concisely."
                 },
                 {
                     "type": "Listening Practice",
-                    "description": "Listen to machine learning lectures or discussions in Chinese (look for recordings or podcasts of technical conferences, if available).  Pay attention to how vocabulary and grammar are used in context."
+                    "description": "Listen to audio clips of business presentations, interviews, and investor pitches in Chinese.  Use AI tools for personalized pronunciation practice and feedback."
                 },
                 {
-                    "type": "Progress Tracking",
-                    "description": "Keep a log of new vocabulary learned, and record areas for improvement.  Review recorded lectures and podcasts with focus on unknown vocabulary and grammar."
+                    "type": "Startup Pitch Prep",
+                    "description": "Create a simple outline for your startup pitch in English.  Translate key phrases into Chinese."
                 }
             ]
         },
         {
             "week": 2,
-            "theme": "Technical Discussions",
-            "estimated_duration": "15-20 hours",
+            "theme": "Investment Terms & Financial Concepts",
+            "estimated_duration": "25 hours",
             "activities": [
                 {
-                    "type": "Role-playing",
-                    "description": "Role-play scenarios with a language partner (or AI assistant) simulating typical machine learning discussions. Discuss model performance, debugging strategies, and potential improvements. Use newly acquired vocabulary and grammar structure."
+                    "type": "Vocabulary Building",
+                    "description": "Expand vocabulary related to investment terms, financial concepts, and company valuation.  Use AI-powered vocabulary building tools."
                 },
                 {
-                    "type": "Reading Technical Articles",
-                    "description": "Read short technical articles or blog posts on machine learning in Chinese. Focus on understanding the main ideas, terminology and sentence structures, noting challenging sections for further study."
+                    "type": "Grammar Study",
+                    "description": "Learn how to express complex ideas and opinions related to investment opportunities.  Develop your ability to use conditional sentences and future tense."
                 },
                 {
-                    "type": "Active Listening",
-                    "description": "Practice active listening.  Pay close attention to how your conversation partners structure their arguments, the subtle use of emphasis, and the overall communication style."
+                    "type": "Role-Playing",
+                    "description": "Practice role-playing scenarios involving a startup pitch and investor Q&A sessions.  Use AI-powered speech recognition for feedback."
+                },
+                {
+                    "type": "Startup Pitch Refinement",
+                    "description": "Revise the English outline of your pitch, focusing on translating key points into concise Chinese sentences.  Use an AI translation tool for suggestions."
                 }
             ]
         },
         {
             "week": 3,
-            "theme": "Advanced Concepts and Applications",
-            "estimated_duration": "20-25 hours",
+            "theme": "Cultural Nuances & Negotiation Strategies",
+            "estimated_duration": "20 hours",
             "activities": [
                 {
-                    "type": "Immersion",
-                    "description": "Spend time in a Chinese-speaking environment (potentially through virtual or in-person exchanges). Listen to real-world discussions in your field to further increase understanding of how technical topics are presented."
+                    "type": "Cultural Insights",
+                    "description": "Learn about cultural norms in Chinese business interactions and how they may differ from your own cultural background.  Use AI-powered cultural guides for support."
                 },
                 {
-                    "type": "Vocabulary Expansion",
-                    "description": "Focus on expanding vocabulary related to specific algorithms, models, and datasets relevant to your work. Utilize online Chinese dictionaries and glossaries focusing on machine learning technicalities."
+                    "type": "Negotiation Strategies",
+                    "description": "Learn negotiation strategies commonly used in Chinese business contexts.  Practice using these strategies through role-playing exercises."
                 },
                 {
-                    "type": "Writing Practice",
-                    "description": "Write brief summaries or analyses of machine learning concepts or recent advancements in Chinese.  Compare your writing to native-speaker models for feedback."
+                    "type": "Reading Practice",
+                    "description": "Read articles about Chinese investment trends and successful startups.  Use AI-powered translation tools to analyze and understand the content."
                 },
                 {
-                    "type": "Progress Review",
-                    "description": "Reflect on your progress, identifying your strengths and areas for further development."
+                    "type": "Pitch Presentation Refinement",
+                    "description": "Refine the translated pitch presentation and incorporate effective negotiation strategies. Practice your delivery with a Mandarin speaker, using an AI-powered language partner for feedback."
                 }
             ]
         },
         {
             "week": 4,
-            "theme": "Presentations and Debates",
-            "estimated_duration": "20-25 hours",
+            "theme": "Review & Mock Pitch",
+            "estimated_duration": "15 hours",
             "activities": [
                 {
-                    "type": "Presentation Practice",
-                    "description": "Prepare and practice presenting a machine learning project or topic in Chinese.  Record your presentation and seek feedback from a language partner or AI assistant."
+                    "type": "Comprehensive Review",
+                    "description": "Review all learned vocabulary, grammar, and cultural insights.  Use AI-powered quizzes to reinforce knowledge."
                 },
                 {
-                    "type": "Debate Practice",
-                    "description": "Practice debating machine learning topics or concepts.  Structure arguments and counter-arguments, using formal and informal Chinese communication strategies."
+                    "type": "Mock Pitch",
+                    "description": "Rehearse your Chinese startup pitch in front of a simulated audience (e.g., language exchange partner) and seek feedback."
                 },
                 {
-                    "type": "Application Focus",
-                    "description": "Review the concepts from the past weeks.  Apply the skills from previous weeks in a real-world context.  This could be by joining a discussion, presenting a project, or initiating a conversation with a native speaker. "
+                    "type": "Q&A Practice",
+                    "description": "Practice potential Q&A scenarios with simulated investors, focusing on your responses in Chinese."
                 },
                 {
-                    "type": "Progress Reflection",
-                    "description": "Summarize your achievements.  Set realistic next steps for continued language development and technical communication."
+                    "type": "Final Preparation",
+                    "description": "Polish your presentation and prepare backup materials for the actual investor meeting. Rehearse your delivery in Mandarin."
                 }
             ]
         }

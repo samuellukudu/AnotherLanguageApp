@@ -1,4 +1,5 @@
 import os
+import socket
 from fastapi import FastAPI, HTTPException
 from .models import CurriculumRequest, LessonRequest, DailyLessonRequest
 from backend.CurriculumManager.generate_curriculum import get_completion as generate_curriculum
@@ -22,6 +23,24 @@ from backend.config import (
     BASE_URL,
     API_KEY
 )
+
+def find_available_port(start_port=8000, max_port=8020):
+    """Find first available port in range"""
+    for port in range(start_port, max_port):
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+            try:
+                sock.bind(('', port))
+                return port
+            except OSError:
+                continue
+    return None
+
+# Get port from environment or find available one
+PORT = int(os.getenv('API_PORT', 8000))
+if PORT == 8000:  # If using default port, check availability
+    available_port = find_available_port()
+    if available_port:
+        PORT = available_port
 
 app = FastAPI(title="AI Language Tutor API")
 config = Config(CONFIG_PATH)

@@ -1,10 +1,19 @@
 services:
-  api:
+  api:   # Changed from 'web' to 'api'
     build: .
     ports:
-      - "${API_PORT:-8001}:8000"
+      - "${API_PORT:-8004}:8004"
     volumes:
-      - ./output:/app/output
+      - ./output:/code/output
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - OLLAMA_API_KEY=${OLLAMA_API_KEY}
+      - API_PORT=${API_PORT}
     env_file:
       - .env
     restart: unless-stopped
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /code

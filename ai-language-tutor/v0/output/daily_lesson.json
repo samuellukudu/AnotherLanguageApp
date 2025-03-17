@@ -1,77 +1,55 @@
 {
     "lesson_plan": {
-        "day": "5",
-        "focus": "Review and Consolidation",
-        "duration": "2 hours",
+        "day": 1,
+        "focus": "Presentation Structure and Practice",
+        "duration": "4 hours",
         "activities": [
             {
-                "type": "Vocabulary Recall",
-                "description": "The AI will present a list of machine learning terms.  You will write the definition or appropriate synonym in Chinese for each.",
-                "vocabulary": [
+                "type": "Presentation Outline Creation",
+                "description": "Choose a machine learning algorithm (e.g., support vector machines). Develop a presentation outline in Chinese, focusing on key concepts, technical terms, and application examples. The AI assistant will help structure the content and provide feedback on clarity and logical flow.",
+                "chinese_outline_template": [
                     {
-                        "term": "machine learning",
-                        "translation": "机器学习",
-                        "pinyin": "jīqì xuéxí",
-                        "example_sentence_en": "Machine learning algorithms are used to build intelligent systems.",
-                        "example_sentence_cn": "机器学习算法被用来构建智能系统。",
-                        "pinyin_example": "Jīqì xuéxí suànfǎ bèi yònglái gòujiàn zhìnéng xìtǒng."
+                        "section": "Introduction",
+                        "content": "简要介绍机器学习算法（例如支持向量机）及其重要性",
+                        "pinyin": "Jiǎnyǎo jièshào jīqì xuéxí suànfǎ (lìrú zhīchí yàngliàng jī) jí qí zhòngyàoxìng"
                     },
                     {
-                        "term": "algorithm",
-                        "translation": "算法",
-                        "pinyin": "sùfǎ",
-                        "example_sentence_en": "The algorithm determines the best path to the solution.",
-                        "example_sentence_cn": "该算法决定了通往解决方案的最佳路径。",
-                        "pinyin_example": "Gāi sùfǎ juédìngle tōngwǎng jiějuéfāng'àn de zuìjiā lùjìng."
+                        "section": "核心概念",
+                        "content": "阐述支持向量机的核心概念，例如超平面、间隔最大化等",
+                        "pinyin": "Chǎnshù zhīchí yàngliàng jī de hēxīn gàiniàn, lìrú chāo fēngmiàn, jiàngé zuìdàhuà děng"
                     },
                     {
-                        "term": "data set",
-                        "translation": "数据集",
-                        "pinyin": "shùjījí",
-                        "example_sentence_en": "A large data set is required for training the model.",
-                        "example_sentence_cn": "训练模型需要一个大型数据集。",
-                        "pinyin_example": "Xùnliàn móxing xūyào yīgè dàxíng shùjījí."
+                        "section": "技术术语",
+                        "content": "列举并解释相关的技术术语，例如支持向量、核函数等",
+                        "pinyin": "Lièjǔ bìng jiěshì xiāngguān de jìshù shùyǔ, lìrú zhīchí yàngliàng, hé hánshù děng"
                     },
                     {
-                        "term": "model",
-                        "translation": "模型",
-                        "pinyin": "móxíng",
-                        "example_sentence_en": "The model predicts the likelihood of an event.",
-                        "example_sentence_cn": "该模型预测事件发生的可能性。",
-                        "pinyin_example": "Gāi móxíng yùcè shìjiàn fāshēng de kěnéngxìng."
+                        "section": "应用案例",
+                        "content": "提供支持向量机在不同领域的应用案例，例如图像识别、文本分类等",
+                        "pinyin": "Tígōng zhīchí yàngliàng jī zài bùtóng dìyuán de yìngyòng ànlì, lìrú túxiàng shíbì, wénběn fēnlèi děng"
                     },
                     {
-                        "term": "feature",
-                        "translation": "特征",
-                        "pinyin": "tézhēng",
-                        "example_sentence_en": "The model learns from the input features.",
-                        "example_sentence_cn": "模型从输入特征中学习。",
-                        "pinyin_example": "Móxíng cóng shūrù tézhēng zhōng xuéxí."
+                        "section": "结论",
+                        "content": "总结支持向量机的优缺点及未来发展方向",
+                        "pinyin": "Zǒngjié zhīchí yàngliàng jī de yōu quēdiǎn jí wèilái fāzhǎn fāngxiàng"
+                    }
+                ],
+                "example_outline_section": [
+                    {
+                        "section": "Introduction",
+                        "content": "今天我们将介绍支持向量机 (SVM)，一种在机器学习领域广泛使用的监督学习算法。SVM 通过寻找最佳超平面来对数据进行分类或回归，具有很强的泛化能力。",
+                        "pinyin": "Jīntiān wǒmen jiāng jièshào zhīchí yàngliàng jī (SVM)，yī zhǒng zài jīqì xuéxí lìngyù guǎngfàn shǐyòng de jiānjiū xuéxí suànfǎ. SVM tōngguò xúnzhǎo zuìjiā chāofēngmiàn lái duì shùjù jìnxíng fēnlèi huò huíguī, jùyǒu hěn qiáng de fànhuà nénglì."
                     }
                 ]
             },
             {
-                "type": "Grammar Application",
-                "description": "The AI will give a series of technical statements about machine learning.  Reformulate each statement into a question using appropriate grammar structures for questioning.  The AI will check your accuracy.",
-                "statements": [
-                    {
-                        "statement_en": "Machine learning algorithms can be applied to many problems.",
-                        "question_en": "Can machine learning algorithms be applied to many problems?",
-                        "question_cn": "机器学习算法可以应用于许多问题吗？",
-                        "pinyin": "Jīqì xuéxí suànfǎ kěyǐ yìngyòng yú xǔduō wèntí ma?"
-                    },
-                    {
-                        "statement_en": "The accuracy of a model depends on the data quality.",
-                        "question_en": "Does the accuracy of a model depend on the data quality?",
-                        "question_cn": "模型的准确性取决于数据质量吗？",
-                        "pinyin": "Móxíng de zhǔnquèxìng qíutuán yú shùjù zhìliàng ma?"
-                    },
-                    {
-                        "statement_en": "Deep learning is a type of machine learning.",
-                        "question_en": "Is deep learning a type of machine learning?",
-                        "question_cn": "深度学习是一种机器学习吗？",
-                        "pinyin": "Shēn dù xuéxí shì yī zhǒng jīqì xuéxí ma?"
-                    }
+                "type": "Practice Presentation Delivery",
+                "description": "Rehearse delivering your presentation using formal Chinese vocabulary related to machine learning.  The AI assistant will provide real-time feedback on pronunciation, fluency, and grammar.",
+                "feedback_criteria": [
+                    "pronunciation",
+                    "fluency",
+                    "grammar",
+                    "vocabulary"
                 ]
             }
         ]
