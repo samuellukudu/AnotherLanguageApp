@@ -7,6 +7,8 @@ from backend.LessonManager.generate_lesson import get_completion as generate_les
 from backend.LessonManager.generate_daily_lesson import get_completion as generate_daily_lesson
 from backend.config_manager import Config
 from backend.utils import read_json_file, ensure_directory
+from backend.db_manager.db_manager import DatabaseManager
+import json
 
 # Set up paths correctly
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
@@ -36,6 +38,16 @@ if not config.data:
     config.set("api_key", API_KEY)
     config.save()
 
+@app.get("/")
+def root():
+    try:
+        # Test database connection
+        db = DatabaseManager()
+        db.cur.execute("SELECT 1")
+        return {"message": "Welcome to LinguaAI Backend! Database connection successful."}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 @app.post("/curriculum")
 async def create_curriculum(request: CurriculumRequest):
     try:
@@ -46,37 +58,95 @@ async def create_curriculum(request: CurriculumRequest):
 @app.post("/lesson")
 async def create_lesson(request: LessonRequest):
     try:
-        # Simulate args object for compatibility
+        # Create args with curriculum_id
         class Args:
-            def __init__(self, week):
+            def __init__(self, curriculum_id, week):
+                self.curriculum_id = curriculum_id
                 self.week = week
         
-        args = Args(request.week)
-        from backend.main import setup_lesson_instruction
+        # Get the latest curriculum_id
+        db = DatabaseManager()
+        curriculums = db.list_curriculums()
+        if not curriculums:
+            raise HTTPException(status_code=404, detail="No curriculum found")
         
-        setup_lesson_instruction(args)
-        return generate_lesson(config.get("lesson_prompt"))
-    except FileNotFoundError:
-        raise HTTPException(status_code=404, detail="Curriculum not found")
-    except ValueError as e:
-        raise HTTPException(status_code=400, detail=str(e))
+        curriculum_id = curriculums[0]['id']
+        args = Args(curriculum_id=curriculum_id, week=request.week)
+        
+        from backend.main import setup_lesson_instruction
+        result = setup_lesson_instruction(args)
+        if result is None:
+            raise HTTPException(status_code=500, detail="Failed to generate lesson")
+        return result
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/daily-lesson")
 async def create_daily_lesson(request: DailyLessonRequest):
     try:
         class Args:
-            def __init__(self, week, day):
+            def __init__(self, curriculum_id, week, day):
+                self.curriculum_id = curriculum_id
                 self.week = week
                 self.day = day
         
-        args = Args(request.week, request.day)
-        from backend.main import setup_daily_lesson
+        # Get the latest curriculum_id
+        db = DatabaseManager()
+        curriculums = db.list_curriculums()
+        if not curriculums:
+            raise HTTPException(status_code=404, detail="No curriculum found")
         
-        return setup_daily_lesson(args)
-    except FileNotFoundError:
-        raise HTTPException(status_code=404, detail="Lesson plan not found")
-    except ValueError as e:
-        raise HTTPException(status_code=400, detail=str(e))
+        curriculum_id = curriculums[0]['id']
+        args = Args(curriculum_id=curriculum_id, week=request.week, day=request.day)
+        
+        from backend.main import setup_daily_lesson
+        result = setup_daily_lesson(args)
+        if result is None:
+            raise HTTPException(status_code=500, detail="Failed to generate daily lesson")
+        return result
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/curriculums")
+async def list_curriculums():
+    """Get all curriculums"""
+    try:
+        db = DatabaseManager()
+        return {"curriculums": db.list_curriculums()}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/curriculums/{curriculum_id}")
+async def get_curriculum(curriculum_id: int):
+    """Get a specific curriculum with its data"""
+    try:
+        db = DatabaseManager()
+        curriculum = db.get_curriculum(curriculum_id)
+        if not curriculum:
+            raise HTTPException(status_code=404, detail="Curriculum not found")
+        return curriculum
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/curriculums/{curriculum_id}/lessons")
+async def list_curriculum_lessons(curriculum_id: int):
+    """Get all lessons for a curriculum"""
+    try:
+        db = DatabaseManager()
+        lessons = db.list_curriculum_lessons(curriculum_id)
+        return {"lessons": lessons}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/lessons/{lesson_id}/daily")
+async def get_daily_lessons(lesson_id: int):
+    """Get all daily lessons for a lesson"""
+    try:
+        db = DatabaseManager()
+        daily_lessons = db.get_daily_lessons(lesson_id)
+        return {"daily_lessons": daily_lessons}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 # Add Args class at module level
 class Args:

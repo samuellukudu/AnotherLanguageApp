@@ -1,6 +1,8 @@
 openai
 fastapi
+fastapi-cors
 uvicorn[standard]
 pydantic
 ollama
 python-dotenv
+psycopg2

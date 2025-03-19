@@ -11,4 +11,5 @@ COPY .env /code/.env
 
 ENV PYTHONPATH=/code
 
-CMD ["uvicorn", "backend.api.app:app", "--host", "0.0.0.0", "--port", "8000"]
+# Add wait for database and initialize
+CMD python -m backend.wait-for-db && uvicorn backend.api.app:app --host 0.0.0.0 --port 8000

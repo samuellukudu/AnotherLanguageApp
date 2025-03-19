@@ -1,19 +1,14 @@
 import json
-import os
 from openai import OpenAI
 from backend.config import config, CURRICULUM_INSTRUCTION
-from backend.utils import write_json_file, ensure_directory
-
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-output_dir = os.path.join(PROJECT_ROOT, "output")
-ensure_directory(output_dir)
+from backend.db_manager.db_manager import DatabaseManager
 
 client = OpenAI(
     api_key=config.get('api_key'),
     base_url=config.get('base_url'),
 )
 
-def get_completion(prompt: str):
+def get_completion(prompt: str, user_id: str = None):
     response = client.chat.completions.create(
         model=config.get('model'),
         messages=[
@@ -25,17 +20,20 @@ def get_completion(prompt: str):
 
     try:
         data = json.loads(response.choices[0].message.content)
-        filename = os.path.join(output_dir, "curriculum.json")
+        db = DatabaseManager()
         
-        if write_json_file(filename, data):
-            print(f"JSON data saved to {filename}")
-            # Reset the config when new curriculum is generated
-            config.set("current_week", 0)
-            config.save()
-            return data  # Return the data instead of True
-        print("Failed to save data")
-        return None
+        # Save curriculum to database (user_id is now optional)
+        curriculum_id = db.save_curriculum(None, prompt, data)
+        
+        # Add curriculum_id to response data
+        data['curriculum_id'] = curriculum_id
+        
+        # Reset the config when new curriculum is generated
+        config.set("current_week", 0)
+        config.save()
+        
+        return data
             
-    except json.JSONDecodeError as e:
-        print(f"Error decoding JSON: {e}")
+    except Exception as e:
+        print(f"Error: {str(e)}")
         return None
