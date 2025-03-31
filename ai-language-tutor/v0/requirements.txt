@@ -5,4 +5,7 @@ uvicorn[standard]
 pydantic
 ollama
 python-dotenv
+sqlalchemy
 psycopg2
+psycopg2-binary
+supabase
