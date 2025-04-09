@@ -6,8 +6,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 client = AsyncOpenAI(
-    api_key=os.getenv("API_KEY"),
-    base_url=os.getenv("BASE_URL"),
+    api_key=os.getenv("GEMINI_API_KEY"),
+    base_url=os.getenv("GEMINI_BASE_URL"),
 )
 
 async def get_completion(prompt: str, instruction: str) -> str:

@@ -7,3 +7,5 @@ pydantic==2.10.6
 aiocache
 openai==1.67.0
 httpx
+python-dotenv
+psycopg2-binary==2.9.9
