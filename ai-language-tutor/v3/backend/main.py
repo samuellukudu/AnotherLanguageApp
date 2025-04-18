@@ -1,21 +1,5 @@
-# from backend.utils import generate_completions 
-# from backend import config
-
-# query = "Need to pitch my startup idea to investors"
-
-# # instructions = config.flashcard_mode_instructions
-# # instructions = config.exercise_mode_instructions
-# instructions = config.simulation_mode_instructions
-# async def main():
-#     # Example usage
-#     response = await generate_completions.get_completions(query, instructions)
-#     print(response)
-
-# if __name__ == "__main__":
-#     import asyncio
-#     asyncio.run(main())
-
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from backend.utils import generate_completions
 from backend import config
@@ -37,6 +21,9 @@ class GenerationRequest(BaseModel):
     user_id: int
     query: str
 
+@app.get("/")
+async def root():
+    return {"message": "Welcome to the AI Learning Assistant API!"}
 
 @app.post("/generate/flashcards")
 async def generate_flashcards(data: GenerationRequest):
@@ -45,7 +32,14 @@ async def generate_flashcards(data: GenerationRequest):
             data.query,
             config.flashcard_mode_instructions
         )
-        return response
+        return JSONResponse(
+            content={
+                "data": response,
+                "type": "flashcards",
+                "status": "success"
+            },
+            status_code=200
+        )
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -57,7 +51,15 @@ async def generate_exercises(data: GenerationRequest):
             data.query,
             config.exercise_mode_instructions
         )
-        return response
+        # adjust the response similar to generate_flashcards
+        return JSONResponse(
+            content={
+                "data": response,
+                "type": "exercises",
+                "status": "success"
+            },
+            status_code=200
+        )
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -69,6 +71,14 @@ async def generate_simulation(data: GenerationRequest):
             data.query,
             config.simulation_mode_instructions
         )
-        return response
+        # adjust the response similar to generate_flashcards
+        return JSONResponse(
+            content={
+                "data": response,
+                "type": "simulation",
+                "status": "success"
+            },
+            status_code=200
+        )
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
