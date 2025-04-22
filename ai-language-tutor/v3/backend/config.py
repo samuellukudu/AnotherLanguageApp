@@ -172,7 +172,7 @@ Return only the final **JSON object**. Do not include:
 ### Example User Input
 "Funny story for intermediate Spanish learner about cooking hobby (base: English)"
 
-### Example Output
+### Example Output (Spanish)
 {
   "title": "The Paella Panic",
   "setting": "Carlos attempts to impress his friends by cooking authentic Spanish paella for the first time.",
@@ -192,4 +192,38 @@ Return only the final **JSON object**. Do not include:
     ...
   ]
 }
-"""
+
+### Example User Input (Chinese)
+"Conversation between two friends in a coffee shop (base: English)"
+
+### Example Output (Chinese)
+{
+  "title": "A Coffee Shop Chat",
+  "setting": "Two friends meet in a coffee shop and discuss their weekend plans.",
+  "content": [
+    {
+      "speaker": "Friend 1",
+      "target_language_text": "你周末有什么计划吗？",
+      "phonetics": "nǐ zhōumò yǒu shénme jìhuà ma?",
+      "base_language_translation": "Do you have any plans for the weekend?"
+    },
+    {
+      "speaker": "Friend 2",
+      "target_language_text": "我打算去爬山，放松一下。你呢？",
+      "phonetics": "wǒ dǎsuàn qù páshān, fàngsōng yīxià. nǐ ne?",
+      "base_language_translation": "I plan to go hiking and relax. How about you?"
+    },
+    {
+      "speaker": "Friend 1",
+      "target_language_text": "我可能会去看电影。最近有几部不错的电影。",
+      "phonetics": "wǒ kěnéng huì qù kàn diànyǐng. zuìjìn yǒu jǐ bù bùcuò de diànyǐng.",
+      "base_language_translation": "I might go watch a movie. There are a few good ones recently."
+    },
+    {
+      "speaker": "Friend 2",
+      "target_language_text": "听起来不错！我也想看电影。你有什么推荐的？",
+      "phonetics": "tīng qǐlái bùcuò! wǒ yě xiǎng kàn diànyǐng. nǐ yǒu shénme tuījiàn de?",
+      "base_language_translation": "Sounds good! I also want to watch a movie. Do you have any recommendations?"
+    }
+  ]
+}
