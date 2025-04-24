@@ -11,7 +11,7 @@ import urllib.parse
 import httpx
 from fastapi.responses import RedirectResponse
 import logging
-from backend.settings import GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REDIRECT_URI
+from backend.settings import settings
 
 router = APIRouter()
 
@@ -28,7 +28,7 @@ async def login_for_access_token(
             headers={"WWW-Authenticate": "Bearer"},
         )
     access_token = await create_access_token(data={"sub": user.username})
-    return {"access_token": access_token, "token_type": "bearer"}
+    return {"access_token": access_token, "token_type": "bearer", "user_id": user.user_id}
 
 @router.post("/users", response_model=UserSchema)
 async def signup_user(
@@ -63,10 +63,10 @@ async def signup_user(
 @router.get("/auth/google/login")
 def google_login():
     params = {
-        "client_id": GOOGLE_CLIENT_ID,
+        "client_id": settings.google_client_id,
         "response_type": "code",
         "scope": "openid email profile",
-        "redirect_uri": GOOGLE_REDIRECT_URI,
+        "redirect_uri": settings.google_redirect_uri,
         "access_type": "offline",
         "prompt": "consent",
     }
@@ -79,9 +79,9 @@ async def google_callback(code: str, session: Client = Depends(get_supabase)):
     token_url = "https://oauth2.googleapis.com/token"
     data = {
         "code": code,
-        "client_id": GOOGLE_CLIENT_ID,
-        "client_secret": GOOGLE_CLIENT_SECRET,
-        "redirect_uri": GOOGLE_REDIRECT_URI,
+        "client_id": settings.google_client_id,
+        "client_secret": settings.google_client_secret,
+        "redirect_uri": settings.google_redirect_uri,
         "grant_type": "authorization_code",
     }
     resp = httpx.post(token_url, data=data)
@@ -106,4 +106,4 @@ async def google_callback(code: str, session: Client = Depends(get_supabase)):
         user = await create_user(session, base_username, email, get_password_hash(pwd))
     # Issue our JWT
     token = await create_access_token({"sub": user.username})
-    return {"access_token": token, "token_type": "bearer"}
+    return {"access_token": token, "token_type": "bearer", "user_id": user.user_id}

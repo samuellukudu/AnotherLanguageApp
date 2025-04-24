@@ -3,15 +3,13 @@ import asyncio
 import json
 from typing import AsyncIterator
 from typing import Union, List, Dict, Literal
-import os
-from dotenv import load_dotenv
+from backend.settings import settings
 from pydantic import BaseModel
-load_dotenv()
 
 # Initialize the async client
 client = AsyncOpenAI(
-    base_url=os.getenv("BASE_URL"),
-    api_key=os.getenv("API_KEY"),
+    base_url=settings.base_url,
+    api_key=settings.api_key,
 )
 
 class Message(BaseModel):
@@ -39,32 +37,7 @@ def process_input(data: Union[str, List[Dict[str, str]]]) -> Union[str, List[Dic
     
     else:
         raise TypeError("Input must be a string or a list of dictionaries with a 'content' field")
-
-
-# async def get_completions(
-#     prompt: Union[str, List[Dict[str, str]]],
-#     instructions: str
-# ) -> str:
-#     processed_prompt = process_input(prompt)  # Ensures the input format is correct
-
-#     if isinstance(processed_prompt, str):
-#         messages = [
-#             {"role": "system", "content": instructions},
-#             {"role": "user", "content": processed_prompt}
-#         ]
-#     elif isinstance(processed_prompt, list):
-#         messages = [{"role": "system", "content": instructions}] + processed_prompt
-#     else:
-#         raise TypeError("Unexpected processed input type.")
-
-#     response = await client.chat.completions.create(
-#         model=os.getenv("MODEL"),
-#         messages=messages,
-#         response_format={"type": "json_object"}
-#     )
-
-#     output: str = response.choices[0].message.content
-#     return output
+        
 
 async def get_completions(
     prompt: Union[str, List[Dict[str, str]]],
@@ -98,7 +71,7 @@ async def get_completions(
         raise TypeError("Unexpected processed input type.")
 
     response = await client.chat.completions.create(
-        model=os.getenv("MODEL"),
+        model=settings.model,
         messages=messages,
         response_format={"type": "json_object"}
     )

@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from aiocache import caches
-from backend.settings import REDIS_URL
+from backend.settings import settings
 import logging
 from backend.routers.generation import router as gen_router
 from backend.routers.auth import router as auth_router
@@ -9,12 +9,17 @@ from fastapi.responses import JSONResponse
 from fastapi import HTTPException
 from fastapi.exceptions import RequestValidationError
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
+# Reduce chatty debug logs
+logging.getLogger("aiocache").setLevel(logging.INFO)
+logging.getLogger("openai").setLevel(logging.INFO)
+logging.getLogger("httpcore").setLevel(logging.INFO)
+logging.getLogger("httpx").setLevel(logging.INFO)
 
 app = FastAPI(debug=True)
 
 # Configure default Redis cache
-caches.set_config({"default": {"cache": "aiocache.RedisCache", "endpoint": REDIS_URL}})
+caches.set_config({"default": {"cache": "aiocache.RedisCache", "endpoint": settings.redis_url}})
 
 # Add CORS middleware
 app.add_middleware(
@@ -28,17 +33,7 @@ app.add_middleware(
 app.include_router(auth_router)
 app.include_router(gen_router)
 
-from backend.services.logging_service import periodic_flush_task
-import asyncio
 from backend.db.supabase_client import get_supabase
-
-@app.on_event("startup")
-async def start_periodic_log_flush():
-    """Launch background task to flush buffered query logs."""
-    # No aiocache config needed; logging_service uses aioredis directly
-    # Start periodic flush
-    session = get_supabase()
-    asyncio.create_task(periodic_flush_task(session))
 
 # Centralized error handlers
 @app.exception_handler(HTTPException)

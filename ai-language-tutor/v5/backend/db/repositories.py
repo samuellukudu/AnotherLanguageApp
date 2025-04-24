@@ -66,7 +66,43 @@ async def create_query_log(session: Client, user_id: int, query_type: str, query
 
 async def bulk_insert_query_logs(session: Client, records: list[dict]) -> list[dict]:
     """Bulk insert query logs to DB."""
-    if not records:
+    # Deduplicate records by user_id, query_type, and query
+    unique = []
+    seen = set()
+    for rec in records:
+        key = (rec['user_id'], rec['query_type'], rec['query'])
+        if key not in seen:
+            seen.add(key)
+            unique.append(rec)
+    if not unique:
         return []
-    res = session.table("query_logs").insert(records).execute()
+    # Filter out records already in DB
+    to_insert = []
+    for rec in unique:
+        existing = session.table("query_logs").select("id").eq("user_id", rec["user_id"]).eq("query_type", rec["query_type"]).eq("query", rec["query"]).limit(1).execute()
+        if not getattr(existing, 'data', None):
+            to_insert.append(rec)
+    if not to_insert:
+        return []
+    # Insert new logs
+    res = session.table("query_logs").insert(to_insert).execute()
     return getattr(res, 'data', [])
+
+async def remove_duplicate_query_logs(session: Client) -> int:
+    """Remove existing duplicate query_logs entries, keeping the earliest record for each user_id, query_type, query."""
+    # Fetch all logs sorted by ID (ascending)
+    # order by id ascending by setting desc=False
+    res = session.table("query_logs").select("id,user_id,query_type,query").order("id", desc=False).execute()
+    data = getattr(res, 'data', []) or []
+    seen = set()
+    to_delete = []
+    for rec in data:
+        key = (rec['user_id'], rec['query_type'], rec['query'])
+        if key in seen:
+            to_delete.append(rec['id'])
+        else:
+            seen.add(key)
+    if to_delete:
+        # Delete duplicate rows by ID
+        session.table("query_logs").delete().in_("id", to_delete).execute()
+    return len(to_delete)

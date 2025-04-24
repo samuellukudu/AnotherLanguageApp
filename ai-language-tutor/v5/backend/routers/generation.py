@@ -11,7 +11,7 @@ from backend.services.generation_service import (
 )
 from backend.auth import get_current_active_user
 from aiocache.decorators import cached
-from backend.settings import CACHE_TTL
+from backend.settings import settings
 
 router = APIRouter(prefix="", tags=["generation"])
 
@@ -20,7 +20,7 @@ async def root():
     return {"message": "Welcome to the AI Learning Assistant API!"}
 
 @router.post("/extract/metadata")
-@cached(ttl=CACHE_TTL)
+@cached(ttl=settings.cache_ttl)
 async def extract_metadata(
     data: MetadataRequest,
     session: Client = Depends(get_supabase),
@@ -33,7 +33,7 @@ async def extract_metadata(
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.post("/generate/flashcards")
-@cached(ttl=CACHE_TTL)
+@cached(ttl=settings.cache_ttl)
 async def generate_flashcards(
     data: GenerationRequest,
     session: Client = Depends(get_supabase),
@@ -46,7 +46,7 @@ async def generate_flashcards(
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.post("/generate/exercises")
-@cached(ttl=CACHE_TTL)
+@cached(ttl=settings.cache_ttl)
 async def generate_exercises(
     data: GenerationRequest,
     session: Client = Depends(get_supabase),
@@ -59,7 +59,7 @@ async def generate_exercises(
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.post("/generate/simulation")
-@cached(ttl=CACHE_TTL)
+@cached(ttl=settings.cache_ttl)
 async def generate_simulation(
     data: GenerationRequest,
     session: Client = Depends(get_supabase),

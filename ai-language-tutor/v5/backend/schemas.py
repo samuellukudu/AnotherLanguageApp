@@ -21,6 +21,7 @@ class MetadataRequest(BaseModel):
 class Token(BaseModel):
     access_token: str
     token_type: str
+    user_id: int  # include user ID in token response
 
 class TokenData(BaseModel):
     username: Optional[str] = None

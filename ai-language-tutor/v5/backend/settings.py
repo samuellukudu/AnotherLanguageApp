@@ -1,27 +1,36 @@
 import os
-from dotenv import load_dotenv
+from pydantic_settings import BaseSettings
+from pydantic import Field
+from typing import Optional
 
-load_dotenv()
+class Settings(BaseSettings):
+    base_url: str
+    api_key: str
+    model: str = Field("gemini-2.0-flash")
 
-BASE_URL = os.getenv("BASE_URL")
-API_KEY = os.getenv("API_KEY")
-MODEL = os.getenv("MODEL")
-# DATABASE_URL = os.getenv("DATABASE_URL")
+    supabase_url: str
+    supabase_key: str
 
-# JWT Auth settings
-SECRET_KEY = os.getenv("SECRET_KEY", "supersecretkey")
-ALGORITHM = os.getenv("ALGORITHM", "HS256")
-ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "30"))
+    secret_key: str = Field("supersecretkey")
+    algorithm: str = Field("HS256")
+    access_token_expire_minutes: int = Field(30)
 
-# OAuth Google settings
-GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
-GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
-GOOGLE_REDIRECT_URI = os.getenv("GOOGLE_REDIRECT_URI")  # e.g. https://yourapp.com/google/callback
+    google_client_id: Optional[str] = None
+    google_client_secret: Optional[str] = None
+    google_redirect_uri: Optional[str] = None
 
-# Caching settings
-REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379/0")
-CACHE_TTL = int(os.getenv("CACHE_TTL", "300"))
-# Query log flush interval (in days)
-QUERY_LOG_FLUSH_INTERVAL_DAYS = int(os.getenv("QUERY_LOG_FLUSH_INTERVAL_DAYS", "7"))
-# Convert to seconds
-QUERY_LOG_FLUSH_INTERVAL_SECONDS = QUERY_LOG_FLUSH_INTERVAL_DAYS * 86400
+    redis_url: str = Field("redis://localhost:6379/0")
+    cache_ttl: int = Field(300)
+
+    query_log_flush_interval_days: int = Field(7)
+
+    class Config:
+        env_file = ".env"
+        env_file_encoding = "utf-8"
+        extra = 'ignore'
+
+    @property
+    def query_log_flush_interval_seconds(self) -> int:
+        return self.query_log_flush_interval_days * 86400
+
+settings = Settings()
