@@ -106,3 +106,16 @@ async def remove_duplicate_query_logs(session: Client) -> int:
         # Delete duplicate rows by ID
         session.table("query_logs").delete().in_("id", to_delete).execute()
     return len(to_delete)
+
+# Refresh token management
+async def create_refresh_token(session: Client, token: str, user_id: int, expires_at: str) -> dict:
+    payload = {"token": token, "user_id": user_id, "expires_at": expires_at}
+    res = session.table("refresh_tokens").insert(payload).execute()
+    return res.data
+
+async def get_refresh_token(session: Client, token: str) -> dict:
+    res = session.table("refresh_tokens").select("*").eq("token", token).single().execute()
+    return res.data
+
+async def delete_refresh_token(session: Client, token: str) -> None:
+    session.table("refresh_tokens").delete().eq("token", token).execute()

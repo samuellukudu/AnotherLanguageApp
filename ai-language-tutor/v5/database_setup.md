@@ -89,7 +89,9 @@ CREATE INDEX idx_feedback_user ON feedback(user_id);
 CREATE INDEX idx_feedback_related_log ON feedback(related_log_id);
 CREATE INDEX idx_feedback_related_saved ON feedback(related_saved_content_id);
 
-```
+## Batch Logging Mechanism
+
+To avoid excessive database writes during high-volume content generation (flashcards, exercises, simulation), the backend uses a buffered logging approach. The `buffered_log_query` function records the first query or output immediately, then caches further entries in-memory and writes them to the `activity_log` table in a single operation once 100 entries accumulate. After flushing, the buffer resets for the next batch. Ensure `buffered_log_query` is invoked appropriately for both input queries and generated outputs in `generate_flashcards_service`, `generate_exercises_service`, and `generate_simulation_service`.
 
 **Explanation and Content to Store:**
 
@@ -117,7 +119,7 @@ CREATE INDEX idx_feedback_related_saved ON feedback(related_saved_content_id);
     *   `related_log_id` / `related_saved_content_id`: **Important.** Try to link feedback directly to the activity or saved item it refers to. This gives much better context than just storing the feedback text alone.
     *   `rating`, `feedback_text`: The feedback itself.
 
-**How this Enables Proper Usage and Learning:**
+## How this Enables Proper Usage and Learning:
 
 *   **Personalization:** User defaults help tailor general interactions. The `query_text` in `activity_log` captures the *specific* context for each generation, driving the LLM personalization.
 *   **Progress Insight (Basic):** Querying `activity_log` for a `user_id` shows their activity frequency, topics explored (`query_text`), and content types used. You can build summary dashboards from this.

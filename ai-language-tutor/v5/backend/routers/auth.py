@@ -4,7 +4,7 @@ from fastapi import Depends
 from supabase import Client
 from backend.db.supabase_client import get_supabase
 from backend.auth import authenticate_user, create_access_token, get_password_hash
-from backend.db.repositories import create_user, get_user_by_username, get_user_by_email
+from backend.db.repositories import create_user, get_user_by_username, get_user_by_email, create_refresh_token, get_refresh_token, delete_refresh_token
 from backend.schemas import Token, User as UserSchema, UserCreate
 import uuid
 import urllib.parse
@@ -12,6 +12,9 @@ import httpx
 from fastapi.responses import RedirectResponse
 import logging
 from backend.settings import settings
+from datetime import datetime, timedelta
+from uuid import uuid4
+from fastapi import Body
 
 router = APIRouter()
 
@@ -28,7 +31,31 @@ async def login_for_access_token(
             headers={"WWW-Authenticate": "Bearer"},
         )
     access_token = await create_access_token(data={"sub": user.username})
-    return {"access_token": access_token, "token_type": "bearer", "user_id": user.user_id}
+    # issue refresh token
+    refresh_token = uuid4().hex
+    expires_at = (datetime.utcnow() + timedelta(days=settings.refresh_token_expire_days)).isoformat()
+    await create_refresh_token(session, refresh_token, user.user_id, expires_at)
+    return {"access_token": access_token, "token_type": "bearer", "user_id": user.user_id, "refresh_token": refresh_token}
+
+@router.post("/token/refresh", response_model=Token)
+async def refresh_access_token(
+    refresh_token_str: str = Body(...),
+    session: Client = Depends(get_supabase)
+):
+    record = await get_refresh_token(session, refresh_token_str)
+    if not record or record.get("expires_at") < datetime.utcnow().isoformat():
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid or expired refresh token")
+    user_id = record.get("user_id")
+    access_token = await create_access_token(data={"sub": record.get("username") or record.get("user_id")})
+    return {"access_token": access_token, "token_type": "bearer", "user_id": user_id, "refresh_token": refresh_token_str}
+
+@router.post("/token/revoke")
+async def revoke_refresh_token(
+    refresh_token_str: str = Body(...),
+    session: Client = Depends(get_supabase)
+):
+    await delete_refresh_token(session, refresh_token_str)
+    return {"status": "revoked"}
 
 @router.post("/users", response_model=UserSchema)
 async def signup_user(

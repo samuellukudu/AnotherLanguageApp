@@ -3,10 +3,10 @@ from typing import Optional
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 from fastapi import Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from fastapi.security import OAuth2PasswordBearer
 from supabase import Client
 from backend.settings import settings
-from backend.db.repositories import get_user, get_user_by_username, create_user
+from backend.db.repositories import get_user_by_username
 from backend.db.supabase_client import get_supabase
 from backend.schemas import Token, TokenData, User as UserModel, UserCreate
 

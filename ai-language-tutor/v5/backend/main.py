@@ -8,6 +8,9 @@ from backend.routers.auth import router as auth_router
 from fastapi.responses import JSONResponse
 from fastapi import HTTPException
 from fastapi.exceptions import RequestValidationError
+from slowapi import Limiter
+from slowapi.middleware import SlowAPIMiddleware
+from slowapi.util import get_remote_address
 
 logging.basicConfig(level=logging.INFO)
 # Reduce chatty debug logs
@@ -17,6 +20,11 @@ logging.getLogger("httpcore").setLevel(logging.INFO)
 logging.getLogger("httpx").setLevel(logging.INFO)
 
 app = FastAPI(debug=True)
+
+# Rate limiter setup
+limiter = Limiter(key_func=get_remote_address)
+app.state.limiter = limiter
+app.add_middleware(SlowAPIMiddleware)
 
 # Configure default Redis cache
 caches.set_config({"default": {"cache": "aiocache.RedisCache", "endpoint": settings.redis_url}})

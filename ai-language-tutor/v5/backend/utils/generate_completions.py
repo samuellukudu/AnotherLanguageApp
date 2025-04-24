@@ -5,6 +5,7 @@ from typing import AsyncIterator
 from typing import Union, List, Dict, Literal
 from backend.settings import settings
 from pydantic import BaseModel
+from aiocache.decorators import cached
 
 # Initialize the async client
 client = AsyncOpenAI(
@@ -39,6 +40,7 @@ def process_input(data: Union[str, List[Dict[str, str]]]) -> Union[str, List[Dic
         raise TypeError("Input must be a string or a list of dictionaries with a 'content' field")
         
 
+@cached(ttl=settings.cache_ttl)
 async def get_completions(
     prompt: Union[str, List[Dict[str, str]]],
     instructions: str

@@ -14,6 +14,7 @@ class Settings(BaseSettings):
     secret_key: str = Field("supersecretkey")
     algorithm: str = Field("HS256")
     access_token_expire_minutes: int = Field(30)
+    refresh_token_expire_days: int = Field(7)
 
     google_client_id: Optional[str] = None
     google_client_secret: Optional[str] = None
