@@ -54,6 +54,7 @@ async def root():
 
 @app.post("/extract/metadata")
 async def extract_metadata(data: MetadataRequest):
+    logging.info(f"Query: {data.query}")
     try:
         response_str = await generate_completions.get_completions(
             data.query,
