@@ -97,6 +97,7 @@ async def get_completions(
     else:
         raise TypeError("Unexpected processed input type.")
 
+    print(os.getenv("MODEL"))
     response = await client.chat.completions.create(
         model=os.getenv("MODEL"),
         messages=messages,

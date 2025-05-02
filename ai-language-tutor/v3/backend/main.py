@@ -32,10 +32,6 @@ async def get_db():
     finally:
         conn.close()
 
-# class GenerationRequest(BaseModel):
-#     user_id: int
-#     query: str
-
 class Message(BaseModel):
     role: Literal["user", "assistant"]
     content: str
@@ -72,6 +68,31 @@ async def extract_metadata(data: MetadataRequest):
             content={
                 "data": metadata_dict,
                 "type": "language_metadata",
+                "status": "success"
+            },
+            status_code=200
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/generate/curriculum")
+async def generate_curriculum(data: GenerationRequest):
+    try:
+        # Use previously extracted metadata
+        instructions = (
+            config.curriculum_instructions
+            .replace("{native_language}", native_language or "unknown")
+            .replace("{target_language}", target_language or "unknown")
+            .replace("{proficiency}", proficiency or "unknown")
+        )
+        response = await generate_completions.get_completions(
+            data.query,
+            instructions
+        )
+        return JSONResponse(
+            content={
+                "data": response,
+                "type": "curriculum",
                 "status": "success"
             },
             status_code=200
