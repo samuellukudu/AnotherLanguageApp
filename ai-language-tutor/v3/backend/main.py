@@ -39,6 +39,9 @@ class Message(BaseModel):
 class GenerationRequest(BaseModel):
     user_id: int
     query: Union[str, List[Message]]
+    native_language: Optional[str] = None
+    target_language: Optional[str] = None
+    proficiency: Optional[str] = None
 
 class MetadataRequest(BaseModel):
     query: str
@@ -64,7 +67,7 @@ async def extract_metadata(data: MetadataRequest):
         # Update globals for other endpoints
         globals()['native_language'] = metadata_dict.get('native_language', 'unknown')
         globals()['target_language'] = metadata_dict.get('target_language', 'unknown')
-        globals()['proficiency'] = metadata_dict.get('proficiency_level', 'unknown')
+        globals()['proficiency'] = metadata_dict.get('proficiency', 'unknown')
         return JSONResponse(
             content={
                 "data": metadata_dict,
@@ -79,12 +82,15 @@ async def extract_metadata(data: MetadataRequest):
 @app.post("/generate/curriculum")
 async def generate_curriculum(data: GenerationRequest):
     try:
-        # Use previously extracted metadata
+        # Use metadata from request or fallback to globals
+        nl = data.native_language or native_language or "unknown"
+        tl = data.target_language or target_language or "unknown"
+        prof = data.proficiency or proficiency or "unknown"
         instructions = (
             config.curriculum_instructions
-            .replace("{native_language}", native_language or "unknown")
-            .replace("{target_language}", target_language or "unknown")
-            .replace("{proficiency}", proficiency or "unknown")
+            .replace("{native_language}", nl)
+            .replace("{target_language}", tl)
+            .replace("{proficiency}", prof)
         )
         response = await generate_completions.get_completions(
             data.query,
@@ -104,12 +110,14 @@ async def generate_curriculum(data: GenerationRequest):
 @app.post("/generate/flashcards")
 async def generate_flashcards(data: GenerationRequest):
     try:
-        # Use previously extracted metadata
+        nl = data.native_language or native_language or "unknown"
+        tl = data.target_language or target_language or "unknown"
+        prof = data.proficiency or proficiency or "unknown"
         instructions = (
             config.flashcard_mode_instructions
-            .replace("{native_language}", native_language or "unknown")
-            .replace("{target_language}", target_language or "unknown")
-            .replace("{proficiency}", proficiency or "unknown")
+            .replace("{native_language}", nl)
+            .replace("{target_language}", tl)
+            .replace("{proficiency}", prof)
         )
         response = await generate_completions.get_completions(
             data.query,
@@ -129,12 +137,14 @@ async def generate_flashcards(data: GenerationRequest):
 @app.post("/generate/exercises")
 async def generate_exercises(data: GenerationRequest):
     try:
-        # Use previously extracted metadata
+        nl = data.native_language or native_language or "unknown"
+        tl = data.target_language or target_language or "unknown"
+        prof = data.proficiency or proficiency or "unknown"
         instructions = (
             config.exercise_mode_instructions
-            .replace("{native_language}", native_language or "unknown")
-            .replace("{target_language}", target_language or "unknown")
-            .replace("{proficiency}", proficiency or "unknown")
+            .replace("{native_language}", nl)
+            .replace("{target_language}", tl)
+            .replace("{proficiency}", prof)
         )
         response = await generate_completions.get_completions(
             data.query,
@@ -154,12 +164,14 @@ async def generate_exercises(data: GenerationRequest):
 @app.post("/generate/simulation")
 async def generate_simulation(data: GenerationRequest):
     try:
-        # Use previously extracted metadata
+        nl = data.native_language or native_language or "unknown"
+        tl = data.target_language or target_language or "unknown"
+        prof = data.proficiency or proficiency or "unknown"
         instructions = (
             config.simulation_mode_instructions
-            .replace("{native_language}", native_language or "unknown")
-            .replace("{target_language}", target_language or "unknown")
-            .replace("{proficiency}", proficiency or "unknown")
+            .replace("{native_language}", nl)
+            .replace("{target_language}", tl)
+            .replace("{proficiency}", prof)
         )
         response = await generate_completions.get_completions(
             data.query,
