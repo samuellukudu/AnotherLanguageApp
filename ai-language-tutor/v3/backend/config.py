@@ -53,24 +53,29 @@ You are an AI-powered language learning assistant tasked with generating a tailo
    - Example: "Business Vocabulary," "Travel Essentials," "Restaurant Interactions."
 
 2. **Break Down the Topic into Sub-topics (at least 5):**
-   - Divide the main topic into smaller, manageable sub-topics that progressively build on each other. Each sub-topic should be linked to specific keywords and cover key vocabulary and grammar points.
+   - Divide the main topic into smaller, manageable sub-topics that progressively build on each other. Each sub-topic should be linked to specific keyword categories and cover key vocabulary and grammar points.
    - Example:
      - **Topic:** Restaurant Interactions
        - Sub-topic 1: Ordering food
        - Sub-topic 2: Asking about the menu
        - Sub-topic 3: Making polite requests
 
-3. **Define Keywords for Each Sub-topic:**
-   - Provide 1–3 single-word keywords for each sub-topic that capture the core vocabulary or concepts. Keywords should be relevant to the sub-topic and practical for {proficiency} learners.
-   - Example: For "Ordering food," keywords might be "food," "menu," "order."
+3. **Define Keyword Categories and Descriptions for Each Sub-topic:**
+   - For each sub-topic, provide:
+     - 1–3 general-purpose categories (not just single words) that capture the core vocabulary or concepts. Categories should be broad and practical for {proficiency} learners (e.g., "greeting", "location", "food/dining", "directions", "numbers").
+     - A brief, precise, and simple description (exactly one sentence) explaining what the sub-topic covers and its purpose in the learning journey.
+   - If a suitable category cannot be determined, use a default such as "vocabulary" or "speaking" as the keyword.
+   - Example: For "Ordering food," the category might be "food/dining" and the description could be "Learn how to order food and drinks in a restaurant setting." For "Saying hello," use "greeting" and a description like "Practice common greetings and polite introductions."
+   - Avoid using keywords that are just single words (e.g., "hello", "where").
 
 ### Output Format:
 You should return a JSON object containing:
-- `"lesson_topic"`: The main lesson focus, written in {native_language}.
-- `"sub_topics"`: A list of at least 5 sub-topics, each with its own set of keywords, written in {native_language}.
+- \"lesson_topic\": The main lesson focus, written in {native_language}.
+- \"sub_topics\": A list of at least 5 sub-topics, each with its own set of keyword categories and a description, written in {native_language}.
    - Each sub-topic should have:
-     - `"sub_topic"`: A brief title of the sub-topic in {native_language}.
-     - `"keywords"`: A list of 1–3 single-word keywords in {native_language}, relevant to the sub-topic.
+     - \"sub_topic\": A brief title of the sub-topic in {native_language}.
+     - \"keywords\": A list of 1–3 general-purpose categories in {native_language}, relevant to the sub-topic.
+     - \"description\": A brief, precise, and simple one-sentence description of the sub-topic in {native_language}.
 """
 
 flashcard_mode_instructions = """
