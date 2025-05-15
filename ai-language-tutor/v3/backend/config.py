@@ -172,8 +172,9 @@ When generating a new set of exercises:
    - Ensure sentences are engaging and directly relevant to the user’s immediate needs in the domain.
 
 6. **Ensure plausible distractors**:
-   - The `choices` field must include 3 options (including the answer) that are plausible, domain-relevant, and challenging but clearly incorrect in context.
+   - The `choices` field must include 4 options (including the answer) that are plausible, domain-relevant, and challenging but clearly incorrect in context.
    - Distractors should align with the sentence’s semantic field (e.g., for an attraction, use other attractions, not unrelated terms like "food").
+   - The correct answer must be randomly placed among the 4 choices, not always in the first position.
 
 7. **Provide clear explanations**:
    - Explanations must be concise (1–2 sentences), in {native_language}, and explain why the answer fits the sentence’s context and domain.
@@ -183,7 +184,7 @@ When generating a new set of exercises:
 Produce exactly **5 cloze-style exercises** as a **valid JSON array**, with each item containing:
 - `"sentence"`: A sentence in {target_language} with a blank `'___'` for a missing vocabulary word or grammar element. The sentence must be specific, relevant to the user’s domain, and clear in context.
 - `"answer"`: The correct word or phrase to fill in the blank, in {target_language}.
-- `"choices"`: A list of 3 plausible options (including the answer) in {target_language}. Distractors must be believable but incorrect in context.
+- `"choices"`: A list of 4 plausible options (including the answer) in {target_language}, with the correct answer randomly placed among them. Distractors must be believable but incorrect in context.
 - `"explanation"`: A short (1–2 sentences) explanation in {native_language}, clarifying why the answer is correct and, for beginners, why distractors don’t fit.
 
 Do not wrap the output in additional objects (e.g., `{"data": ..., "type": ..., "status": ...}`); return only the JSON array.
@@ -199,31 +200,31 @@ User: "Beginner Chinese exercises about a trip to Beijing (base: English)"
   {
     "sentence": "我想买一张去___的火车票。",
     "answer": "北京",
-    "choices": ["北京", "上海", "广州"],
+    "choices": ["广州", "北京", "上海", "深圳"],
     "explanation": "'北京' (Beijing) is the destination city for the train ticket you’re buying."
   },
   {
     "sentence": "请问，___在哪里？",
     "answer": "故宫",
-    "choices": ["故宫", "长城", "天坛"],
+    "choices": ["故宫", "长城", "天坛", "颐和园"],
     "explanation": "'故宫' (Forbidden City) is a key Beijing attraction you’re asking to locate."
   },
   {
     "sentence": "我需要一份北京的___。",
     "answer": "地图",
-    "choices": ["地图", "菜单", "票"],
+    "choices": ["地图", "菜单", "票", "指南"],
     "explanation": "'地图' (map) helps you navigate Beijing, unlike 'menu' or 'ticket.'"
   },
   {
     "sentence": "这是去天安门的___吗？",
     "answer": "地铁",
-    "choices": ["地铁", "出租车", "飞机"],
+    "choices": ["地铁", "出租车", "飞机", "公交车"],
     "explanation": "'地铁' (subway) is a common way to reach Tiananmen Square in Beijing."
   },
   {
     "sentence": "请给我一瓶___。",
     "answer": "水",
-    "choices": ["水", "茶", "咖啡"],
+    "choices": ["水", "茶", "咖啡", "果汁"],
     "explanation": "'水' (water) is a simple drink to request while traveling in Beijing."
   }
 ]
