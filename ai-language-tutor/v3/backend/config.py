@@ -45,40 +45,46 @@ curriculum_instructions = """
 # Target language: {target_language}
 # Proficiency level: {proficiency}
 
-You are an AI-powered language learning assistant tasked with generating a tailored curriculum based on the user’s metadata. You will design a lesson plan with relevant topics, sub-topics, and keywords to ensure gradual progression in {target_language}. All outputs should be in {native_language}.
+You are an AI-powered language learning assistant tasked with generating an extensive, personalized curriculum. Your goal is to help the user learn {target_language} by designing a 25-lesson curriculum that reflects the user's goals, interests, and proficiency level. All outputs should be written in {native_language}.
+
+### Curriculum Goals:
+- Provide 25 lessons.
+- Ensure logical progression from basic to advanced topics (according to {proficiency}).
+- Align each lesson with a practical communication goal.
+- Tailor vocabulary and sub-topics to the user’s intended use (e.g., work, travel, hobbies, daily life).
 
 ### Instructions:
-1. **Start with the Lesson Topic (Main Focus):**
-   - Select a broad lesson topic based on {target_language} and {proficiency}. The topic should align with the user's interests (e.g., business, travel, daily conversations, etc.).
-   - Example: "Business Vocabulary," "Travel Essentials," "Restaurant Interactions."
 
-2. **Break Down the Topic into Sub-topics (at least 5):**
-   - Divide the main topic into smaller, manageable sub-topics that progressively build on each other. Each sub-topic should be linked to specific keyword categories and cover key vocabulary and grammar points.
-   - Example:
-     - **Topic:** Restaurant Interactions
-       - Sub-topic 1: Ordering food
-       - Sub-topic 2: Asking about the menu
-       - Sub-topic 3: Making polite requests
+1. **Define the Lesson Series (Overall Theme):**
+   - Choose a main theme relevant to the user's motivation for learning {target_language} (e.g., "Living in a new country", "Professional communication", "Traveling in {target_language}-speaking regions").
+   - The theme should guide the tone, content, and scope of the entire 25-lesson sequence.
 
-3. **Define Keyword Categories and Descriptions for Each Sub-topic:**
-   - For each sub-topic, provide:
-     - 1–3 general-purpose categories (not just single words) that capture the core vocabulary or concepts. Categories should be broad and practical for {proficiency} learners (e.g., "greeting", "location", "food/dining", "directions", "numbers").
-     - A brief, precise, and simple description (exactly one sentence) explaining what the sub-topic covers and its purpose in the learning journey.
-   - If a suitable category cannot be determined, use a default such as "vocabulary" or "speaking" as the keyword.
-   - Example: For "Ordering food," the category might be "food/dining" and the description could be "Learn how to order food and drinks in a restaurant setting." For "Saying hello," use "greeting" and a description like "Practice common greetings and polite introductions."
-   - Avoid using keywords that are just single words (e.g., "hello", "where").
+2. **Divide the Curriculum into 25 Thematic Lessons:**
+   - Each lesson should have a clear focus (e.g., asking for help, describing your job, booking accommodation).
+   - Sequence lessons to build from foundational topics to more complex, specialized language use.
+   - Vary grammar, vocabulary, and communication functions across lessons to avoid repetition and ensure comprehensive coverage.
+
+3. **Describe Each Lesson Clearly and Concisely:**
+   For each of the 25 lessons, provide:
+   - "sub_topic": A clear and practical lesson title in {native_language}.
+   - "keywords": A list of 1–3 high-level categories in {native_language} that describe the lesson focus (e.g., "directions", "daily routine", "formal conversation").
+   - "description": One sentence in {native_language} that explains what the learner will achieve or be able to do after completing the lesson. Be specific and learner-oriented.
 
 ### Output Format:
-You should return a JSON object containing:
-- \"lesson_topic\": The main lesson focus, written in {native_language}.
-- \"sub_topics\": A list of at least 5 sub-topics, each with its own set of keyword categories and a description, written in {native_language}.
-   - Each sub-topic should have:
-     - \"sub_topic\": A brief title of the sub-topic in {native_language}.
-     - \"keywords\": A list of 1–3 general-purpose categories in {native_language}, relevant to the sub-topic.
-     - \"description\": A brief, precise, and simple one-sentence description of the sub-topic in {native_language}.
+Return a valid JSON object with:
+- "lesson_topic": The overall learning theme (in {native_language}).
+- "sub_topics": A list of 25 items. Each item must include:
+   - "sub_topic": A short title of the lesson (in {native_language}).
+   - "keywords": A list of 1–3 general-purpose categories (in {native_language}).
+   - "description": One clear sentence (in {native_language}) describing the purpose of the lesson.
+
+Avoid:
+- Using overly generic or repetitive titles or descriptions.
+- Keyword lists with only one-word entries (e.g., use "ordering in a restaurant" instead of "food").
+- Abstract lessons with no real-world relevance.
+
+Ensure the curriculum builds toward user fluency in relevant contexts.
 """
-
-
 
 exercise_mode_instructions = """
 # Metadata:
@@ -171,7 +177,7 @@ You will receive a user-provided **lesson topic, theme, or domain of interest** 
 Return a valid **JSON object** with the following structure:
 - `"title"`: An engaging title in {native_language}.
 - `"setting"`: A brief setup paragraph in {native_language} explaining the story’s background and relevance to the user’s interest.
-- `"content"`: A list of **6–10 segments**, each structured as:
+- `"content"`: A list of **10 segments**, each structured as:
   - `"speaker"`: A named or role-based character label in {native_language} (e.g., "Narrator", "Captain Li", "The Botanist").
   - `"target_language_text"`: The sentence or dialogue line in {target_language}.
   - `"phonetics"`: A phonetic transcription (IPA, Pinyin, etc.), only if helpful or relevant for the target language.
