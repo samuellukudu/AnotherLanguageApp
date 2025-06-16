@@ -4,12 +4,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from backend.utils import generate_completions
 from backend import config
-from backend.database import get_db_connection
-import psycopg2
-from psycopg2.extras import RealDictCursor
 from typing import Union, List, Literal, Optional
 import logging
 import json
+from backend.cache import cache
 
 logging.basicConfig(level=logging.INFO)
 
@@ -23,14 +21,6 @@ app.add_middleware(
     allow_methods=["*"],  # Allows all methods
     allow_headers=["*"],  # Allows all headers
 )
-
-# Dependency to get database connection
-async def get_db():
-    conn = await get_db_connection()
-    try:
-        yield conn
-    finally:
-        conn.close()
 
 class Message(BaseModel):
     role: Literal["user", "assistant"]
@@ -59,7 +49,9 @@ async def root():
 async def extract_metadata(data: MetadataRequest):
     logging.info(f"Query: {data.query}")
     try:
-        response_str = await generate_completions.get_completions(
+        response_str = await cache.get_or_set(
+            (str(data.query), config.language_metadata_extraction_prompt),
+            generate_completions.get_completions,
             data.query,
             config.language_metadata_extraction_prompt
         )
@@ -92,7 +84,9 @@ async def generate_curriculum(data: GenerationRequest):
             .replace("{target_language}", tl)
             .replace("{proficiency}", prof)
         )
-        response = await generate_completions.get_completions(
+        response = await cache.get_or_set(
+            (str(data.query), instructions),
+            generate_completions.get_completions,
             data.query,
             instructions
         )
@@ -119,7 +113,9 @@ async def generate_flashcards(data: GenerationRequest):
             .replace("{target_language}", tl)
             .replace("{proficiency}", prof)
         )
-        response = await generate_completions.get_completions(
+        response = await cache.get_or_set(
+            (str(data.query), instructions),
+            generate_completions.get_completions,
             data.query,
             instructions
         )
@@ -146,7 +142,9 @@ async def generate_exercises(data: GenerationRequest):
             .replace("{target_language}", tl)
             .replace("{proficiency}", prof)
         )
-        response = await generate_completions.get_completions(
+        response = await cache.get_or_set(
+            (str(data.query), instructions),
+            generate_completions.get_completions,
             data.query,
             instructions
         )
@@ -173,7 +171,9 @@ async def generate_simulation(data: GenerationRequest):
             .replace("{target_language}", tl)
             .replace("{proficiency}", prof)
         )
-        response = await generate_completions.get_completions(
+        response = await cache.get_or_set(
+            (str(data.query), instructions),
+            generate_completions.get_completions,
             data.query,
             instructions
         )
