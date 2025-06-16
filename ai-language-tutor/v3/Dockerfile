@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.12-slim
 WORKDIR /code
 
 # Install dependencies
@@ -12,4 +12,4 @@ COPY .env /code/.env
 ENV PYTHONPATH=/code
 
 # Add wait for database and initialize
-CMD uvicorn backend.main:app --host 0.0.0.0 --port 8001 --reload
+CMD uvicorn backend.main:app --host 0.0.0.0 --port 8001 --reload --workers 10

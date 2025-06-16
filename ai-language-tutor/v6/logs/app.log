@@ -1,0 +1,61 @@
+2025-05-23 17:32:52,090 - root - INFO - logging.py:57 - Logging configured. Log file: logs/app.log
+2025-05-23 17:32:52,357 - backend.services.ai_service - INFO - ai_service.py:27 - AI Service initialized
+2025-05-23 17:32:52,545 - backend.services.database_service - INFO - database_service.py:19 - Database Service initialized
+2025-05-23 17:49:45,272 - root - INFO - logging.py:57 - Logging configured. Log file: logs/app.log
+2025-05-23 17:49:45,569 - backend.services.ai_service - INFO - ai_service.py:27 - AI Service initialized
+2025-05-23 17:49:45,591 - backend.services.database_service - INFO - database_service.py:19 - Database Service initialized
+2025-05-23 17:51:25,568 - root - INFO - logging.py:57 - Logging configured. Log file: logs/app.log
+2025-05-23 17:51:25,691 - root - INFO - logging.py:57 - Logging configured. Log file: logs/app.log
+2025-05-23 17:51:25,735 - backend.services.ai_service - INFO - ai_service.py:27 - AI Service initialized
+2025-05-23 17:51:25,744 - backend.services.database_service - INFO - database_service.py:19 - Database Service initialized
+2025-05-23 17:51:25,746 - backend.main - INFO - main.py:117 - Starting up the API...
+2025-05-23 17:51:25,746 - backend.services.base_service - INFO - base_service.py:34 - Executing initialize_database: 
+2025-05-23 17:51:25,750 - backend.repositories.base_repository - ERROR - base_repository.py:32 - Error creating connection pool: connection to server at "localhost" (::1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+2025-05-23 17:51:25,750 - backend.core.exceptions - ERROR - exceptions.py:36 - Database error: Failed to initialize database schema
+2025-05-23 17:51:25,750 - backend.services.database_service - ERROR - database_service.py:52 - Error initializing database: Failed to initialize database schema
+2025-05-23 17:51:25,750 - backend.main - ERROR - main.py:123 - Error during startup: Failed to initialize database schema
+2025-05-23 17:51:25,852 - backend.services.ai_service - INFO - ai_service.py:27 - AI Service initialized
+2025-05-23 17:51:25,860 - backend.services.database_service - INFO - database_service.py:19 - Database Service initialized
+2025-05-23 17:51:25,861 - backend.main - INFO - main.py:117 - Starting up the API...
+2025-05-23 17:51:25,861 - backend.services.base_service - INFO - base_service.py:34 - Executing initialize_database: 
+2025-05-23 17:51:25,862 - backend.repositories.base_repository - ERROR - base_repository.py:32 - Error creating connection pool: connection to server at "localhost" (::1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+2025-05-23 17:51:25,862 - backend.core.exceptions - ERROR - exceptions.py:36 - Database error: Failed to initialize database schema
+2025-05-23 17:51:25,862 - backend.services.database_service - ERROR - database_service.py:52 - Error initializing database: Failed to initialize database schema
+2025-05-23 17:51:25,862 - backend.main - ERROR - main.py:123 - Error during startup: Failed to initialize database schema
+2025-05-23 17:51:39,594 - backend.main - INFO - main.py:129 - Shutting down the API...
+2025-05-23 17:51:48,522 - root - INFO - logging.py:57 - Logging configured. Log file: logs/app.log
+2025-05-23 17:51:48,672 - backend.services.ai_service - INFO - ai_service.py:27 - AI Service initialized
+2025-05-23 17:51:48,681 - backend.services.database_service - INFO - database_service.py:19 - Database Service initialized
+2025-05-23 17:51:48,683 - backend.main - INFO - main.py:117 - Starting up the API...
+2025-05-23 17:51:48,683 - backend.services.base_service - INFO - base_service.py:34 - Executing initialize_database: 
+2025-05-23 17:51:48,684 - backend.repositories.base_repository - ERROR - base_repository.py:32 - Error creating connection pool: connection to server at "localhost" (::1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+2025-05-23 17:51:48,684 - backend.core.exceptions - ERROR - exceptions.py:36 - Database error: Failed to initialize database schema
+2025-05-23 17:51:48,684 - backend.services.database_service - ERROR - database_service.py:52 - Error initializing database: Failed to initialize database schema
+2025-05-23 17:51:48,684 - backend.main - ERROR - main.py:123 - Error during startup: Failed to initialize database schema
+2025-05-23 17:52:26,366 - backend.main - INFO - main.py:129 - Shutting down the API...
+2025-05-23 17:53:04,313 - root - INFO - logging.py:57 - Logging configured. Log file: logs/app.log
+2025-05-23 17:53:04,513 - backend.services.ai_service - INFO - ai_service.py:27 - AI Service initialized
+2025-05-23 17:53:04,524 - backend.services.database_service - INFO - database_service.py:19 - Database Service initialized
+2025-05-23 17:53:04,526 - backend.main - INFO - main.py:117 - Starting up the API...
+2025-05-23 17:53:04,526 - backend.services.base_service - INFO - base_service.py:34 - Executing initialize_database: 
+2025-05-23 17:53:04,527 - backend.repositories.base_repository - ERROR - base_repository.py:32 - Error creating connection pool: connection to server at "localhost" (::1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+2025-05-23 17:53:04,528 - backend.core.exceptions - ERROR - exceptions.py:36 - Database error: Failed to initialize database schema
+2025-05-23 17:53:04,528 - backend.services.database_service - ERROR - database_service.py:52 - Error initializing database: Failed to initialize database schema
+2025-05-23 17:53:04,528 - backend.main - ERROR - main.py:123 - Error during startup: Failed to initialize database schema
+2025-05-23 17:53:18,765 - backend.main - INFO - main.py:129 - Shutting down the API...

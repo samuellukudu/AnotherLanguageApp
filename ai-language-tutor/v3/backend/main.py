@@ -3,6 +3,7 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from backend.utils import generate_completions
+from backend.utils.handlers import handle_generation_request, INSTRUCTION_TEMPLATES
 from backend import config
 from typing import Union, List, Literal, Optional
 import logging
@@ -36,11 +37,6 @@ class GenerationRequest(BaseModel):
 class MetadataRequest(BaseModel):
     query: str
 
-# Global metadata variables
-native_language: Optional[str] = None
-target_language: Optional[str] = None
-proficiency: Optional[str] = None
-
 @app.get("/")
 async def root():
     return {"message": "Welcome to the AI Learning Assistant API!"}
@@ -56,10 +52,6 @@ async def extract_metadata(data: MetadataRequest):
             config.language_metadata_extraction_prompt
         )
         metadata_dict = json.loads(response_str)
-        # Update globals for other endpoints
-        globals()['native_language'] = metadata_dict.get('native_language', 'unknown')
-        globals()['target_language'] = metadata_dict.get('target_language', 'unknown')
-        globals()['proficiency'] = metadata_dict.get('proficiency', 'unknown')
         return JSONResponse(
             content={
                 "data": metadata_dict,
@@ -73,117 +65,32 @@ async def extract_metadata(data: MetadataRequest):
 
 @app.post("/generate/curriculum")
 async def generate_curriculum(data: GenerationRequest):
-    try:
-        # Use metadata from request or fallback to globals
-        nl = data.native_language or native_language or "unknown"
-        tl = data.target_language or target_language or "unknown"
-        prof = data.proficiency or proficiency or "unknown"
-        instructions = (
-            config.curriculum_instructions
-            .replace("{native_language}", nl)
-            .replace("{target_language}", tl)
-            .replace("{proficiency}", prof)
-        )
-        response = await cache.get_or_set(
-            (str(data.query), instructions),
-            generate_completions.get_completions,
-            data.query,
-            instructions
-        )
-        return JSONResponse(
-            content={
-                "data": response,
-                "type": "curriculum",
-                "status": "success"
-            },
-            status_code=200
-        )
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    return await handle_generation_request(
+        data=data,
+        mode="curriculum",
+        instructions_template=INSTRUCTION_TEMPLATES["curriculum"]
+    )
 
 @app.post("/generate/flashcards")
 async def generate_flashcards(data: GenerationRequest):
-    try:
-        nl = data.native_language or native_language or "unknown"
-        tl = data.target_language or target_language or "unknown"
-        prof = data.proficiency or proficiency or "unknown"
-        instructions = (
-            config.flashcard_mode_instructions
-            .replace("{native_language}", nl)
-            .replace("{target_language}", tl)
-            .replace("{proficiency}", prof)
-        )
-        response = await cache.get_or_set(
-            (str(data.query), instructions),
-            generate_completions.get_completions,
-            data.query,
-            instructions
-        )
-        return JSONResponse(
-            content={
-                "data": response,
-                "type": "flashcards",
-                "status": "success"
-            },
-            status_code=200
-        )
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    return await handle_generation_request(
+        data=data,
+        mode="flashcards",
+        instructions_template=INSTRUCTION_TEMPLATES["flashcards"]
+    )
 
 @app.post("/generate/exercises")
 async def generate_exercises(data: GenerationRequest):
-    try:
-        nl = data.native_language or native_language or "unknown"
-        tl = data.target_language or target_language or "unknown"
-        prof = data.proficiency or proficiency or "unknown"
-        instructions = (
-            config.exercise_mode_instructions
-            .replace("{native_language}", nl)
-            .replace("{target_language}", tl)
-            .replace("{proficiency}", prof)
-        )
-        response = await cache.get_or_set(
-            (str(data.query), instructions),
-            generate_completions.get_completions,
-            data.query,
-            instructions
-        )
-        return JSONResponse(
-            content={
-                "data": response,
-                "type": "exercises",
-                "status": "success"
-            },
-            status_code=200
-        )
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    return await handle_generation_request(
+        data=data,
+        mode="exercises",
+        instructions_template=INSTRUCTION_TEMPLATES["exercises"]
+    )
 
 @app.post("/generate/simulation")
 async def generate_simulation(data: GenerationRequest):
-    try:
-        nl = data.native_language or native_language or "unknown"
-        tl = data.target_language or target_language or "unknown"
-        prof = data.proficiency or proficiency or "unknown"
-        instructions = (
-            config.simulation_mode_instructions
-            .replace("{native_language}", nl)
-            .replace("{target_language}", tl)
-            .replace("{proficiency}", prof)
-        )
-        response = await cache.get_or_set(
-            (str(data.query), instructions),
-            generate_completions.get_completions,
-            data.query,
-            instructions
-        )
-        return JSONResponse(
-            content={
-                "data": response,
-                "type": "simulation",
-                "status": "success"
-            },
-            status_code=200
-        )
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    return await handle_generation_request(
+        data=data,
+        mode="simulation",
+        instructions_template=INSTRUCTION_TEMPLATES["simulation"]
+    )

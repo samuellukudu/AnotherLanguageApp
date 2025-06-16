@@ -2,7 +2,7 @@ import asyncio
 from typing import Any, Callable, Dict, Tuple
 
 class AsyncLRUCache:
-    def __init__(self, maxsize=128):
+    def __init__(self, maxsize=100_000):  # Optimized for 16GB RAM
         self.cache: Dict[Tuple, Any] = {}
         self.order = []
         self.maxsize = maxsize
@@ -25,4 +25,5 @@ class AsyncLRUCache:
                 del self.cache[oldest]
         return result
 
-cache = AsyncLRUCache() 
+# Initialize cache with optimized size for 16GB RAM
+cache = AsyncLRUCache()  # Uses default maxsize=100_000 
