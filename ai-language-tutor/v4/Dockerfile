@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.12-slim
 WORKDIR /code
 
 # Install dependencies
@@ -7,11 +7,10 @@ RUN pip install --no-cache --upgrade -r /code/requirements.txt
 
 # Copy application code
 COPY ./backend /code/backend
+# Environment variables should be provided at runtime or via Docker Compose
+# COPY .env /code/.env
 
 ENV PYTHONPATH=/code
 
-# Expose API port
-EXPOSE 8001
-
-# Use env var for port when run via docker compose
-CMD ["sh", "-c", "uvicorn backend.main:app --host 0.0.0.0 --port ${API_PORT:-8001} --reload"]
+# Add wait for database and initialize
+CMD uvicorn backend.main:app --host 0.0.0.0 --port 8001 --reload --workers 10

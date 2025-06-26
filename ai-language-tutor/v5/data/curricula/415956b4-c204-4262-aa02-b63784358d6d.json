@@ -1,0 +1,246 @@
+{
+  "id": "415956b4-c204-4262-aa02-b63784358d6d",
+  "user_id": 1,
+  "metadata": {
+    "native_language": "english",
+    "target_language": "french",
+    "proficiency": "beginner",
+    "title": "French for a Romantic Getaway",
+    "description": "Learning French to charm my way through a magical Parisian adventure!"
+  },
+  "created_at": "2025-06-26T06:12:10.546746",
+  "status": {
+    "curriculum": "completed",
+    "flashcards": "completed",
+    "exercises": "completed",
+    "simulation": "completed"
+  },
+  "content": {
+    "curriculum": {
+      "lesson_topic": "French for a Romantic Getaway in Paris",
+      "sub_topics": [
+        {
+          "sub_topic": "Greetings and Introductions: Setting the Mood",
+          "keywords": [
+            "greetings",
+            "introductions",
+            "politeness"
+          ],
+          "description": "Learn essential greetings, polite phrases, and basic introductions to make a charming first impression."
+        },
+        {
+          "sub_topic": "Ordering Food and Wine: A Culinary Romance",
+          "keywords": [
+            "food",
+            "wine",
+            "restaurant"
+          ],
+          "description": "Master the art of ordering food and wine in French to create a delightful and romantic dining experience."
+        },
+        {
+          "sub_topic": "Asking for Directions: Discovering Hidden Gems",
+          "keywords": [
+            "directions",
+            "city",
+            "sightseeing"
+          ],
+          "description": "Learn how to ask for and understand directions in French to navigate the charming streets of Paris with confidence."
+        },
+        {
+          "sub_topic": "Expressing Affection: Sweet Nothings in French",
+          "keywords": [
+            "affection",
+            "romance",
+            "compliments"
+          ],
+          "description": "Discover romantic vocabulary and phrases to express your affection and admiration in French."
+        },
+        {
+          "sub_topic": "Making Reservations and Plans: A Seamless Experience",
+          "keywords": [
+            "reservations",
+            "activities",
+            "planning"
+          ],
+          "description": "Learn how to make reservations for restaurants, shows, and other activities, ensuring a smooth and unforgettable romantic getaway."
+        }
+      ]
+    },
+    "flashcards": [
+      {
+        "word": "Amour",
+        "definition": "Love",
+        "example": "Paris est la ville de l'amour."
+      },
+      {
+        "word": "Ch\u00e9ri/Ch\u00e9rie",
+        "definition": "Darling / sweetheart",
+        "example": "Bonjour, ch\u00e9rie, comment vas-tu aujourd'hui ?"
+      },
+      {
+        "word": "Baiser",
+        "definition": "To kiss",
+        "example": "Je veux te baiser sous la Tour Eiffel."
+      },
+      {
+        "word": "Romantique",
+        "definition": "Romantic",
+        "example": "Ce restaurant a une ambiance tr\u00e8s romantique."
+      },
+      {
+        "word": "Promenade",
+        "definition": "Walk / stroll",
+        "example": "Faisons une promenade le long de la Seine."
+      },
+      {
+        "word": "C\u0153ur",
+        "definition": "Heart",
+        "example": "Tu as vol\u00e9 mon c\u0153ur."
+      },
+      {
+        "word": "\u00c9treinte",
+        "definition": "Hug / embrace",
+        "example": "Donne-moi une \u00e9treinte chaleureuse."
+      },
+      {
+        "word": "Voyage",
+        "definition": "Trip / journey",
+        "example": "Ce voyage \u00e0 Paris est un r\u00eave."
+      },
+      {
+        "word": "Soir\u00e9e",
+        "definition": "Evening",
+        "example": "Passons une soir\u00e9e romantique ensemble."
+      },
+      {
+        "word": "Toujours",
+        "definition": "Always",
+        "example": "Je t'aimerai toujours."
+      }
+    ],
+    "exercises": [
+      {
+        "sentence": "Pour notre d\u00eener romantique, j'ai ___ une table dans ce charmant restaurant.",
+        "answer": "r\u00e9serv\u00e9",
+        "choices": [
+          "mang\u00e9",
+          "r\u00e9serv\u00e9",
+          "command\u00e9",
+          "pr\u00e9par\u00e9"
+        ],
+        "explanation": "'R\u00e9serv\u00e9' (reserved) fits the context of securing a table for a romantic dinner. 'Mang\u00e9' (ate), 'command\u00e9' (ordered), and 'pr\u00e9par\u00e9' (prepared) do not logically follow from the context of booking a table."
+      },
+      {
+        "sentence": "En se promenant le long de la Seine, nous avons ___ les magnifiques ponts illumin\u00e9s.",
+        "answer": "admir\u00e9",
+        "choices": [
+          "travers\u00e9",
+          "admir\u00e9",
+          "ignor\u00e9",
+          "\u00e9vit\u00e9"
+        ],
+        "explanation": "'Admir\u00e9' (admired) best describes enjoying the beautiful, illuminated bridges. 'Travers\u00e9' (crossed), 'ignor\u00e9' (ignored), and '\u00e9vit\u00e9' (avoided) don't suit the romantic context."
+      },
+      {
+        "sentence": "Je veux t'offrir quelque chose de sp\u00e9cial, alors j'ai ___ ce parfum exquis pour toi.",
+        "answer": "choisi",
+        "choices": [
+          "achet\u00e9",
+          "cr\u00e9\u00e9",
+          "choisi",
+          "trouv\u00e9"
+        ],
+        "explanation": "'Choisi' (chose) implies selecting something special, like a perfume. 'Achet\u00e9' (bought) is too general, 'cr\u00e9\u00e9' (created) doesn't fit the act of gifting, and 'trouv\u00e9' (found) suggests randomness, not a deliberate selection."
+      },
+      {
+        "sentence": "Ch\u00e9ri(e), veux-tu ___ avec moi sous la Tour Eiffel au clair de lune?",
+        "answer": "danser",
+        "choices": [
+          "manger",
+          "parler",
+          "danser",
+          "marcher"
+        ],
+        "explanation": "'Danser' (dance) evokes a classic romantic image under the Eiffel Tower. 'Manger' (eat), 'parler' (talk), and 'marcher' (walk) are less fitting activities for a moonlit moment."
+      },
+      {
+        "sentence": "Apr\u00e8s notre promenade, nous allons ___ un caf\u00e9 chaud dans ce petit caf\u00e9 confortable.",
+        "answer": "boire",
+        "choices": [
+          "acheter",
+          "boire",
+          "visiter",
+          "regarder"
+        ],
+        "explanation": "'Boire' (drink) is the logical action to take with a hot coffee. 'Acheter' (buy), 'visiter' (visit), and 'regarder' (watch) don't make sense in the context of consuming a beverage."
+      }
+    ],
+    "simulation": {
+      "title": "A Parisian Romance: Lost and Found in Translation",
+      "setting": "Two young travelers, Alex and Sophie, are on a romantic getaway in Paris. Alex wants to surprise Sophie by using French, but he's just a beginner. This scene captures their humorous attempts at communication during a picnic by the Seine.",
+      "content": [
+        {
+          "speaker": "Narrator",
+          "target_language_text": "Alex et Sophie sont \u00e0 Paris pour un pique-nique romantique.",
+          "phonetics": "a.l\u025bks e s\u0254.fi s\u0254\u0303t\u203fa pa.\u0281i pu\u0281\u203f\u0153\u0303 pik.nik \u0281\u0254.m\u0251\u0303.tik",
+          "base_language_translation": "Alex and Sophie are in Paris for a romantic picnic."
+        },
+        {
+          "speaker": "Alex",
+          "target_language_text": "Bonjour, ma ch\u00e9rie! J'ai... euh... apport\u00e9 des choses d\u00e9licieuses.",
+          "phonetics": "b\u0254\u0303.\u0292u\u0281 ma \u0283e.\u0281i \u0292e... \u00f8... a.p\u0254\u0281.te de \u0283oz de.li.sj\u00f8z",
+          "base_language_translation": "Hello, my darling! I... uh... brought some delicious things."
+        },
+        {
+          "speaker": "Sophie",
+          "target_language_text": "Oh, Alex! C'est tr\u00e8s gentil. Qu'est-ce que tu as?",
+          "phonetics": "o a.l\u025bks se t\u0281e \u0292\u0251\u0303.ti k\u025bs.k\u0259 ty a",
+          "base_language_translation": "Oh, Alex! That's very kind. What do you have?"
+        },
+        {
+          "speaker": "Alex",
+          "target_language_text": "J'ai... du pain, du fromage, et... des fruits. Et du vin!",
+          "phonetics": "\u0292e dy p\u025b\u0303 dy f\u0281\u0254.ma\u0292 e de f\u0281\u0265i e dy v\u025b\u0303",
+          "base_language_translation": "I have... some bread, some cheese, and... some fruits. And some wine!"
+        },
+        {
+          "speaker": "Sophie",
+          "target_language_text": "Parfait! Mais, Alex, tu parles fran\u00e7ais maintenant?",
+          "phonetics": "pa\u0281.f\u025b me a.l\u025bks ty pa\u0281l f\u0281\u0251\u0303.s\u025b m\u025b\u0303t.n\u0251\u0303",
+          "base_language_translation": "Perfect! But, Alex, are you speaking French now?"
+        },
+        {
+          "speaker": "Alex",
+          "target_language_text": "Oui! Je... j'essaie! Pour toi.",
+          "phonetics": "wi \u0292\u0259 \u0292e.s\u025b pur twa",
+          "base_language_translation": "Yes! I... I'm trying! For you."
+        },
+        {
+          "speaker": "Sophie",
+          "target_language_text": "C'est adorable! Alors, dis-moi, quel est ton fromage pr\u00e9f\u00e9r\u00e9?",
+          "phonetics": "se.t\u203fa.d\u0254.\u0281abl a.l\u0254\u0281 di mwa k\u025b.l\u203f\u025b t\u0254\u0303 f\u0281\u0254.ma\u0292 p\u0281e.fe.\u0281e",
+          "base_language_translation": "That's adorable! So, tell me, what is your favorite cheese?"
+        },
+        {
+          "speaker": "Alex",
+          "target_language_text": "Euh... le fromage... est... bon. Tr\u00e8s bon!",
+          "phonetics": "\u00f8 l\u0259 f\u0281\u0254.ma\u0292 \u025b b\u0254\u0303 t\u0281e b\u0254\u0303",
+          "base_language_translation": "Uh... the cheese... is... good. Very good!"
+        },
+        {
+          "speaker": "Sophie",
+          "target_language_text": "Haha! Tu as encore beaucoup \u00e0 apprendre, mon amour.",
+          "phonetics": "a.a ty a.k\u0254\u0281 bo.ku a.p\u0281\u0251\u0303.d\u0281\u0259 m\u0254\u0303.n\u203fa.mu\u0281",
+          "base_language_translation": "Haha! You still have a lot to learn, my love."
+        },
+        {
+          "speaker": "Narrator",
+          "target_language_text": "Ils rient ensemble, le soleil se couchant sur la Seine. L'amour n'a pas besoin de mots parfaits.",
+          "phonetics": "il \u0281i \u0251\u0303.s\u0251\u0303bl\u0259 l\u0259 s\u0254.l\u025bj s\u0259 ku.\u0283\u0251\u0303 sy\u0281 la s\u025bn la.mu\u0281 na pa b\u0259.zw\u025b\u0303 d\u0259 mo pa\u0281.f\u025b",
+          "base_language_translation": "They laugh together, the sun setting on the Seine. Love doesn't need perfect words."
+        }
+      ]
+    }
+  },
+  "updated_at": "2025-06-26T06:12:18.434505"
+}

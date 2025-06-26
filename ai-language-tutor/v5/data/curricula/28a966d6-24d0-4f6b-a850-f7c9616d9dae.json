@@ -1,0 +1,246 @@
+{
+  "id": "28a966d6-24d0-4f6b-a850-f7c9616d9dae",
+  "user_id": 2,
+  "metadata": {
+    "native_language": "english",
+    "target_language": "spanish",
+    "proficiency": "intermediate",
+    "title": "Barcelona Food Tour",
+    "description": "Learning Spanish to enjoy authentic cuisine in Barcelona!"
+  },
+  "created_at": "2025-06-26T06:07:02.002138",
+  "status": {
+    "curriculum": "completed",
+    "flashcards": "completed",
+    "exercises": "completed",
+    "simulation": "completed"
+  },
+  "content": {
+    "curriculum": {
+      "lesson_topic": "Barcelona Food Tour: Learning Spanish to enjoy authentic cuisine in Barcelona!",
+      "sub_topics": [
+        {
+          "sub_topic": "Ordering Tapas Like a Local",
+          "keywords": [
+            "food",
+            "ordering",
+            "restaurant"
+          ],
+          "description": "Learn essential phrases and vocabulary to confidently order tapas and drinks at a local bar, understanding the menu and common expressions."
+        },
+        {
+          "sub_topic": "Navigating La Boqueria Market",
+          "keywords": [
+            "market",
+            "food",
+            "shopping"
+          ],
+          "description": "Practice asking vendors about produce, prices, and specialities while exploring La Boqueria Market, learning to bargain politely and understand local products."
+        },
+        {
+          "sub_topic": "Discussing Catalan Cuisine",
+          "keywords": [
+            "food",
+            "culture",
+            "conversation"
+          ],
+          "description": "Learn how to discuss typical Catalan dishes, express your preferences, and understand recommendations from locals regarding regional cuisine."
+        },
+        {
+          "sub_topic": "Making Reservations and Special Requests",
+          "keywords": [
+            "reservations",
+            "restaurants",
+            "etiquette"
+          ],
+          "description": "Master the phrases needed to make restaurant reservations, specify dietary needs, and handle any special requests politely in Spanish."
+        },
+        {
+          "sub_topic": "Describing Flavors and Textures",
+          "keywords": [
+            "food",
+            "sensory",
+            "descriptions"
+          ],
+          "description": "Acquire the vocabulary to describe the flavors, textures, and presentation of food, allowing you to give detailed feedback and express your culinary experiences vividly."
+        }
+      ]
+    },
+    "flashcards": [
+      {
+        "word": "cata",
+        "definition": "Tasting; often refers to a wine or food tasting event.",
+        "example": "La cata de vinos en el barrio g\u00f3tico fue mi parte favorita del tour."
+      },
+      {
+        "word": "degustaci\u00f3n",
+        "definition": "A sample or tasting, usually a small portion of food or drink.",
+        "example": "La degustaci\u00f3n de tapas incluy\u00f3 jam\u00f3n ib\u00e9rico y queso manchego."
+      },
+      {
+        "word": "maridaje",
+        "definition": "Pairing; refers to the combination of food and drink that enhance each other.",
+        "example": "El experto nos explic\u00f3 el maridaje perfecto entre el vino y el plato de pescado."
+      },
+      {
+        "word": "embutidos",
+        "definition": "Cured meats; a variety of sausages and cured meats, common in Spanish cuisine.",
+        "example": "En la charcuter\u00eda probamos una selecci\u00f3n de embutidos artesanales."
+      },
+      {
+        "word": "tapas",
+        "definition": "Small savory dishes, typically served with drinks in Spain.",
+        "example": "Fuimos de tapas por el Born y probamos patatas bravas y croquetas."
+      },
+      {
+        "word": "productos de temporada",
+        "definition": "Seasonal products; foods that are at their best during a particular time of year.",
+        "example": "El chef utiliza productos de temporada para garantizar la frescura de los platos."
+      },
+      {
+        "word": "platos t\u00edpicos",
+        "definition": "Typical dishes; traditional foods that are characteristic of a region.",
+        "example": "Probamos varios platos t\u00edpicos catalanes, como la escalivada."
+      },
+      {
+        "word": "la Boquer\u00eda",
+        "definition": "A famous public market in Barcelona, known for its fresh produce and local products.",
+        "example": "Visitamos la Boquer\u00eda para comprar ingredientes frescos para cocinar paella."
+      },
+      {
+        "word": "sobremesa",
+        "definition": "The time spent after a meal, often chatting and relaxing at the table.",
+        "example": "Despu\u00e9s de la cena, disfrutamos de una larga sobremesa con caf\u00e9 y licores."
+      },
+      {
+        "word": "denominaci\u00f3n de origen",
+        "definition": "Appellation of origin; a protected designation indicating a product's geographical origin and quality.",
+        "example": "El vino tiene denominaci\u00f3n de origen Priorat, lo que garantiza su calidad."
+      }
+    ],
+    "exercises": [
+      {
+        "sentence": "En el mercado de La Boquer\u00eda, probamos una deliciosa tapa de jam\u00f3n ib\u00e9rico, que se ___ en la boca con cada bocado.",
+        "answer": "derret\u00eda",
+        "choices": [
+          "quemaba",
+          "derret\u00eda",
+          "endulzaba",
+          "enfriaba"
+        ],
+        "explanation": "'Derret\u00eda' (melted) accurately describes the sensation of the jam\u00f3n ib\u00e9rico in your mouth. 'Quemaba' (burned), 'endulzaba' (sweetened), and 'enfriaba' (cooled) don't fit the sensory experience of tasting quality jam\u00f3n."
+      },
+      {
+        "sentence": "Para la paella, es fundamental usar arroz bomba, que ___ muy bien los sabores del caldo de pescado y mariscos.",
+        "answer": "absorbe",
+        "choices": [
+          "rechaza",
+          "evapora",
+          "absorbe",
+          "cocina"
+        ],
+        "explanation": "'Absorbe' (absorbs) is the correct term, as bomba rice is known for absorbing flavors. 'Rechaza' (rejects), 'evapora' (evaporates), and 'cocina' (cooks) don't describe this specific property of the rice in paella."
+      },
+      {
+        "sentence": "Despu\u00e9s de la cena, nos ofrecieron un chupito de licor de hierbas, que ___ el est\u00f3mago y ayuda a la digesti\u00f3n.",
+        "answer": "calma",
+        "choices": [
+          "quema",
+          "calma",
+          "hincha",
+          "corta"
+        ],
+        "explanation": "'Calma' (calms) is the appropriate verb, as herbal liqueur is meant to soothe the stomach. 'Quema' (burns), 'hincha' (swells), and 'corta' (cuts) don't fit the typical effect of a digestive liqueur."
+      },
+      {
+        "sentence": "Al pedir churros con chocolate, la camarera nos pregunt\u00f3 si los quer\u00edamos con az\u00facar ___ por encima.",
+        "answer": "espolvoreada",
+        "choices": [
+          "espolvoreada",
+          "frita",
+          "derretida",
+          "caliente"
+        ],
+        "explanation": "'Espolvoreada' (sprinkled) correctly describes how sugar is typically added to churros. 'Frita' (fried), 'derretida' (melted), and 'caliente' (hot) do not logically follow the context."
+      },
+      {
+        "sentence": "En la bodega, el sumiller nos explic\u00f3 c\u00f3mo ___ el vino para apreciar mejor sus aromas y sabores.",
+        "answer": "catar",
+        "choices": [
+          "beber",
+          "producir",
+          "catar",
+          "vender"
+        ],
+        "explanation": "'Catar' (to taste, to sample) is the right word for professionally evaluating wine. 'Beber' (to drink) is too general, 'producir' (to produce) refers to making wine, and 'vender' (to sell) involves commerce, not tasting."
+      }
+    ],
+    "simulation": {
+      "title": "A Culinary Adventure in Barcelona",
+      "setting": "Two friends, Emily, an American tourist trying to improve her Spanish, and Javier, a local Barcelonian foodie, embark on a food tour through the vibrant streets of Barcelona. Emily wants to learn more about authentic Catalan cuisine, and Javier is excited to share his knowledge and help her practice her Spanish.",
+      "content": [
+        {
+          "speaker": "Javier",
+          "target_language_text": "\u00a1Bienvenida a Barcelona, Emily! \u00bfLista para probar la mejor comida catalana?",
+          "phonetics": "bjem-beh-NEE-dah ah bar-theh-LOH-nah, EH-mee-lee. EH-stahs LEE-stah pah-rah proh-BAR la MEH-hor koh-MEE-dah kah-tah-LAH-nah?",
+          "base_language_translation": "Welcome to Barcelona, Emily! Are you ready to try the best Catalan food?"
+        },
+        {
+          "speaker": "Emily",
+          "target_language_text": "\u00a1S\u00ed, estoy muy emocionada! Quiero aprender sobre la comida y practicar mi espa\u00f1ol.",
+          "phonetics": "see, eh-STOY muy eh-moh-thyo-NAH-dah. Kye-RO ah-prehn-DER soh-BREH lah koh-MEE-dah ee prah-tee-KAR mee ehs-pah-NYOL.",
+          "base_language_translation": "Yes, I'm very excited! I want to learn about the food and practice my Spanish."
+        },
+        {
+          "speaker": "Javier",
+          "target_language_text": "Perfecto. Primero, vamos a una panader\u00eda tradicional. Tienen un 'pa amb tom\u00e0quet' delicioso.",
+          "phonetics": "pehr-FEK-toh. Pree-MEH-roh, VAH-mohs ah oo-nah pah-nah-deh-REE-ah trah-dee-thyo-NAHL. Tyeh-NEHN oon 'pah am too-MAH-ket' deh-lee-THYO-soh.",
+          "base_language_translation": "Perfect. First, let's go to a traditional bakery. They have a delicious 'pa amb tom\u00e0quet'."
+        },
+        {
+          "speaker": "Emily",
+          "target_language_text": "\u00bf'Pa amb tom\u00e0quet'? \u00bfQu\u00e9 es eso?",
+          "phonetics": "pah am too-MAH-ket? keh ess EH-soh?",
+          "base_language_translation": "'Pa amb tom\u00e0quet'? What is that?"
+        },
+        {
+          "speaker": "Javier",
+          "target_language_text": "Es pan con tomate, ajo y aceite de oliva. \u00a1Muy sencillo, pero incre\u00edble!",
+          "phonetics": "ess pahn kon toh-MAH-teh, AH-ho ee ah-THAY-teh deh oh-LEE-bah. muy sehn-THEE-yoh, peh-roh een-kreh-EE-bleh!",
+          "base_language_translation": "It's bread with tomato, garlic, and olive oil. Very simple, but incredible!"
+        },
+        {
+          "speaker": "Emily",
+          "target_language_text": "\u00a1Suena genial! Despu\u00e9s, \u00bfa d\u00f3nde vamos?",
+          "phonetics": "Sway-nah heh-nee-AHL! Des-pwehs, ah DOHN-deh VAH-mohs?",
+          "base_language_translation": "Sounds great! Where are we going after that?"
+        },
+        {
+          "speaker": "Javier",
+          "target_language_text": "Luego, al mercado de La Boqueria. All\u00ed probaremos jam\u00f3n ib\u00e9rico y queso manchego.",
+          "phonetics": "LWEH-go, al mer-KAH-doh deh la Boh-keh-REE-ah. Ah-YEE proh-bah-REH-mohs hah-MOON ee-BEH-ree-koh ee KEH-soh mahn-CHEH-go.",
+          "base_language_translation": "Then, to La Boqueria market. There we will try Iberian ham and Manchego cheese."
+        },
+        {
+          "speaker": "Emily",
+          "target_language_text": "\u00a1Qu\u00e9 rico! Siempre he querido probar jam\u00f3n ib\u00e9rico aut\u00e9ntico.",
+          "phonetics": "keh REE-koh! Syehm-PREH eh keh-REE-doh proh-BAR hah-MOON ee-BEH-ree-koh ow-TEHN-tee-koh.",
+          "base_language_translation": "How delicious! I've always wanted to try authentic Iberian ham."
+        },
+        {
+          "speaker": "Javier",
+          "target_language_text": "Y para terminar, cenaremos tapas en el barrio G\u00f3tico. \u00a1Prep\u00e1rate para una explosi\u00f3n de sabores!",
+          "phonetics": "ee PAH-rah ter-mee-NAR, theh-nah-REH-mohs TAH-pahs en el BAR-ryoh GO-tee-koh. Preh-PAH-rah-teh PAH-rah oo-nah ehks-ploh-SYON deh sah-BOH-rehs!",
+          "base_language_translation": "And to finish, we'll have tapas for dinner in the Gothic Quarter. Get ready for an explosion of flavors!"
+        },
+        {
+          "speaker": "Emily",
+          "target_language_text": "\u00a1Estoy lista! Gracias, Javier. \u00a1Va a ser un d\u00eda incre\u00edble!",
+          "phonetics": "eh-STOY LEE-stah! GRAH-thyas, hah-VYER. Vah ah sehr oon DEE-ah een-kreh-EE-bleh!",
+          "base_language_translation": "I'm ready! Thank you, Javier. It's going to be an incredible day!"
+        }
+      ]
+    }
+  },
+  "updated_at": "2025-06-26T06:07:13.810509"
+}

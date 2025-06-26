@@ -1,22 +1,58 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from aiocache import caches
-from backend.settings import REDIS_URL
-import logging
-from backend.routers.generation import router as gen_router
-from backend.routers.auth import router as auth_router
-from fastapi.responses import JSONResponse
-from fastapi import HTTPException
-from fastapi.exceptions import RequestValidationError
-from backend.db.session import engine
-from backend.db.models import Base
+from fastapi.security import HTTPBearer
+from fastapi.openapi.utils import get_openapi
 
-logging.basicConfig(level=logging.INFO)
+from backend.api import curriculum, lessons, flashcards, exercises, simulation, users, metadata
 
-app = FastAPI()
+# Create FastAPI app with custom OpenAPI configuration
+app = FastAPI(
+    title="AI Learning Assistant API",
+    description="A comprehensive API for AI-powered language learning",
+    version="1.0.0"
+)
 
-# Configure default Redis cache
-caches.set_config({"default": {"cache": "aiocache.RedisCache", "endpoint": REDIS_URL}})
+# Security scheme for OpenAPI (this will show the authorize button)
+security = HTTPBearer()
+
+# Custom OpenAPI schema with security
+def custom_openapi():
+    if app.openapi_schema:
+        return app.openapi_schema
+    
+    openapi_schema = get_openapi(
+        title="AI Learning Assistant API",
+        version="1.0.0",
+        description="A comprehensive API for AI-powered language learning with authentication",
+        routes=app.routes,
+    )
+    
+    # Add security scheme definition
+    openapi_schema["components"]["securitySchemes"] = {
+        "BearerAuth": {
+            "type": "http",
+            "scheme": "bearer",
+            "bearerFormat": "JWT",
+            "description": "Enter your JWT token"
+        }
+    }
+    
+    # Apply security to all protected endpoints
+    for path_data in openapi_schema["paths"].values():
+        for operation in path_data.values():
+            # Skip if it's not an operation or if it's a public endpoint
+            if not isinstance(operation, dict) or "tags" not in operation:
+                continue
+                
+            # Add security to all endpoints except register and login
+            if operation.get("operationId") not in ["register", "login", "root"]:
+                operation["security"] = [{"BearerAuth": []}]
+    
+    app.openapi_schema = openapi_schema
+    return app.openapi_schema
+
+# Apply custom OpenAPI schema
+app.openapi = custom_openapi
 
 # Add CORS middleware
 app.add_middleware(
@@ -27,43 +63,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(auth_router)
-app.include_router(gen_router)
+@app.get("/")
+async def root():
+    return {"message": "Welcome to the AI Learning Assistant API!"}
 
-# Create tables on startup
-@app.on_event("startup")
-async def create_tables():
-    import asyncio, logging as _logging
-    for attempt in range(10):
-        try:
-            async with engine.begin() as conn:
-                await conn.run_sync(Base.metadata.create_all)
-            _logging.info("Database tables created")
-            return
-        except Exception as err:
-            _logging.warning(f"Database not ready (attempt {attempt+1}/10): {err}")
-            await asyncio.sleep(2)
-    _logging.error("Failed to create tables after multiple attempts")
-
-# Centralized error handlers
-@app.exception_handler(HTTPException)
-async def http_exception_handler(request, exc: HTTPException):
-    return JSONResponse({"error": exc.detail}, status_code=exc.status_code)
-
-@app.exception_handler(RequestValidationError)
-async def validation_exception_handler(request, exc: RequestValidationError):
-    return JSONResponse({"error": exc.errors()}, status_code=422)
-
-@app.exception_handler(Exception)
-async def generic_exception_handler(request, exc: Exception):
-    return JSONResponse({"error": "Internal server error"}, status_code=500)
-
-# Health & readiness probes
-@app.get('/health')
-async def health_check():
-    return {"status": "ok"}
-
-@app.get('/ready')
-async def readiness_check():
-    # optionally check DB or caches here
-    return {"status": "ready"}
+# Include routers for modular endpoints
+app.include_router(users.router)
+app.include_router(metadata.router)
+app.include_router(curriculum.router)
+app.include_router(lessons.router)
+app.include_router(flashcards.router)
+app.include_router(exercises.router)
+app.include_router(simulation.router)

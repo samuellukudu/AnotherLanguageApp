@@ -3,14 +3,15 @@ import asyncio
 import json
 from typing import AsyncIterator
 from typing import Union, List, Dict, Literal
-from backend.settings import settings
+from dotenv import load_dotenv
+import os
 from pydantic import BaseModel
-from aiocache.decorators import cached
+load_dotenv()
 
 # Initialize the async client
 client = AsyncOpenAI(
-    base_url=settings.base_url,
-    api_key=settings.api_key,
+    base_url=os.getenv("BASE_URL"),
+    api_key=os.getenv("API_KEY"),
 )
 
 class Message(BaseModel):
@@ -38,9 +39,7 @@ def process_input(data: Union[str, List[Dict[str, str]]]) -> Union[str, List[Dic
     
     else:
         raise TypeError("Input must be a string or a list of dictionaries with a 'content' field")
-        
 
-@cached(ttl=settings.cache_ttl)
 async def get_completions(
     prompt: Union[str, List[Dict[str, str]]],
     instructions: str
@@ -72,8 +71,9 @@ async def get_completions(
     else:
         raise TypeError("Unexpected processed input type.")
 
+    # print(os.getenv("MODEL"))
     response = await client.chat.completions.create(
-        model=settings.model,
+        model=os.getenv("MODEL"),
         messages=messages,
         response_format={"type": "json_object"}
     )

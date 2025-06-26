@@ -1,0 +1,246 @@
+{
+  "id": "79bbe447-32da-4a87-a18b-59d731afed5d",
+  "user_id": 1,
+  "metadata": {
+    "native_language": "english",
+    "target_language": "japanese",
+    "proficiency": "beginner",
+    "title": "Tokyo Travel Japanese",
+    "description": "Learning basic Japanese for an immersive experience in the vibrant city of Tokyo!"
+  },
+  "created_at": "2025-06-26T06:13:49.431197",
+  "status": {
+    "curriculum": "completed",
+    "flashcards": "completed",
+    "exercises": "completed",
+    "simulation": "completed"
+  },
+  "content": {
+    "curriculum": {
+      "lesson_topic": "Tokyo Travel Japanese: Learning basic Japanese for an immersive experience in the vibrant city of Tokyo!",
+      "sub_topics": [
+        {
+          "sub_topic": "Greetings and Basic Introductions",
+          "keywords": [
+            "greetings",
+            "introductions",
+            "politeness"
+          ],
+          "description": "Learn essential greetings and self-introduction phrases to start conversations politely in Tokyo."
+        },
+        {
+          "sub_topic": "Navigating Tokyo: Asking for Directions",
+          "keywords": [
+            "directions",
+            "locations",
+            "transportation"
+          ],
+          "description": "Master how to ask for and understand directions to navigate Tokyo's complex streets and transportation systems."
+        },
+        {
+          "sub_topic": "Ordering Food and Drinks at Restaurants",
+          "keywords": [
+            "food",
+            "ordering",
+            "restaurants"
+          ],
+          "description": "Learn how to confidently order meals and drinks at various eateries, from traditional ramen shops to modern cafes."
+        },
+        {
+          "sub_topic": "Shopping Essentials: Making Purchases",
+          "keywords": [
+            "shopping",
+            "prices",
+            "currency"
+          ],
+          "description": "Acquire the language skills necessary for shopping, including asking about prices and making purchases in yen."
+        },
+        {
+          "sub_topic": "Accommodation and Checking In",
+          "keywords": [
+            "hotels",
+            "check-in",
+            "reservations"
+          ],
+          "description": "Learn how to check into a hotel, ask for amenities, and handle basic communication related to your accommodation."
+        }
+      ]
+    },
+    "flashcards": [
+      {
+        "word": "\u3053\u3093\u306b\u3061\u306f (Konnichiwa)",
+        "definition": "Hello (daytime greeting)",
+        "example": "\u6771\u4eac\u3067\u3001\u3053\u3093\u306b\u3061\u306f\u3068\u8a00\u3046\u306e\u306f\u4e00\u822c\u7684\u3067\u3059\u3002 (T\u014dky\u014d de, konnichiwa to iu no wa ippanteki desu.) - In Tokyo, saying 'Konnichiwa' is common."
+      },
+      {
+        "word": "\u3042\u308a\u304c\u3068\u3046 (Arigat\u014d)",
+        "definition": "Thank you",
+        "example": "\u89aa\u5207\u306a\u4eba\u306b\u3042\u308a\u304c\u3068\u3046\u3068\u8a00\u3044\u307e\u3057\u3087\u3046\u3002 (Shinsetsu na hito ni arigat\u014d to iimash\u014d.) - Let's say thank you to kind people."
+      },
+      {
+        "word": "\u3059\u307f\u307e\u305b\u3093 (Sumimasen)",
+        "definition": "Excuse me / I'm sorry",
+        "example": "\u3059\u307f\u307e\u305b\u3093\u3001\u9053\u3092\u805e\u3044\u3066\u3082\u3044\u3044\u3067\u3059\u304b\uff1f (Sumimasen, michi o kiite mo ii desu ka?) - Excuse me, can I ask for directions?"
+      },
+      {
+        "word": "\u306f\u3044 (Hai)",
+        "definition": "Yes",
+        "example": "\u306f\u3044\u3001\u6771\u4eac\u30bf\u30ef\u30fc\u306b\u884c\u3063\u305f\u3053\u3068\u304c\u3042\u308a\u307e\u3059\u3002 (Hai, T\u014dky\u014d taw\u0101 ni itta koto ga arimasu.) - Yes, I have been to Tokyo Tower."
+      },
+      {
+        "word": "\u3044\u3044\u3048 (Iie)",
+        "definition": "No",
+        "example": "\u3044\u3044\u3048\u3001\u65e5\u672c\u8a9e\u306f\u307e\u3060\u4e0a\u624b\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002 (Iie, Nihongo wa mada j\u014dzu dewa arimasen.) - No, I am not very good at Japanese yet."
+      },
+      {
+        "word": "\u99c5 (Eki)",
+        "definition": "Station",
+        "example": "\u6771\u4eac\u99c5\u306f\u3068\u3066\u3082\u5927\u304d\u3044\u3067\u3059\u3002 (T\u014dky\u014d eki wa totemo \u014dkii desu.) - Tokyo Station is very big."
+      },
+      {
+        "word": "\u30c8\u30a4\u30ec (Toire)",
+        "definition": "Toilet / Restroom",
+        "example": "\u30c8\u30a4\u30ec\u306f\u3069\u3053\u3067\u3059\u304b\uff1f (Toire wa doko desu ka?) - Where is the toilet?"
+      },
+      {
+        "word": "\u30db\u30c6\u30eb (Hoteru)",
+        "definition": "Hotel",
+        "example": "\u30db\u30c6\u30eb\u306f\u99c5\u304b\u3089\u8fd1\u3044\u3067\u3059\u3002 (Hoteru wa eki kara chikai desu.) - The hotel is near the station."
+      },
+      {
+        "word": "\u30ec\u30b9\u30c8\u30e9\u30f3 (Resutoran)",
+        "definition": "Restaurant",
+        "example": "\u7f8e\u5473\u3057\u3044\u30ec\u30b9\u30c8\u30e9\u30f3\u3092\u77e5\u3063\u3066\u3044\u307e\u3059\u304b\uff1f (Oishii resutoran o shitte imasu ka?) - Do you know a good restaurant?"
+      },
+      {
+        "word": "\u89b3\u5149 (Kank\u014d)",
+        "definition": "Sightseeing",
+        "example": "\u6771\u4eac\u3067\u89b3\u5149\u3092\u697d\u3057\u3093\u3067\u3044\u307e\u3059\u3002 (T\u014dky\u014d de kank\u014d o tanoshinde imasu.) - I am enjoying sightseeing in Tokyo."
+      }
+    ],
+    "exercises": [
+      {
+        "sentence": "\u6771\u4eac\u306e\u5730\u4e0b\u9244\u3067\u5207\u7b26\u3092___\u6642\u3001\u3069\u3053\u306b\u884c\u304d\u305f\u3044\u304b\u3092\u78ba\u8a8d\u3057\u307e\u3059\u3002",
+        "answer": "\u8cb7\u3046",
+        "choices": [
+          "\u8cb7\u3046",
+          "\u98df\u3079\u308b",
+          "\u898b\u308b",
+          "\u98f2\u3080"
+        ],
+        "explanation": "The correct verb is \"\u8cb7\u3046\" (kau - to buy), as you need to buy a ticket when using the Tokyo subway. \"\u98df\u3079\u308b\" (taberu - to eat), \"\u898b\u308b\" (miru - to see), and \"\u98f2\u3080\" (nomu - to drink) do not fit the context of purchasing a ticket."
+      },
+      {
+        "sentence": "\u6e0b\u8c37\u306e\u4ea4\u5dee\u70b9\u306f\u3068\u3066\u3082___\u306e\u3067\u3001\u521d\u3081\u3066\u306e\u4eba\u306f\u9a5a\u304f\u304b\u3082\u3057\u308c\u307e\u305b\u3093\u3002",
+        "answer": "\u6df7\u3093\u3067\u3044\u308b",
+        "choices": [
+          "\u9759\u304b",
+          "\u6df7\u3093\u3067\u3044\u308b",
+          "\u5e83\u3044",
+          "\u8fd1\u3044"
+        ],
+        "explanation": "\"\u6df7\u3093\u3067\u3044\u308b\" (kondeiru - crowded) accurately describes Shibuya crossing. \"\u9759\u304b\" (shizuka - quiet), \"\u5e83\u3044\" (hiroi - wide), and \"\u8fd1\u3044\" (chikai - near) are not characteristics of this famous intersection."
+      },
+      {
+        "sentence": "\u6d45\u8349\u5bfa\u3067___\u3092\u5f15\u3044\u3066\u3001\u4eca\u65e5\u306e\u904b\u52e2\u3092\u8a66\u3057\u3066\u307f\u307e\u3057\u3087\u3046\u3002",
+        "answer": "\u304a\u307f\u304f\u3058",
+        "choices": [
+          "\u304a\u307f\u304f\u3058",
+          "\u304a\u5f01\u5f53",
+          "\u304a\u571f\u7523",
+          "\u304a\u8336"
+        ],
+        "explanation": "\"\u304a\u307f\u304f\u3058\" (omikuji - fortune slip) is drawn at temples like Senso-ji. \"\u304a\u5f01\u5f53\" (obento - boxed lunch), \"\u304a\u571f\u7523\" (omiyage - souvenir), and \"\u304a\u8336\" (ocha - tea) do not fit this action."
+      },
+      {
+        "sentence": "\u65b0\u5bbf\u5fa1\u82d1\u306f___\u5ead\u5712\u3067\u3001\u56db\u5b63\u6298\u3005\u306e\u7f8e\u3057\u3044\u666f\u8272\u304c\u697d\u3057\u3081\u307e\u3059\u3002",
+        "answer": "\u5e83\u3044",
+        "choices": [
+          "\u9ad8\u3044",
+          "\u65b0\u3057\u3044",
+          "\u5e83\u3044",
+          "\u53e4\u3044"
+        ],
+        "explanation": "\"\u5e83\u3044\" (hiroi - spacious) correctly describes Shinjuku Gyoen. \"\u9ad8\u3044\" (takai - tall/expensive), \"\u65b0\u3057\u3044\" (atarashii - new), and \"\u53e4\u3044\" (furui - old) are not appropriate descriptions of the garden's overall characteristic."
+      },
+      {
+        "sentence": "\u539f\u5bbf\u3067___\u670d\u3092\u8cb7\u3046\u306e\u304c\u597d\u304d\u3067\u3059\u3002\u7279\u306b\u30e6\u30cb\u30fc\u30af\u306a\u30c7\u30b6\u30a4\u30f3\u306e\u3082\u306e\u304c\u597d\u304d\u3067\u3059\u3002",
+        "answer": "\u9762\u767d\u3044",
+        "choices": [
+          "\u9762\u767d\u3044",
+          "\u9ad8\u3044",
+          "\u5c0f\u3055\u3044",
+          "\u91cd\u3044"
+        ],
+        "explanation": "\"\u9762\u767d\u3044\" (omoshiroi - interesting/unique) fits the context of unique designs in Harajuku. \"\u9ad8\u3044\" (takai - expensive), \"\u5c0f\u3055\u3044\" (chiisai - small), and \"\u91cd\u3044\" (omoi - heavy) do not relate to design qualities."
+      }
+    ],
+    "simulation": {
+      "title": "Lost in Translation, Found in Tokyo",
+      "setting": "Akari, a first-time visitor to Tokyo, gets separated from her tour group near Shibuya Crossing. Overwhelmed but determined, she attempts to navigate using her phrasebook and a dash of courage.",
+      "content": [
+        {
+          "speaker": "Narrator",
+          "target_language_text": "\u79cb\u8449\u539f\u3067\u3001\u660e\u306f\u30b0\u30eb\u30fc\u30d7\u304b\u3089\u96e2\u308c\u3066\u3057\u307e\u3044\u307e\u3057\u305f\u3002",
+          "phonetics": "Akihabara de, Akari wa guruupu kara hanarete shimaimashita.",
+          "base_language_translation": "In Akihabara, Akari got separated from her group."
+        },
+        {
+          "speaker": "Akari",
+          "target_language_text": "\u3059\u307f\u307e\u305b\u3093\u3001\u99c5\u306f\u3069\u3053\u3067\u3059\u304b\uff1f",
+          "phonetics": "Sumimasen, eki wa doko desu ka?",
+          "base_language_translation": "Excuse me, where is the station?"
+        },
+        {
+          "speaker": "Old Man",
+          "target_language_text": "\u99c5\uff1f\u3042\u3042\u3001\u3042\u3061\u3089\u3067\u3059\u3002",
+          "phonetics": "Eki? Aa, achira desu.",
+          "base_language_translation": "The station? Ah, it's over there."
+        },
+        {
+          "speaker": "Akari",
+          "target_language_text": "\u3042\u308a\u304c\u3068\u3046\u3054\u3056\u3044\u307e\u3059\uff01",
+          "phonetics": "Arigatou gozaimasu!",
+          "base_language_translation": "Thank you very much!"
+        },
+        {
+          "speaker": "Narrator",
+          "target_language_text": "\u660e\u306f\u5207\u7b26\u3092\u8cb7\u3044\u307e\u3059\u3002",
+          "phonetics": "Akari wa kippu o kaimasu.",
+          "base_language_translation": "Akari buys a ticket."
+        },
+        {
+          "speaker": "Akari",
+          "target_language_text": "\u6e0b\u8c37\u307e\u3067\u304a\u9858\u3044\u3057\u307e\u3059\u3002",
+          "phonetics": "Shibuya made onegaishimasu.",
+          "base_language_translation": "To Shibuya, please."
+        },
+        {
+          "speaker": "Station Attendant",
+          "target_language_text": "\u306f\u3044\u3001\uff13\uff10\uff10\u5186\u3067\u3059\u3002",
+          "phonetics": "Hai, sanbyaku en desu.",
+          "base_language_translation": "Yes, it's 300 yen."
+        },
+        {
+          "speaker": "Akari",
+          "target_language_text": "\u3053\u308c\u306f\u3044\u304f\u3089\u3067\u3059\u304b\uff1f",
+          "phonetics": "Kore wa ikura desu ka?",
+          "base_language_translation": "How much is this?"
+        },
+        {
+          "speaker": "Shopkeeper",
+          "target_language_text": "\uff15\uff10\uff10\u5186\u3067\u3059\u3002",
+          "phonetics": "Gohyaku en desu.",
+          "base_language_translation": "It's 500 yen."
+        },
+        {
+          "speaker": "Narrator",
+          "target_language_text": "\u660e\u306f\u6771\u4eac\u3067\u65b0\u3057\u3044\u5192\u967a\u3092\u59cb\u3081\u307e\u3059\u3002",
+          "phonetics": "Akari wa Tokyo de atarashii bouken o hajimemasu.",
+          "base_language_translation": "Akari starts a new adventure in Tokyo."
+        }
+      ]
+    }
+  },
+  "updated_at": "2025-06-26T06:13:55.272962"
+}

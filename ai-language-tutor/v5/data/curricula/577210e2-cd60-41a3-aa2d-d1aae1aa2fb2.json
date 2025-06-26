@@ -1,0 +1,246 @@
+{
+  "id": "577210e2-cd60-41a3-aa2d-d1aae1aa2fb2",
+  "user_id": 1,
+  "metadata": {
+    "native_language": "english",
+    "target_language": "mandarin",
+    "proficiency": "beginner",
+    "title": "Beijing Trip Preparation",
+    "description": "Learning Mandarin basics for an exciting trip to Beijing!"
+  },
+  "created_at": "2025-06-26T07:24:39.067120",
+  "status": {
+    "curriculum": "completed",
+    "flashcards": "completed",
+    "exercises": "completed",
+    "simulation": "completed"
+  },
+  "content": {
+    "curriculum": {
+      "lesson_topic": "Beijing Trip Preparation: Learning Mandarin basics for an exciting trip to Beijing!",
+      "sub_topics": [
+        {
+          "sub_topic": "Greetings and Basic Introductions",
+          "keywords": [
+            "greetings",
+            "introductions",
+            "basic phrases"
+          ],
+          "description": "Learn how to say hello, introduce yourself, and ask basic questions to start conversations with locals."
+        },
+        {
+          "sub_topic": "Essential Phrases for Transportation",
+          "keywords": [
+            "transportation",
+            "directions",
+            "public transport"
+          ],
+          "description": "Master essential phrases for navigating Beijing, including asking for directions, using public transportation, and taking taxis."
+        },
+        {
+          "sub_topic": "Dining Out: Ordering Food and Drinks",
+          "keywords": [
+            "food",
+            "ordering",
+            "restaurant"
+          ],
+          "description": "Learn how to order food and drinks in restaurants, ask about ingredients, and understand basic menu items."
+        },
+        {
+          "sub_topic": "Shopping: Bargaining and Making Purchases",
+          "keywords": [
+            "shopping",
+            "bargaining",
+            "money"
+          ],
+          "description": "Acquire the language skills needed to shop in Beijing, including asking about prices, bargaining, and making purchases."
+        },
+        {
+          "sub_topic": "Sightseeing: Describing and Asking About Landmarks",
+          "keywords": [
+            "landmarks",
+            "sightseeing",
+            "descriptions"
+          ],
+          "description": "Learn how to describe famous landmarks, ask questions about their history, and share your experiences with others."
+        }
+      ]
+    },
+    "flashcards": [
+      {
+        "word": "\u4f60\u597d (n\u01d0 h\u01ceo)",
+        "definition": "Hello",
+        "example": "\u4f60\u597d\uff01\u6b22\u8fce\u6765\u5230\u5317\u4eac (N\u01d0 h\u01ceo! Hu\u0101ny\u00edng l\u00e1i d\u00e0o B\u011bij\u012bng) - Hello! Welcome to Beijing."
+      },
+      {
+        "word": "\u8c22\u8c22 (xi\u00e8 xi\u00e8)",
+        "definition": "Thank you",
+        "example": "\u8c22\u8c22\u4f60\u7684\u5e2e\u52a9 (Xi\u00e8xi\u00e8 n\u01d0 de b\u0101ngzh\u00f9) - Thank you for your help."
+      },
+      {
+        "word": "\u4e0d\u5ba2\u6c14 (b\u00fa k\u00e8 q\u00ec)",
+        "definition": "You're welcome",
+        "example": "\u4e0d\u7528\u8c22\uff0c\u4e0d\u5ba2\u6c14 (B\u00fay\u00f2ng xi\u00e8, b\u00fa k\u00e8q\u00ec) - No need to thank, you're welcome."
+      },
+      {
+        "word": "\u518d\u89c1 (z\u00e0i ji\u00e0n)",
+        "definition": "Goodbye",
+        "example": "\u518d\u89c1\uff01\u795d\u4f60\u5728\u5317\u4eac\u73a9\u5f97\u5f00\u5fc3 (Z\u00e0iji\u00e0n! Zh\u00f9 n\u01d0 z\u00e0i B\u011bij\u012bng w\u00e1n de k\u0101ix\u012bn) - Goodbye! Have fun in Beijing."
+      },
+      {
+        "word": "\u8bf7 (q\u01d0ng)",
+        "definition": "Please",
+        "example": "\u8bf7\u95ee\uff0c\u6d17\u624b\u95f4\u5728\u54ea\u91cc\uff1f(Q\u01d0ngw\u00e8n, x\u01d0sh\u01d2uji\u0101n z\u00e0i n\u01cel\u01d0?) - Excuse me, where is the restroom?"
+      },
+      {
+        "word": "\u662f (sh\u00ec)",
+        "definition": "Yes",
+        "example": "\u662f\u7684\uff0c\u6211\u60f3\u53bb\u957f\u57ce (Sh\u00ec de, w\u01d2 xi\u01ceng q\u00f9 Ch\u00e1ngch\u00e9ng) - Yes, I want to go to the Great Wall."
+      },
+      {
+        "word": "\u4e0d\u662f (b\u00fa sh\u00ec)",
+        "definition": "No",
+        "example": "\u6211\u4e0d\u662f\u5317\u4eac\u4eba (W\u01d2 b\u00fa sh\u00ec B\u011bij\u012bng r\u00e9n) - I am not from Beijing."
+      },
+      {
+        "word": "\u5bf9\u4e0d\u8d77 (du\u00ec b\u00f9 q\u01d0)",
+        "definition": "Sorry",
+        "example": "\u5bf9\u4e0d\u8d77\uff0c\u6211\u542c\u4e0d\u61c2 (Du\u00ecb\u00f9q\u01d0, w\u01d2 t\u012bng b\u00f9 d\u01d2ng) - Sorry, I don't understand."
+      },
+      {
+        "word": "\u6ca1\u5173\u7cfb (m\u00e9i gu\u0101n xi)",
+        "definition": "It's okay / It doesn't matter",
+        "example": "\u6ca1\u5173\u7cfb\uff0c\u6211\u53ef\u4ee5\u518d\u8bf4\u4e00\u904d (M\u00e9i gu\u0101nxi, w\u01d2 k\u011by\u01d0 z\u00e0ishu\u014d y\u012bbi\u00e0n) - It's okay, I can say it again."
+      },
+      {
+        "word": "\u591a\u5c11 (du\u014d shao)",
+        "definition": "How much?",
+        "example": "\u8bf7\u95ee\uff0c\u8fd9\u4e2a\u591a\u5c11\u94b1\uff1f(Q\u01d0ngw\u00e8n, zh\u00e8ge du\u014dshao qi\u00e1n?) - Excuse me, how much is this?"
+      }
+    ],
+    "exercises": [
+      {
+        "sentence": "\u4f60\u597d\uff01\u6211___\u674e\u660e\uff0c\u5f88\u9ad8\u5174\u8ba4\u8bc6\u4f60\u3002",
+        "answer": "\u662f",
+        "choices": [
+          "\u662f",
+          "\u53eb",
+          "\u5728",
+          "\u6709"
+        ],
+        "explanation": "'\u662f' (sh\u00ec) means 'am' and is used to introduce oneself. '\u53eb' (ji\u00e0o) means 'called', '\u5728' (z\u00e0i) means 'at/in', and '\u6709' (y\u01d2u) means 'have'; none fit the context of a simple introduction."
+      },
+      {
+        "sentence": "\u8bf7\u95ee\uff0c\u53bb\u957f\u57ce\u600e\u4e48___\uff1f",
+        "answer": "\u8d70",
+        "choices": [
+          "\u8d70",
+          "\u8bf4",
+          "\u770b",
+          "\u4e70"
+        ],
+        "explanation": "'\u8d70' (z\u01d2u) means 'go' or 'walk', so '\u600e\u4e48\u8d70' (z\u011bnme z\u01d2u) is the correct way to ask 'how to get to'. '\u8bf4' (shu\u014d) means 'say', '\u770b' (k\u00e0n) means 'see', and '\u4e70' (m\u01cei) means 'buy', which are not suitable in asking for directions."
+      },
+      {
+        "sentence": "\u6211___\u5728\u9152\u5e97\uff0c\u623f\u95f4\u53f7\u7801\u662f808\u3002",
+        "answer": "\u4f4f",
+        "choices": [
+          "\u4f4f",
+          "\u5403",
+          "\u53bb",
+          "\u6765"
+        ],
+        "explanation": "'\u4f4f' (zh\u00f9) means 'to live' or 'to stay', which fits the context of staying in a hotel. '\u5403' (ch\u012b) means 'eat', '\u53bb' (q\u00f9) means 'go', and '\u6765' (l\u00e1i) means 'come', which don't make sense in the given context."
+      },
+      {
+        "sentence": "\u8fd9\u4e2a___\u591a\u5c11\u94b1\uff1f",
+        "answer": "\u82f9\u679c",
+        "choices": [
+          "\u82f9\u679c",
+          "\u6905\u5b50",
+          "\u7535\u8111",
+          "\u4e66"
+        ],
+        "explanation": "'\u82f9\u679c' (p\u00ednggu\u01d2) meaning apple, is a commonly purchased item, fitting the 'how much money' question. While '\u6905\u5b50' (y\u01d0zi - chair), '\u7535\u8111' (di\u00e0nn\u01ceo - computer), and '\u4e66' (sh\u016b - book) can be bought, 'apple' is more typically asked about in simple price inquiries for beginners."
+      },
+      {
+        "sentence": "\u8c22\u8c22\u4f60___\u6211\u7684\u5e2e\u52a9\uff01",
+        "answer": "\u5bf9",
+        "choices": [
+          "\u5bf9",
+          "\u5728",
+          "\u662f",
+          "\u8981"
+        ],
+        "explanation": "'\u5bf9' (du\u00ec) is used with '\u7684\u5e2e\u52a9' (de b\u0101ngzh\u00f9 - help) to express 'thanks for'. The phrase '\u5bf9...\u7684\u5e2e\u52a9' (du\u00ec...de b\u0101ngzh\u00f9) translates to 'for (someone's) help'. The other options, \u5728 (z\u00e0i - at), \u662f (sh\u00ec - is), and \u8981 (y\u00e0o - want), don't fit grammatically."
+      }
+    ],
+    "simulation": {
+      "title": "Lost in Translation, Found in Beijing",
+      "setting": "Xia Mei is preparing for her first trip to Beijing. She's eager to practice some basic Mandarin phrases she learned online to make her experience more immersive and enjoyable. This story captures a funny moment at a traditional tea house.",
+      "content": [
+        {
+          "speaker": "Xia Mei",
+          "target_language_text": "\u4f60\u597d\uff01\u6211\u60f3\u559d\u8336\u3002",
+          "phonetics": "N\u01d0 h\u01ceo! W\u01d2 xi\u01ceng h\u0113 ch\u00e1.",
+          "base_language_translation": "Hello! I would like to drink tea."
+        },
+        {
+          "speaker": "Tea House Owner",
+          "target_language_text": "\u4f60\u597d\uff01\u8bf7\u95ee\u60a8\u8981\u4ec0\u4e48\u8336\uff1f",
+          "phonetics": "N\u01d0 h\u01ceo! Q\u01d0ngw\u00e8n n\u00edn y\u00e0o sh\u00e9nme ch\u00e1?",
+          "base_language_translation": "Hello! May I ask what kind of tea you would like?"
+        },
+        {
+          "speaker": "Xia Mei",
+          "target_language_text": "\u6211\u60f3\u2026\u55ef\u2026\u90a3\u4e2a\u2026\u7ea2\u8336\uff01",
+          "phonetics": "W\u01d2 xi\u01ceng... \u00e8... n\u00e0ge... h\u00f3ngch\u00e1!",
+          "base_language_translation": "I want... um... that... black tea!"
+        },
+        {
+          "speaker": "Tea House Owner",
+          "target_language_text": "\u597d\u7684\uff0c\u8bf7\u7a0d\u7b49\u3002",
+          "phonetics": "H\u01ceo de, q\u01d0ng sh\u0101o d\u011bng.",
+          "base_language_translation": "Okay, please wait a moment."
+        },
+        {
+          "speaker": "Xia Mei",
+          "target_language_text": "\u8c22\u8c22\uff01",
+          "phonetics": "Xi\u00e8xi\u00e8!",
+          "base_language_translation": "Thank you!"
+        },
+        {
+          "speaker": "Tea House Owner",
+          "target_language_text": "\u4e0d\u5ba2\u6c14\u3002\u8fd9\u662f\u60a8\u7684\u7ea2\u8336\u3002",
+          "phonetics": "B\u00f9 k\u00e8q\u00ec. Zh\u00e8 sh\u00ec n\u00edn de h\u00f3ngch\u00e1.",
+          "base_language_translation": "You're welcome. This is your black tea."
+        },
+        {
+          "speaker": "Xia Mei",
+          "target_language_text": "\u8fd9\u4e2a\u2026\u591a\u5c11\u94b1\uff1f",
+          "phonetics": "Zh\u00e8ge... du\u014dshao qi\u00e1n?",
+          "base_language_translation": "This... how much money?"
+        },
+        {
+          "speaker": "Tea House Owner",
+          "target_language_text": "\u4e8c\u5341\u5143\u3002",
+          "phonetics": "\u00c8rsh\u00ed yu\u00e1n.",
+          "base_language_translation": "Twenty yuan."
+        },
+        {
+          "speaker": "Xia Mei",
+          "target_language_text": "\u597d\u7684\u3002\u8c22\u8c22\u4f60\uff01",
+          "phonetics": "H\u01ceo de. Xi\u00e8xi\u00e8 n\u01d0!",
+          "base_language_translation": "Okay. Thank you!"
+        },
+        {
+          "speaker": "Tea House Owner",
+          "target_language_text": "\u4e0d\u7528\u8c22\u3002\u6b22\u8fce\u518d\u6765\uff01",
+          "phonetics": "B\u00f9y\u00f2ng xi\u00e8. Hu\u0101ny\u00edng z\u00e0i l\u00e1i!",
+          "base_language_translation": "You're welcome. Welcome to come again!"
+        }
+      ]
+    }
+  },
+  "updated_at": "2025-06-26T07:24:45.616640"
+}
