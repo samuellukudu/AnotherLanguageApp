@@ -133,3 +133,261 @@ CREATE INDEX idx_feedback_related_saved ON feedback(related_saved_content_id);
 *   **Consistency:** Decide on a consistent way to store language names/codes (e.g., full names like 'Spanish', ISO 639-1 codes like 'es'). Be consistent across tables and your application logic.
 
 This schema provides a solid foundation for your application's core needs. Start with this, and you can always evolve it as new feature requirements emerge.
+
+# Database Integration for AI Language Tutor
+
+This document explains the SQLite database integration that has been added to the AI Language Tutor backend.
+
+## Overview
+
+The system now uses **database-first storage** by default:
+- **Primary**: SQLite database for efficient querying and data management
+- **Optional**: File-based storage backup (can be enabled if needed)
+
+**No migrations needed** - the system automatically uses the database for all new data.
+
+## Setup
+
+### 1. Install Dependencies
+
+The required dependency `aiosqlite` has been added to `requirements.txt`. Install it with:
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Database Initialization
+
+The database is automatically initialized when the FastAPI application starts. The database file will be created at `data/language_tutor.db`.
+
+### 3. Migration from File Storage (Optional)
+
+If you have existing curriculum data in JSON files and want to migrate it to the database:
+
+```bash
+python -m backend.db_utils migrate
+```
+
+**Note**: This is only needed if you're upgrading from a previous version with file-based data. New installations automatically use the database.
+
+## Database Schema
+
+### Tables
+
+#### `curricula`
+Stores curriculum metadata and overall status.
+
+| Column | Type | Description |
+|--------|------|-------------|
+| id | TEXT | Primary key (UUID) |
+| user_id | INTEGER | User identifier |
+| title | TEXT | Curriculum title |
+| description | TEXT | Curriculum description |
+| native_language | TEXT | User's native language |
+| target_language | TEXT | Target learning language |
+| proficiency | TEXT | User's proficiency level |
+| lesson_topic | TEXT | Main topic of the curriculum |
+| created_at | TIMESTAMP | Creation timestamp |
+| updated_at | TIMESTAMP | Last update timestamp |
+| status | TEXT | Overall curriculum status |
+
+#### `lessons`
+Stores individual lessons within a curriculum.
+
+| Column | Type | Description |
+|--------|------|-------------|
+| id | TEXT | Primary key (UUID) |
+| curriculum_id | TEXT | Foreign key to curricula table |
+| sub_topic | TEXT | Lesson sub-topic |
+| description | TEXT | Lesson description |
+| keywords | TEXT | JSON array of keywords |
+| created_at | TIMESTAMP | Creation timestamp |
+| updated_at | TIMESTAMP | Last update timestamp |
+
+#### `flashcards`
+Stores flashcards for each lesson.
+
+| Column | Type | Description |
+|--------|------|-------------|
+| id | TEXT | Primary key (UUID) |
+| lesson_id | TEXT | Foreign key to lessons table |
+| word | TEXT | Flashcard word/term |
+| definition | TEXT | Definition of the word |
+| example | TEXT | Example sentence |
+| created_at | TIMESTAMP | Creation timestamp |
+
+#### `exercises`
+Stores exercises for each lesson.
+
+| Column | Type | Description |
+|--------|------|-------------|
+| id | TEXT | Primary key (UUID) |
+| lesson_id | TEXT | Foreign key to lessons table |
+| sentence | TEXT | Exercise sentence |
+| answer | TEXT | Correct answer |
+| choices | TEXT | JSON array of multiple choice options |
+| explanation | TEXT | Explanation of the answer |
+| created_at | TIMESTAMP | Creation timestamp |
+
+#### `simulations`
+Stores conversation simulations for each lesson.
+
+| Column | Type | Description |
+|--------|------|-------------|
+| id | TEXT | Primary key (UUID) |
+| lesson_id | TEXT | Foreign key to lessons table |
+| title | TEXT | Simulation title |
+| setting | TEXT | Simulation setting/context |
+| content | TEXT | JSON array of conversation content |
+| created_at | TIMESTAMP | Creation timestamp |
+
+## How It Works
+
+### Database-First Strategy
+
+1. **Write Operations**: Data is written to the database (primary storage)
+2. **Read Operations**: Data is retrieved from the database
+3. **Error Handling**: Robust error handling ensures data integrity
+4. **Optional Backup**: File storage can be enabled as backup if needed
+
+### Storage Class Updates
+
+The `CurriculumStorage` class has been enhanced with:
+- Database integration option (`use_database` parameter)
+- Automatic fallback to file storage on database errors
+- Consistent API - no changes needed in existing code
+
+### API Compatibility
+
+All existing API endpoints work exactly the same way. The database integration is transparent to the API consumers.
+
+## Configuration
+
+### Storage Configuration
+
+The system uses database-first storage by default. You can configure it in `backend/config.py`:
+
+```python
+# Database Configuration
+DATABASE_ENABLED = True
+DATABASE_PATH = "data/language_tutor.db"
+FILE_BACKUP_ENABLED = False  # Set to True if you want file backup
+
+# Storage Configuration
+USE_DATABASE_PRIMARY = True  # Default: database-first
+USE_FILE_BACKUP = False      # Default: no file backup
+```
+
+### Manual Configuration
+
+You can also configure storage programmatically:
+
+```python
+# Database-only (default)
+storage = CurriculumStorage(use_database=True, use_file_backup=False)
+
+# Database with file backup
+storage = CurriculumStorage(use_database=True, use_file_backup=True)
+
+# File-only mode (not recommended)
+storage = CurriculumStorage(use_database=False, use_file_backup=True)
+```
+
+### Database Path
+
+The database path can be configured:
+
+```python
+from backend.database import DatabaseManager
+
+# Custom database path
+database = DatabaseManager(db_path="custom/path/language_tutor.db")
+```
+
+## Maintenance Commands
+
+### Migration
+Migrate existing file data to database:
+```bash
+python -m backend.db_utils migrate
+```
+
+## Benefits
+
+1. **Performance**: Faster queries and filtering capabilities
+2. **Scalability**: Better handling of large datasets
+3. **Data Integrity**: ACID compliance and foreign key constraints
+4. **Flexibility**: Easy to add new query patterns and reporting
+5. **Backup**: Dual storage provides data redundancy
+
+## Troubleshooting
+
+### Database Connection Issues
+- Check if `aiosqlite` is installed
+- Verify write permissions in the `data/` directory
+- Check disk space availability
+
+### Migration Issues
+- Ensure all JSON files are valid
+- Check file permissions in the `data/curricula/` directory
+- Review migration logs for specific error messages
+
+### Fallback Behavior
+If database operations fail, the system automatically falls back to file storage. Check application logs for database error messages.
+
+## Performance Considerations
+
+- Database queries are optimized with indexes on frequently queried columns
+- Large content data is stored as JSON in the database
+- File storage is maintained for backup and compatibility
+
+## New API Methods
+
+The restructured database provides new methods for better content management:
+
+### Curriculum Management
+- `store_curriculum(user_id, metadata, curriculum_data)` - Create curriculum with lessons
+- `get_curriculum(curriculum_id)` - Get complete curriculum with all content
+- `get_user_curricula(user_id)` - Get all curricula for a user
+- `update_curriculum_status(curriculum_id, status)` - Update curriculum status
+
+### Lesson Management
+- `get_lessons(curriculum_id)` - Get all lessons for a curriculum
+
+### Content Management
+- `store_flashcards(lesson_id, flashcards_data)` - Store flashcards for a lesson
+- `store_exercises(lesson_id, exercises_data)` - Store exercises for a lesson
+- `store_simulation(lesson_id, simulation_data)` - Store simulation for a lesson
+
+### Legacy Compatibility
+- `store_generated_content(curriculum_id, content_type, content_data)` - Legacy method (deprecated)
+- `update_content_status(curriculum_id, content_type, status)` - Legacy method (deprecated)
+
+## Database Relationships
+
+The new schema properly represents the relationships:
+
+```
+curricula (1) -> (many) lessons
+lessons (1) -> (many) flashcards
+lessons (1) -> (many) exercises  
+lessons (1) -> (many) simulations
+```
+
+This allows for:
+- Multiple lessons per curriculum
+- Multiple flashcards/exercises per lesson
+- Better content organization and querying
+- Individual lesson-based content generation
+
+## Future Enhancements
+
+Potential improvements that could be added:
+- User management tables
+- Content versioning and history
+- Analytics and usage tracking
+- Full-text search capabilities
+- Lesson progress tracking
+- Content difficulty ratings
+- Spaced repetition algorithms
+- Data archiving strategies

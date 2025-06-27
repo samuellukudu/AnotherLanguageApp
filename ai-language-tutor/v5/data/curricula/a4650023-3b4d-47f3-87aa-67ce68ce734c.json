@@ -1,0 +1,246 @@
+{
+  "id": "a4650023-3b4d-47f3-87aa-67ce68ce734c",
+  "user_id": 1,
+  "metadata": {
+    "native_language": "english",
+    "target_language": "mandarin",
+    "proficiency": "beginner",
+    "title": "Beijing Business Mandarin",
+    "description": "Learning Mandarin for a successful business trip to Beijing."
+  },
+  "created_at": "2025-06-27T10:00:28.300220",
+  "status": {
+    "curriculum": "completed",
+    "flashcards": "completed",
+    "exercises": "completed",
+    "simulation": "completed"
+  },
+  "content": {
+    "curriculum": {
+      "lesson_topic": "Beijing Business Mandarin: Learning Mandarin for a successful business trip to Beijing",
+      "sub_topics": [
+        {
+          "sub_topic": "Greetings and Introductions in a Business Setting",
+          "keywords": [
+            "formal greetings",
+            "business etiquette",
+            "self-introduction"
+          ],
+          "description": "Learners will master polite greetings and formal self-introductions suitable for initial business meetings in Beijing."
+        },
+        {
+          "sub_topic": "Navigating Transportation and Directions",
+          "keywords": [
+            "directions",
+            "transportation",
+            "Beijing landmarks"
+          ],
+          "description": "Learners will be able to ask for and understand directions, use public transportation, and navigate to common business locations in Beijing."
+        },
+        {
+          "sub_topic": "Ordering Food and Drinks at Business Lunches",
+          "keywords": [
+            "ordering food",
+            "restaurant etiquette",
+            "business meals"
+          ],
+          "description": "Learners will be able to confidently order food and beverages at business lunches, understand basic restaurant etiquette, and make small talk related to the meal."
+        },
+        {
+          "sub_topic": "Discussing Meeting Agendas and Objectives",
+          "keywords": [
+            "meeting vocabulary",
+            "agenda",
+            "objectives"
+          ],
+          "description": "Learners will learn vocabulary related to meeting agendas and objectives, enabling them to participate in basic discussions about meeting goals."
+        },
+        {
+          "sub_topic": "Expressing Opinions and Agreement/Disagreement",
+          "keywords": [
+            "opinions",
+            "agreement",
+            "disagreement"
+          ],
+          "description": "Learners will be able to express their opinions politely, agree or disagree respectfully, and ask for clarification during business discussions."
+        }
+      ]
+    },
+    "flashcards": [
+      {
+        "word": "\u4f60\u597d (n\u01d0 h\u01ceo)",
+        "definition": "Hello; a basic greeting.",
+        "example": "\u4f60\u597d\uff0c\u6b22\u8fce\u6765\u5230\u5317\u4eac\uff01(N\u01d0 h\u01ceo, hu\u0101ny\u00edng l\u00e1i d\u00e0o B\u011bij\u012bng!) - Hello, welcome to Beijing!"
+      },
+      {
+        "word": "\u8c22\u8c22 (xi\u00e8xi\u00e8)",
+        "definition": "Thank you.",
+        "example": "\u8c22\u8c22\u60a8\u7684\u5e2e\u52a9\u3002(Xi\u00e8xi\u00e8 n\u00edn de b\u0101ngzh\u00f9.) - Thank you for your help."
+      },
+      {
+        "word": "\u4e0d\u5ba2\u6c14 (b\u00fa k\u00e8q\u00ec)",
+        "definition": "You're welcome.",
+        "example": "\u4e0d\u7528\u8c22\uff0c\u4e0d\u5ba2\u6c14\u3002(B\u00fay\u00f2ng xi\u00e8, b\u00fa k\u00e8q\u00ec.) - You're welcome, don't mention it."
+      },
+      {
+        "word": "\u8bf7 (q\u01d0ng)",
+        "definition": "Please.",
+        "example": "\u8bf7\u8fdb\uff0c\u8bf7\u5750\u3002(Q\u01d0ng j\u00ecn, q\u01d0ng zu\u00f2.) - Please come in, please sit."
+      },
+      {
+        "word": "\u5bf9\u4e0d\u8d77 (du\u00ecb\u00f9q\u01d0)",
+        "definition": "Sorry; excuse me.",
+        "example": "\u5bf9\u4e0d\u8d77\uff0c\u6211\u8fdf\u5230\u4e86\u3002(Du\u00ecb\u00f9q\u01d0, w\u01d2 ch\u00edd\u00e0o le.) - Sorry, I'm late."
+      },
+      {
+        "word": "\u6ca1\u5173\u7cfb (m\u00e9i gu\u0101nxi)",
+        "definition": "It's okay; no problem.",
+        "example": "\u6ca1\u5173\u7cfb\uff0c\u4e0b\u6b21\u6ce8\u610f\u3002(M\u00e9i gu\u0101nxi, xi\u00e0 c\u00ec zh\u00f9y\u00ec.) - It's okay, pay attention next time."
+      },
+      {
+        "word": "\u662f (sh\u00ec)",
+        "definition": "To be; is; yes.",
+        "example": "\u662f\u7684\uff0c\u6211\u662f\u7ecf\u7406\u3002(Sh\u00ec de, w\u01d2 sh\u00ec j\u012bngl\u01d0.) - Yes, I am the manager."
+      },
+      {
+        "word": "\u4e0d\u662f (b\u00fa sh\u00ec)",
+        "definition": "Is not; no.",
+        "example": "\u6211\u4e0d\u662f\u5317\u4eac\u4eba\u3002(W\u01d2 b\u00fa sh\u00ec B\u011bij\u012bng r\u00e9n.) - I am not from Beijing."
+      },
+      {
+        "word": "\u591a\u5c11 (du\u014dshao)",
+        "definition": "How much; how many.",
+        "example": "\u8bf7\u95ee\uff0c\u591a\u5c11\u94b1\uff1f(Q\u01d0ngw\u00e8n, du\u014dshao qi\u00e1n?) - Excuse me, how much does it cost?"
+      },
+      {
+        "word": "\u518d\u89c1 (z\u00e0iji\u00e0n)",
+        "definition": "Goodbye.",
+        "example": "\u660e\u5929\u89c1\uff0c\u518d\u89c1\uff01(M\u00edngti\u0101n ji\u00e0n, z\u00e0iji\u00e0n!) - See you tomorrow, goodbye!"
+      }
+    ],
+    "exercises": [
+      {
+        "sentence": "\u5728\u5317\u4eac\u7684\u5546\u52a1\u4f1a\u8bae\u4e0a\uff0c\u4e92\u76f8___\u540d\u7247\u662f\u5f88\u91cd\u8981\u7684\u793c\u4eea\u3002",
+        "answer": "\u4ea4\u6362",
+        "choices": [
+          "\u8d60\u9001",
+          "\u5c55\u793a",
+          "\u4ea4\u6362",
+          "\u8d2d\u4e70"
+        ],
+        "explanation": "\"\u4ea4\u6362 (ji\u0101o hu\u00e0n)\" means to exchange, which is the correct action for business cards in a meeting. \"\u8d60\u9001 (z\u00e8ng s\u00f2ng)\" means to give as a gift, \"\u5c55\u793a (zh\u01cen sh\u00ec)\" means to display, and \"\u8d2d\u4e70 (g\u00f2u m\u01cei)\" means to buy; none fit the context of exchanging business cards."
+      },
+      {
+        "sentence": "\u5982\u679c\u60a8\u9700\u8981\u5e2e\u52a9\uff0c\u53ef\u4ee5\u968f\u65f6___\u6211\u7684\u624b\u673a\u7ed9\u6211\u6253\u7535\u8bdd\u3002",
+        "answer": "\u7528",
+        "choices": [
+          "\u7528",
+          "\u662f",
+          "\u6709",
+          "\u5728"
+        ],
+        "explanation": "\"\u7528 (y\u00f2ng)\" means to use, indicating using the phone to call. \"\u662f (sh\u00ec)\" means is, \"\u6709 (y\u01d2u)\" means have, and \"\u5728 (z\u00e0i)\" means at/in/on, which do not fit the context of making a phone call."
+      },
+      {
+        "sentence": "\u4e3a\u4e86\u51c6\u65f6\u5230\u8fbe\u4f1a\u8bae\uff0c\u6211\u9700\u8981\u63d0\u524d___\u51fa\u79df\u8f66\u3002",
+        "answer": "\u9884\u8ba2",
+        "choices": [
+          "\u9884\u8ba2",
+          "\u9a7e\u9a76",
+          "\u53d6\u6d88",
+          "\u9000\u8fd8"
+        ],
+        "explanation": "\"\u9884\u8ba2 (y\u00f9 d\u00ecng)\" means to book in advance, which is necessary for ensuring a taxi is available. \"\u9a7e\u9a76 (ji\u00e0 sh\u01d0)\" means to drive, \"\u53d6\u6d88 (q\u01d4 xi\u0101o)\" means to cancel, and \"\u9000\u8fd8 (tu\u00ec hu\u00e1n)\" means to return; none are relevant to arranging transportation."
+      },
+      {
+        "sentence": "\u8fd9\u5bb6\u9910\u5385\u7684\u5317\u4eac\u70e4\u9e2d\u975e\u5e38\u6709\u540d\uff0c\u6211\u5efa\u8bae\u60a8___\u4e00\u4e0b\u3002",
+        "answer": "\u5c1d",
+        "choices": [
+          "\u5c1d",
+          "\u770b",
+          "\u4e70",
+          "\u505a"
+        ],
+        "explanation": "\"\u5c1d (ch\u00e1ng)\" means to taste, which is appropriate when recommending a dish. \"\u770b (k\u00e0n)\" means to see, \"\u4e70 (m\u01cei)\" means to buy, and \"\u505a (zu\u00f2)\" means to make; none are suitable for suggesting someone try a dish."
+      },
+      {
+        "sentence": "\u5728\u8c08\u5224\u4e4b\u524d\uff0c\u4e86\u89e3\u5bf9\u65b9\u516c\u53f8\u7684\u6587\u5316___\u5f88\u91cd\u8981\u3002",
+        "answer": "\u80cc\u666f",
+        "choices": [
+          "\u8bed\u8a00",
+          "\u80cc\u666f",
+          "\u4ea7\u54c1",
+          "\u4ef7\u683c"
+        ],
+        "explanation": "\"\u80cc\u666f (b\u00e8i j\u01d0ng)\" means background, referring to cultural background. \"\u8bed\u8a00 (y\u01d4 y\u00e1n)\" means language, \"\u4ea7\u54c1 (ch\u01cen p\u01d0n)\" means product, and \"\u4ef7\u683c (ji\u00e0 g\u00e9)\" means price; only understanding the cultural background fits the context of pre-negotiation preparation."
+      }
+    ],
+    "simulation": {
+      "title": "A Smooth Arrival: Landing a Deal in Beijing",
+      "setting": "Zhang Wei, a young American businessman, is on his first trip to Beijing to finalize a deal with a Chinese company. He's been studying Mandarin, hoping to make a good impression and facilitate better communication during his visit. This scene captures his arrival and initial interactions at the airport.",
+      "content": [
+        {
+          "speaker": "Narrator",
+          "target_language_text": "\u5f20\u4f1f\u62b5\u8fbe\u5317\u4eac\u9996\u90fd\u56fd\u9645\u673a\u573a\u3002",
+          "phonetics": "Zh\u0101ng W\u011bi d\u01d0d\u00e1 B\u011bij\u012bng sh\u01d2ud\u016b gu\u00f3j\u00ec j\u012bch\u01ceng.",
+          "base_language_translation": "Zhang Wei arrives at Beijing Capital International Airport."
+        },
+        {
+          "speaker": "Zhang Wei",
+          "target_language_text": "\u4f60\u597d\uff01",
+          "phonetics": "N\u01d0 h\u01ceo!",
+          "base_language_translation": "Hello!"
+        },
+        {
+          "speaker": "Immigration Officer",
+          "target_language_text": "\u4f60\u597d\u3002\u8bf7\u7ed9\u6211\u4f60\u7684\u62a4\u7167\u3002",
+          "phonetics": "N\u01d0 h\u01ceo. Q\u01d0ng g\u011bi w\u01d2 n\u01d0 de h\u00f9zh\u00e0o.",
+          "base_language_translation": "Hello. Please give me your passport."
+        },
+        {
+          "speaker": "Zhang Wei",
+          "target_language_text": "\u8fd9\u662f\u6211\u7684\u62a4\u7167\u3002",
+          "phonetics": "Zh\u00e8 sh\u00ec w\u01d2 de h\u00f9zh\u00e0o.",
+          "base_language_translation": "This is my passport."
+        },
+        {
+          "speaker": "Immigration Officer",
+          "target_language_text": "\u8c22\u8c22\u3002\u4f60\u6765\u5317\u4eac\u505a\u4ec0\u4e48\uff1f",
+          "phonetics": "Xi\u00e8xi\u00e8. N\u01d0 l\u00e1i B\u011bij\u012bng zu\u00f2 sh\u00e9nme?",
+          "base_language_translation": "Thank you. What are you here to do in Beijing?"
+        },
+        {
+          "speaker": "Zhang Wei",
+          "target_language_text": "\u6211\u6765\u8fd9\u91cc\u505a\u751f\u610f\u3002",
+          "phonetics": "W\u01d2 l\u00e1i zh\u00e8l\u01d0 zu\u00f2 sh\u0113ngy\u00ec.",
+          "base_language_translation": "I'm here for business."
+        },
+        {
+          "speaker": "Immigration Officer",
+          "target_language_text": "\u597d\u7684\u3002\u795d\u4f60\u65c5\u9014\u6109\u5feb\uff01",
+          "phonetics": "H\u01ceo de. Zh\u00f9 n\u01d0 l\u01dat\u00fa y\u00faku\u00e0i!",
+          "base_language_translation": "Okay. Have a pleasant trip!"
+        },
+        {
+          "speaker": "Zhang Wei",
+          "target_language_text": "\u8c22\u8c22\uff01",
+          "phonetics": "Xi\u00e8xi\u00e8!",
+          "base_language_translation": "Thank you!"
+        },
+        {
+          "speaker": "Narrator",
+          "target_language_text": "\u5f20\u4f1f\u987a\u5229\u901a\u8fc7\u4e86\u6d77\u5173\uff0c\u53bb\u53d6\u4ed6\u7684\u884c\u674e\u3002",
+          "phonetics": "Zh\u0101ng W\u011bi sh\u00f9nl\u00ec t\u014dnggu\u00f2 le h\u01ceigu\u0101n, q\u00f9 q\u01d4 t\u0101 de x\u00edngl\u01d0.",
+          "base_language_translation": "Zhang Wei smoothly passes through customs and goes to pick up his luggage."
+        },
+        {
+          "speaker": "Zhang Wei",
+          "target_language_text": "\u5317\u4eac\uff0c\u6211\u6765\u4e86\uff01",
+          "phonetics": "B\u011bij\u012bng, w\u01d2 l\u00e1i le!",
+          "base_language_translation": "Beijing, here I come!"
+        }
+      ]
+    }
+  },
+  "updated_at": "2025-06-27T10:00:34.937149"
+}
