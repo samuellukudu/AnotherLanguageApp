@@ -8,11 +8,21 @@ import os
 from pydantic import BaseModel
 load_dotenv()
 
-# Initialize the async client
-client = AsyncOpenAI(
-    base_url=os.getenv("BASE_URL"),
-    api_key=os.getenv("API_KEY"),
-)
+# Helper to get a validated OpenAI client
+_client = None
+def get_openai_client():
+    global _client
+    if _client is not None:
+        return _client
+    base_url = os.getenv("BASE_URL")
+    api_key = os.getenv("API_KEY")
+    if not base_url or not api_key:
+        raise RuntimeError("Missing BASE_URL or API_KEY environment variables for OpenAI client.")
+    _client = AsyncOpenAI(
+        base_url=base_url,
+        api_key=api_key,
+    )
+    return _client
 
 class Message(BaseModel):
     role: Literal["user", "assistant"]
@@ -71,7 +81,7 @@ async def get_completions(
     else:
         raise TypeError("Unexpected processed input type.")
 
-    # print(os.getenv("MODEL"))
+    client = get_openai_client()
     response = await client.chat.completions.create(
         model=os.getenv("MODEL"),
         messages=messages,

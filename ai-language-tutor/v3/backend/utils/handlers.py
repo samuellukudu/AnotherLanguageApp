@@ -4,6 +4,7 @@ from typing import Callable, Dict, Any
 from backend import config
 from backend.cache import cache
 from backend.utils import generate_completions
+import json
 
 async def handle_generation_request(
     data: Any,
@@ -24,7 +25,26 @@ async def handle_generation_request(
     Raises:
         HTTPException: If required metadata is missing or other errors occur
     """
-    # Validate required metadata
+    # Fallback: If required metadata is missing, try to extract it
+    if not (data.native_language and data.target_language and data.proficiency):
+        # Use the extract metadata logic
+        try:
+            response_str = await cache.get_or_set(
+                (str(data.query), config.language_metadata_extraction_prompt),
+                generate_completions.get_completions,
+                data.query,
+                config.language_metadata_extraction_prompt
+            )
+            metadata_dict = json.loads(response_str)
+            data.native_language = metadata_dict.get("native_language")
+            data.target_language = metadata_dict.get("target_language")
+            data.proficiency = metadata_dict.get("proficiency")
+        except Exception as e:
+            raise HTTPException(
+                status_code=400,
+                detail=f"Could not extract required metadata: {str(e)}"
+            )
+    # Validate again after extraction
     if not (data.native_language and data.target_language and data.proficiency):
         raise HTTPException(
             status_code=400,
