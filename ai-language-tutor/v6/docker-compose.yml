@@ -1,0 +1,19 @@
+services:
+  api:
+    build: .
+    ports:
+      - "${API_PORT:-8001}:8001"
+    environment:
+      - API_KEY=${API_KEY}
+      - MODEL=${MODEL:-gemini-2.0-flash}
+      - BASE_URL=${BASE_URL}
+      - DATABASE_URL=sqlite+aiosqlite:///./data/ai_tutor.db
+    volumes:
+      - .:/code
+      - sqlite_data:/code/data
+    restart: unless-stopped
+    command: >
+      sh -c "uvicorn backend.main:app --host 0.0.0.0 --port 8001 --reload"
+
+volumes:
+  sqlite_data:
