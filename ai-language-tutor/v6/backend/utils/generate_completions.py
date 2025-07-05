@@ -6,6 +6,7 @@ from typing import Union, List, Dict, Literal
 from dotenv import load_dotenv
 import os
 from pydantic import BaseModel
+
 load_dotenv()
 
 # Initialize the async client
@@ -71,9 +72,8 @@ async def get_completions(
     else:
         raise TypeError("Unexpected processed input type.")
 
-    # print(os.getenv("MODEL"))
     response = await client.chat.completions.create(
-        model=os.getenv("MODEL"),
+        model=os.getenv("MODEL", "gemini-2.0-flash"),
         messages=messages,
         response_format={"type": "json_object"}
     )

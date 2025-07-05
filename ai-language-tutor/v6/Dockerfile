@@ -1,15 +1,18 @@
-FROM python:3.12-slim
-WORKDIR /code
+FROM python:3.11-slim
 
-# Install dependencies
-COPY ./requirements.txt /code/requirements.txt
-RUN pip install --no-cache --upgrade -r /code/requirements.txt
+WORKDIR /app
 
-# Copy application code and .env file
-COPY ./backend /code/backend
-# COPY .env /code/.env
+# Copy requirements and install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-ENV PYTHONPATH=/code
+# Copy schema, backend files, and environment config
+COPY schema.sql .
+COPY backend/ backend/
+COPY .env* ./
 
-# Add wait for database and initialize
-CMD uvicorn backend.main:app --host 0.0.0.0 --port 8001 --reload --workers 10
+# Expose port
+EXPOSE 8000
+
+# Run the application
+CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]

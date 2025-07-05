@@ -1,19 +1,19 @@
+version: '3.8'
+
 services:
-  api:
+  backend:
     build: .
     ports:
-      - "${API_PORT:-8001}:8001"
-    environment:
-      - API_KEY=${API_KEY}
-      - MODEL=${MODEL:-gemini-2.0-flash}
-      - BASE_URL=${BASE_URL}
-      - DATABASE_URL=sqlite+aiosqlite:///./data/ai_tutor.db
+      - "8000:8000"
     volumes:
-      - .:/code
-      - sqlite_data:/code/data
+      - ./backend:/app/backend
+      - ./schema.sql:/app/schema.sql
+      - ./ai_tutor.db:/app/ai_tutor.db
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GEMINI_BASE_URL=${GEMINI_BASE_URL}
+      - GEMINI_MODEL=${GEMINI_MODEL:-gemini-2.0-flash}
+      - DATABASE_PATH=./ai_tutor.db
+    env_file:
+      - .env
     restart: unless-stopped
-    command: >
-      sh -c "uvicorn backend.main:app --host 0.0.0.0 --port 8001 --reload"
-
-volumes:
-  sqlite_data:
