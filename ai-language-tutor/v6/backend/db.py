@@ -240,6 +240,49 @@ class Database:
                 if row:
                     return dict(row)
         return None
+
+    async def get_full_curriculum_details(self, curriculum_id: str, include_content: bool = True) -> Optional[Dict[str, Any]]:
+        """Get full curriculum details, optionally including all content."""
+        curriculum = await self.get_curriculum(curriculum_id)
+        if not curriculum:
+            return None
+
+        try:
+            curriculum_data = json.loads(curriculum['curriculum_json'])
+            lessons = curriculum_data.get('sub_topics', [])
+        except json.JSONDecodeError:
+            curriculum_data = {}
+            lessons = []
+
+        if include_content:
+            content_list = await self.get_learning_content(curriculum_id)
+            content_map = {}
+            for content in content_list:
+                lesson_index = content['lesson_index']
+                content_type = content['content_type']
+                if lesson_index not in content_map:
+                    content_map[lesson_index] = {}
+                
+                try:
+                    parsed_content = json.loads(content['content_json'])
+                except json.JSONDecodeError:
+                    parsed_content = content['content_json']
+
+                content_map[lesson_index][content_type] = {
+                    "id": content['id'],
+                    "lesson_topic": content['lesson_topic'],
+                    "content": parsed_content,
+                    "created_at": content['created_at']
+                }
+
+            # Embed content into lessons
+            for i, lesson in enumerate(lessons):
+                lesson['content'] = content_map.get(i, {})
+
+        curriculum['curriculum'] = curriculum_data
+        del curriculum['curriculum_json']
+
+        return curriculum
     
     async def search_curricula_by_languages(
         self,

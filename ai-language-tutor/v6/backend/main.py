@@ -6,6 +6,7 @@ from backend.utils import generate_completions
 from backend import config
 from backend.db import db
 from backend.db_init import db_initializer
+from backend.db_cache import db_cache
 from backend.content_generator import content_generator
 from typing import Union, List, Literal, Optional
 from datetime import datetime
@@ -157,20 +158,22 @@ async def extract_metadata(data: MetadataRequest):
     """Extract language learning metadata from user query"""
     logging.info(f"Extracting metadata for query: {data.query[:50]}...")
     try:
-        # Generate metadata using AI
-        response_str = await generate_completions.get_completions(
-            data.query,
-            config.language_metadata_extraction_prompt
+        # Generate metadata using AI, with caching
+        metadata_dict = await db_cache.get_or_set_metadata(
+            query=data.query,
+            coro=generate_completions.get_completions,
+            user_id=data.user_id,
+            prompt=data.query,
+            instructions=config.language_metadata_extraction_prompt
         )
-        metadata_dict = json.loads(response_str)
-        
+
         # Save metadata to database
         extraction_id = await db.save_metadata_extraction(
             query=data.query,
             metadata=metadata_dict,
             user_id=data.user_id
         )
-        
+
         # Process extraction (generate curriculum and start content generation)
         processing_result = await content_generator.process_metadata_extraction(
             extraction_id=extraction_id,
@@ -179,17 +182,17 @@ async def extract_metadata(data: MetadataRequest):
             user_id=data.user_id,
             generate_content=True  # Automatically generate all content
         )
-        
+
+        curriculum_id = processing_result['curriculum_id']
+
         return JSONResponse(
             content={
-                "data": metadata_dict,
+                "message": "Content generation has been initiated.",
                 "extraction_id": extraction_id,
-                "curriculum_id": processing_result['curriculum_id'],
-                "content_generation_started": processing_result['content_generation_started'],
-                "type": "language_metadata",
-                "status": "success"
+                "curriculum_id": curriculum_id,
+                "status_endpoint": f"/content/status/{curriculum_id}"
             },
-            status_code=200
+            status_code=202
         )
     except Exception as e:
         logging.error(f"Error extracting metadata: {e}")
@@ -213,13 +216,9 @@ async def get_metadata_extraction(extraction_id: str = Path(..., description="Me
 @app.get("/curriculum/{curriculum_id}")
 async def get_curriculum(curriculum_id: str = Path(..., description="Curriculum ID")):
     """Get curriculum by ID"""
-    curriculum = await db.get_curriculum(curriculum_id)
+    curriculum = await db.get_full_curriculum_details(curriculum_id, include_content=False)
     if not curriculum:
         raise HTTPException(status_code=404, detail="Curriculum not found")
-    
-    # Parse JSON fields
-    curriculum['curriculum'] = json.loads(curriculum['curriculum_json'])
-    del curriculum['curriculum_json']
     
     # Get content generation status
     status = await db.get_curriculum_content_status(curriculum_id)
@@ -428,47 +427,3 @@ async def get_content_generation_status(
         status_code=200
     )
 
-# Legacy endpoints for backward compatibility
-@app.post("/generate/curriculum")
-async def generate_curriculum_legacy(data: GenerationRequest):
-    """Legacy endpoint - now curriculum is auto-generated with metadata extraction"""
-    return JSONResponse(
-        content={
-            "message": "This endpoint is deprecated. Curriculum is now automatically generated when extracting metadata.",
-            "recommendation": "Use POST /extract/metadata which will generate both metadata and curriculum"
-        },
-        status_code=200
-    )
-
-@app.post("/generate/flashcards")
-async def generate_flashcards_legacy(data: GenerationRequest):
-    """Legacy endpoint - flashcards are now auto-generated with curriculum"""
-    return JSONResponse(
-        content={
-            "message": "This endpoint is deprecated. Flashcards are now automatically generated for all lessons.",
-            "recommendation": "Use GET /curriculum/{curriculum_id}/content?content_type=flashcards"
-        },
-        status_code=200
-    )
-
-@app.post("/generate/exercises")
-async def generate_exercises_legacy(data: GenerationRequest):
-    """Legacy endpoint - exercises are now auto-generated with curriculum"""
-    return JSONResponse(
-        content={
-            "message": "This endpoint is deprecated. Exercises are now automatically generated for all lessons.",
-            "recommendation": "Use GET /curriculum/{curriculum_id}/content?content_type=exercises"
-        },
-        status_code=200
-    )
-
-@app.post("/generate/simulation")
-async def generate_simulation_legacy(data: GenerationRequest):
-    """Legacy endpoint - simulations are now auto-generated with curriculum"""
-    return JSONResponse(
-        content={
-            "message": "This endpoint is deprecated. Simulations are now automatically generated for all lessons.",
-            "recommendation": "Use GET /curriculum/{curriculum_id}/content?content_type=simulation"
-        },
-        status_code=200
-    )

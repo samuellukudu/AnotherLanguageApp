@@ -83,4 +83,11 @@ SELECT
     c.created_at
 FROM curricula c
 LEFT JOIN learning_content lc ON c.id = lc.curriculum_id
-GROUP BY c.id; 
+GROUP BY c.id;
+
+-- Table for caching metadata extractions
+CREATE TABLE IF NOT EXISTS cached_metadata (
+    query_hash TEXT PRIMARY KEY,
+    metadata_json TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+); 

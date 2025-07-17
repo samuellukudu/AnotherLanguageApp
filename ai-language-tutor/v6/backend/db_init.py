@@ -67,7 +67,7 @@ class DatabaseInitializer:
                 health_status["database_accessible"] = True
                 
                 # Check if required tables exist
-                required_tables = ['metadata_extractions', 'curricula', 'learning_content']
+                required_tables = ['metadata_extractions', 'curricula', 'learning_content', 'cached_metadata']
                 existing_tables = await self._get_existing_tables(db)
                 
                 missing_tables = [table for table in required_tables if table not in existing_tables]
