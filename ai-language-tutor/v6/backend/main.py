@@ -162,7 +162,6 @@ async def extract_metadata(data: MetadataRequest):
         metadata_dict = await db_cache.get_or_set_metadata(
             query=data.query,
             coro=generate_completions.get_completions,
-            user_id=data.user_id,
             prompt=data.query,
             instructions=config.language_metadata_extraction_prompt
         )
@@ -227,75 +226,67 @@ async def get_curriculum(curriculum_id: str = Path(..., description="Curriculum 
     
     return JSONResponse(content=curriculum, status_code=200)
 
-@app.get("/curriculum/{curriculum_id}/content")
-async def get_curriculum_content(
-    curriculum_id: str = Path(..., description="Curriculum ID"),
-    content_type: Optional[str] = Query(None, description="Filter by content type (flashcards, exercises, simulation)"),
-    lesson_index: Optional[int] = Query(None, description="Filter by lesson index (0-24)")
+
+async def _get_lesson_content_by_type(
+    curriculum_id: str,
+    lesson_index: int,
+    content_type: str
 ):
-    """Get learning content for a curriculum"""
+    """Helper to get specific content type for a lesson"""
     content_list = await db.get_learning_content(
         curriculum_id=curriculum_id,
-        content_type=content_type,
-        lesson_index=lesson_index
+        lesson_index=lesson_index,
+        content_type=content_type
     )
-    
-    # Parse JSON content
-    for content in content_list:
-        try:
-            content['content'] = json.loads(content['content_json'])
-        except json.JSONDecodeError:
-            content['content'] = content['content_json']
-        del content['content_json']
-    
+    if not content_list:
+        raise HTTPException(
+            status_code=404,
+            detail=f"{content_type.capitalize()} content not found for lesson {lesson_index}"
+        )
+
+    # Assuming one content item per type per lesson
+    content = content_list[0]
+    try:
+        parsed_content = json.loads(content['content_json'])
+    except json.JSONDecodeError:
+        parsed_content = content['content_json']
+
     return JSONResponse(
         content={
             "curriculum_id": curriculum_id,
-            "content": content_list,
-            "total": len(content_list),
-            "filters": {
-                "content_type": content_type,
-                "lesson_index": lesson_index
-            }
-        },
-        status_code=200
-    )
-
-@app.get("/curriculum/{curriculum_id}/lesson/{lesson_index}")
-async def get_lesson_content(
-    curriculum_id: str = Path(..., description="Curriculum ID"),
-    lesson_index: int = Path(..., ge=0, le=24, description="Lesson index (0-24)")
-):
-    """Get all content for a specific lesson"""
-    content_list = await db.get_learning_content(
-        curriculum_id=curriculum_id,
-        lesson_index=lesson_index
-    )
-    
-    # Organize content by type
-    lesson_content = {
-        "curriculum_id": curriculum_id,
-        "lesson_index": lesson_index,
-        "flashcards": None,
-        "exercises": None,
-        "simulation": None
-    }
-    
-    for content in content_list:
-        try:
-            parsed_content = json.loads(content['content_json'])
-        except json.JSONDecodeError:
-            parsed_content = content['content_json']
-        
-        lesson_content[content['content_type']] = {
+            "lesson_index": lesson_index,
+            "content_type": content_type,
             "id": content['id'],
             "lesson_topic": content['lesson_topic'],
             "content": parsed_content,
             "created_at": content['created_at']
-        }
-    
-    return JSONResponse(content=lesson_content, status_code=200)
+        },
+        status_code=200
+    )
 
+@app.get("/curriculum/{curriculum_id}/lesson/{lesson_index}/flashcards")
+async def get_lesson_flashcards(
+    curriculum_id: str = Path(..., description="Curriculum ID"),
+    lesson_index: int = Path(..., ge=0, le=24, description="Lesson index (0-24)")
+):
+    """Get flashcards for a specific lesson"""
+    return await _get_lesson_content_by_type(curriculum_id, lesson_index, "flashcards")
+
+@app.get("/curriculum/{curriculum_id}/lesson/{lesson_index}/exercises")
+async def get_lesson_exercises(
+    curriculum_id: str = Path(..., description="Curriculum ID"),
+    lesson_index: int = Path(..., ge=0, le=24, description="Lesson index (0-24)")
+):
+    """Get exercises for a specific lesson"""
+    return await _get_lesson_content_by_type(curriculum_id, lesson_index, "exercises")
+
+@app.get("/curriculum/{curriculum_id}/lesson/{lesson_index}/simulation")
+async def get_lesson_simulation(
+    curriculum_id: str = Path(..., description="Curriculum ID"),
+    lesson_index: int = Path(..., ge=0, le=24, description="Lesson index (0-24)")
+):
+    """Get simulation for a specific lesson"""
+    return await _get_lesson_content_by_type(curriculum_id, lesson_index, "simulation")
 @app.get("/user/{user_id}/metadata")
 async def get_user_metadata_history(
     user_id: int = Path(..., description="User ID"),
