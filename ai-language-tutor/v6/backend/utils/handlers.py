@@ -2,7 +2,7 @@ from fastapi import HTTPException
 from fastapi.responses import JSONResponse
 from typing import Callable, Dict, Any
 from backend import config
-from backend.content_service import content_service
+from backend.content_generator import content_generator
 from backend.utils import generate_completions
 
 async def handle_generation_request(
@@ -46,7 +46,7 @@ async def handle_generation_request(
     )
 
     # Save generated content to database
-    content_id = await content_service.save_content(
+    content_id = await content_generator.save_content(
         query=str(data.query),
         content=response,
         content_type=mode,
@@ -73,4 +73,4 @@ INSTRUCTION_TEMPLATES: Dict[str, str] = {
     "flashcards": config.flashcard_mode_instructions,
     "exercises": config.exercise_mode_instructions,
     "simulation": config.simulation_mode_instructions
-} 
+}

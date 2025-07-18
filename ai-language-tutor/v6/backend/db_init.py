@@ -263,5 +263,6 @@ class DatabaseInitializer:
         
         return result
 
+
 # Global instance
-db_initializer = DatabaseInitializer() 
+db_initializer = DatabaseInitializer()

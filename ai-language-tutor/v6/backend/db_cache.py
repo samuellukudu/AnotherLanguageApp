@@ -16,6 +16,14 @@ class ApiCache:
     def _generate_hash(self, text: str) -> str:
         """Generate a SHA256 hash for a given text."""
         return hashlib.sha256(text.encode()).hexdigest()
+    
+    def _generate_context_hash(self, key_text: str, **context) -> str:
+        """Generate a hash that includes context for better cache differentiation"""
+        # Create a consistent string from context
+        context_items = sorted(context.items())
+        context_str = "|".join([f"{k}:{v}" for k, v in context_items if v is not None])
+        full_key = f"{key_text}|{context_str}"
+        return hashlib.sha256(full_key.encode()).hexdigest()
 
     async def get_or_set(
         self,
@@ -23,6 +31,7 @@ class ApiCache:
         key_text: str,
         coro: Callable,
         *args,
+        context: Optional[Dict[str, Any]] = None,
         **kwargs
     ) -> Union[Dict[str, Any], List[Any], str]:
         """
@@ -33,12 +42,17 @@ class ApiCache:
             key_text: The text to use for generating the cache key.
             coro: The async function to call if the item is not in the cache.
             *args: Positional arguments for the coroutine.
+            context: Additional context for cache key generation (e.g., language, proficiency).
             **kwargs: Keyword arguments for the coroutine.
             
         Returns:
             The cached or newly generated content.
         """
-        cache_key = self._generate_hash(key_text)
+        # Generate cache key with context if provided
+        if context:
+            cache_key = self._generate_context_hash(key_text, **context)
+        else:
+            cache_key = self._generate_hash(key_text)
         
         # 1. Check cache
         async with aiosqlite.connect(self.db_path) as db:

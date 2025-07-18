@@ -29,6 +29,49 @@ class Database:
             await db.commit()
             logger.info("Database initialized successfully")
     
+    async def find_existing_curriculum(
+        self,
+        query: str,
+        native_language: str,
+        target_language: str,
+        proficiency: str,
+        user_id: Optional[int] = None
+    ) -> Optional[Dict[str, Any]]:
+        """Find existing curriculum for similar query and metadata"""
+        async with aiosqlite.connect(self.db_path) as db:
+            db.row_factory = aiosqlite.Row
+            
+            # First try to find exact query match for the user
+            if user_id:
+                async with db.execute("""
+                    SELECT c.*, m.native_language, m.target_language, m.proficiency, m.title, m.query
+                    FROM curricula c
+                    JOIN metadata_extractions m ON c.metadata_extraction_id = m.id
+                    WHERE m.user_id = ? AND m.query = ? AND m.native_language = ? 
+                    AND m.target_language = ? AND m.proficiency = ?
+                    ORDER BY c.created_at DESC
+                    LIMIT 1
+                """, (user_id, query, native_language, target_language, proficiency)) as cursor:
+                    row = await cursor.fetchone()
+                    if row:
+                        return dict(row)
+            
+            # Then try to find similar curriculum with same metadata (any user)
+            async with db.execute("""
+                SELECT c.*, m.native_language, m.target_language, m.proficiency, m.title, m.query
+                FROM curricula c
+                JOIN metadata_extractions m ON c.metadata_extraction_id = m.id
+                WHERE m.native_language = ? AND m.target_language = ? AND m.proficiency = ?
+                AND c.is_content_generated = 1
+                ORDER BY c.created_at DESC
+                LIMIT 1
+            """, (native_language, target_language, proficiency)) as cursor:
+                row = await cursor.fetchone()
+                if row:
+                    return dict(row)
+        
+        return None
+
     async def save_metadata_extraction(
         self,
         query: str,
@@ -84,6 +127,66 @@ class Database:
         
         logger.info(f"Saved curriculum: {curriculum_id}")
         return curriculum_id
+    
+    async def copy_curriculum_for_user(
+        self,
+        source_curriculum_id: str,
+        metadata_extraction_id: str,
+        user_id: Optional[int] = None
+    ) -> str:
+        """Copy an existing curriculum for a new user"""
+        new_curriculum_id = str(uuid.uuid4())
+        
+        async with aiosqlite.connect(self.db_path) as db:
+            # Get source curriculum
+            async with db.execute("""
+                SELECT lesson_topic, curriculum_json FROM curricula WHERE id = ?
+            """, (source_curriculum_id,)) as cursor:
+                row = await cursor.fetchone()
+                if not row:
+                    raise ValueError(f"Source curriculum {source_curriculum_id} not found")
+                
+                lesson_topic, curriculum_json = row
+            
+            # Create new curriculum
+            await db.execute("""
+                INSERT INTO curricula 
+                (id, metadata_extraction_id, user_id, lesson_topic, curriculum_json, is_content_generated)
+                VALUES (?, ?, ?, ?, ?, 0)
+            """, (
+                new_curriculum_id,
+                metadata_extraction_id,
+                user_id,
+                lesson_topic,
+                curriculum_json
+            ))
+            
+            # Copy all learning content
+            await db.execute("""
+                INSERT INTO learning_content 
+                (id, curriculum_id, content_type, lesson_index, lesson_topic, content_json)
+                SELECT 
+                    lower(hex(randomblob(16))),
+                    ?,
+                    content_type,
+                    lesson_index,
+                    lesson_topic,
+                    content_json
+                FROM learning_content 
+                WHERE curriculum_id = ?
+            """, (new_curriculum_id, source_curriculum_id))
+            
+            # Mark as content generated
+            await db.execute("""
+                UPDATE curricula 
+                SET is_content_generated = 1 
+                WHERE id = ?
+            """, (new_curriculum_id,))
+            
+            await db.commit()
+        
+        logger.info(f"Copied curriculum {source_curriculum_id} to {new_curriculum_id} for user {user_id}")
+        return new_curriculum_id
     
     async def save_learning_content(
         self,
@@ -176,7 +279,7 @@ class Database:
             async with db.execute(query, params) as cursor:
                 rows = await cursor.fetchall()
                 return [dict(row) for row in rows]
-    
+
     async def get_user_metadata_extractions(
         self,
         user_id: int,
@@ -315,4 +418,4 @@ class Database:
 
 
 # Global database instance
-db = Database() 
+db = Database()

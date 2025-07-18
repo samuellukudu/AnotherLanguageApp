@@ -74,6 +74,12 @@ class ContentGenerator:
                 category="flashcards",
                 key_text=lesson_context,
                 coro=generate_completions.get_completions,
+                context={
+                    'native_language': metadata['native_language'],
+                    'target_language': metadata['target_language'],
+                    'proficiency': metadata['proficiency'],
+                    'lesson_index': lesson_index
+                },
                 prompt=lesson_context,
                 instructions=flashcards_instructions
             )
@@ -102,6 +108,12 @@ class ContentGenerator:
                 category="exercises",
                 key_text=lesson_context,
                 coro=generate_completions.get_completions,
+                context={
+                    'native_language': metadata['native_language'],
+                    'target_language': metadata['target_language'],
+                    'proficiency': metadata['proficiency'],
+                    'lesson_index': lesson_index
+                },
                 prompt=lesson_context,
                 instructions=exercises_instructions
             )
@@ -130,6 +142,12 @@ class ContentGenerator:
                 category="simulation",
                 key_text=lesson_context,
                 coro=generate_completions.get_completions,
+                context={
+                    'native_language': metadata['native_language'],
+                    'target_language': metadata['target_language'],
+                    'proficiency': metadata['proficiency'],
+                    'lesson_index': lesson_index
+                },
                 prompt=lesson_context,
                 instructions=simulation_instructions
             )
@@ -145,7 +163,7 @@ class ContentGenerator:
         except Exception as e:
             logger.error(f"Failed to generate simulation for lesson {lesson_index}: {e}")
         
-        return content_ids
+        return content
     
     async def generate_all_content_for_curriculum(
         self,
@@ -212,8 +230,47 @@ class ContentGenerator:
         user_id: Optional[int] = None,
         generate_content: bool = True
     ) -> Dict[str, Any]:
-        """Process a metadata extraction by generating curriculum and optionally all content"""
-        # Generate curriculum
+        """Process a metadata extraction by checking for existing curriculum or generating new one"""
+        
+        # Check for existing curriculum first
+        existing_curriculum = await db.find_existing_curriculum(
+            query=query,
+            native_language=metadata['native_language'],
+            target_language=metadata['target_language'],
+            proficiency=metadata['proficiency'],
+            user_id=user_id
+        )
+        
+        if existing_curriculum:
+            # If we found an exact match for this user, return it
+            if existing_curriculum.get('user_id') == user_id:
+                logger.info(f"Found existing curriculum for user {user_id}: {existing_curriculum['id']}")
+                return {
+                    'extraction_id': extraction_id,
+                    'curriculum_id': existing_curriculum['id'],
+                    'content_generation_started': False,
+                    'cached': True,
+                    'cache_type': 'user_exact_match'
+                }
+            
+            # If we found a similar curriculum from another user, copy it
+            elif existing_curriculum.get('is_content_generated') == 1:
+                logger.info(f"Copying existing curriculum {existing_curriculum['id']} for user {user_id}")
+                curriculum_id = await db.copy_curriculum_for_user(
+                    source_curriculum_id=existing_curriculum['id'],
+                    metadata_extraction_id=extraction_id,
+                    user_id=user_id
+                )
+                return {
+                    'extraction_id': extraction_id,
+                    'curriculum_id': curriculum_id,
+                    'content_generation_started': False,
+                    'cached': True,
+                    'cache_type': 'copied_from_similar'
+                }
+        
+        # No suitable existing curriculum found, generate new one
+        logger.info(f"No existing curriculum found, generating new one for user {user_id}")
         curriculum_id = await self.generate_curriculum_from_metadata(
             metadata_extraction_id=extraction_id,
             query=query,
@@ -224,7 +281,9 @@ class ContentGenerator:
         result = {
             'extraction_id': extraction_id,
             'curriculum_id': curriculum_id,
-            'content_generation_started': False
+            'content_generation_started': False,
+            'cached': False,
+            'cache_type': 'newly_generated'
         }
         
         if generate_content:
@@ -236,4 +295,4 @@ class ContentGenerator:
 
 
 # Global content generator instance
-content_generator = ContentGenerator() 
+content_generator = ContentGenerator()

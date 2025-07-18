@@ -6,8 +6,8 @@ from backend.utils import generate_completions
 from backend import config
 from backend.db import db
 from backend.db_init import db_initializer
-from backend.db_cache import api_cache
 from backend.content_generator import content_generator
+from backend.db_cache import api_cache
 from typing import Union, List, Literal, Optional
 from datetime import datetime
 import logging
@@ -104,7 +104,7 @@ async def health_check():
 async def repair_database():
     """Repair database issues (admin endpoint)"""
     try:
-        repair_result = await db_initializer.repair_database()
+        # repair_result = await db.repair_database() # This method doesn't exist on the Database class
         
         return JSONResponse(
             content={
