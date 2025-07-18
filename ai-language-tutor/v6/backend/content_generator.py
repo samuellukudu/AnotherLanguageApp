@@ -4,6 +4,7 @@ from typing import Dict, Any, Optional, List
 from backend.utils import generate_completions
 from backend import config
 from backend.db import db
+from backend.db_cache import api_cache
 import logging
 
 logger = logging.getLogger(__name__)
@@ -69,9 +70,12 @@ class ContentGenerator:
                 .replace("{proficiency}", metadata['proficiency'])
             )
             
-            flashcards_response = await generate_completions.get_completions(
-                lesson_context,
-                flashcards_instructions
+            flashcards_response = await api_cache.get_or_set(
+                category="flashcards",
+                key_text=lesson_context,
+                coro=generate_completions.get_completions,
+                prompt=lesson_context,
+                instructions=flashcards_instructions
             )
             
             # Save flashcards
@@ -94,9 +98,12 @@ class ContentGenerator:
                 .replace("{proficiency}", metadata['proficiency'])
             )
             
-            exercises_response = await generate_completions.get_completions(
-                lesson_context,
-                exercises_instructions
+            exercises_response = await api_cache.get_or_set(
+                category="exercises",
+                key_text=lesson_context,
+                coro=generate_completions.get_completions,
+                prompt=lesson_context,
+                instructions=exercises_instructions
             )
             
             # Save exercises
@@ -119,9 +126,12 @@ class ContentGenerator:
                 .replace("{proficiency}", metadata['proficiency'])
             )
             
-            simulation_response = await generate_completions.get_completions(
-                lesson_context,
-                simulation_instructions
+            simulation_response = await api_cache.get_or_set(
+                category="simulation",
+                key_text=lesson_context,
+                coro=generate_completions.get_completions,
+                prompt=lesson_context,
+                instructions=simulation_instructions
             )
             
             # Save simulation

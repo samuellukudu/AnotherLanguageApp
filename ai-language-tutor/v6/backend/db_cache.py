@@ -1,62 +1,87 @@
 import aiosqlite
 import json
 import os
-from typing import Optional, Dict, Any, Callable
+from typing import Optional, Dict, Any, Callable, Union, List
 import logging
-from backend import config
+import hashlib
 
 logger = logging.getLogger(__name__)
 DB_PATH = os.getenv("DATABASE_PATH", "./ai_tutor.db")
 
-class DatabaseCache:
+class ApiCache:
+    """Generic caching service using a dedicated database table."""
     def __init__(self, db_path: str = DB_PATH):
         self.db_path = db_path
 
-    async def initialize_cache_table(self):
-        async with aiosqlite.connect(self.db_path) as db:
-            await db.execute("""
-                CREATE TABLE IF NOT EXISTS cached_metadata (
-                    query_hash TEXT PRIMARY KEY,
-                    metadata_json TEXT NOT NULL,
-                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                )
-            """)
-            await db.commit()
+    def _generate_hash(self, text: str) -> str:
+        """Generate a SHA256 hash for a given text."""
+        return hashlib.sha256(text.encode()).hexdigest()
 
-    async def get_or_set_metadata(
-        self, 
-        query: str, 
+    async def get_or_set(
+        self,
+        category: str,
+        key_text: str,
         coro: Callable,
         *args,
         **kwargs
-    ) -> Dict[str, Any]:
-        query_hash = self._generate_hash(query)
+    ) -> Union[Dict[str, Any], List[Any], str]:
+        """
+        Get data from cache or execute a coroutine to generate and cache it.
         
+        Args:
+            category: The category of the cached item (e.g., 'metadata', 'flashcards').
+            key_text: The text to use for generating the cache key.
+            coro: The async function to call if the item is not in the cache.
+            *args: Positional arguments for the coroutine.
+            **kwargs: Keyword arguments for the coroutine.
+            
+        Returns:
+            The cached or newly generated content.
+        """
+        cache_key = self._generate_hash(key_text)
+        
+        # 1. Check cache
         async with aiosqlite.connect(self.db_path) as db:
             db.row_factory = aiosqlite.Row
-            async with db.execute("SELECT metadata_json FROM cached_metadata WHERE query_hash = ?", (query_hash,)) as cursor:
+            async with db.execute(
+                "SELECT content_json FROM api_cache WHERE cache_key = ? AND category = ?",
+                (cache_key, category)
+            ) as cursor:
                 row = await cursor.fetchone()
                 if row:
-                    logger.info(f"Cache hit for query: {query[:50]}...")
-                    return json.loads(row['metadata_json'])
+                    logger.info(f"Cache hit for {category} with key: {key_text[:50]}...")
+                    return json.loads(row['content_json'])
 
-        logger.info(f"Cache miss for query: {query[:50]}... Generating new content")
+        # 2. If miss, generate content
+        logger.info(f"Cache miss for {category}: {key_text[:50]}... Generating new content")
         generated_content = await coro(*args, **kwargs)
-        metadata_dict = json.loads(generated_content)
+        
+        # Ensure content is a JSON-serializable string
+        if isinstance(generated_content, (dict, list)):
+            content_to_cache = json.dumps(generated_content)
+        elif isinstance(generated_content, str):
+            # Try to parse string to ensure it's valid JSON, then dump it back
+            try:
+                parsed_json = json.loads(generated_content)
+                content_to_cache = json.dumps(parsed_json)
+            except json.JSONDecodeError:
+                # If it's not a JSON string, we can't cache it in this system.
+                # Depending on requirements, we might raise an error or just return it without caching.
+                logger.warning(f"Content for {category} is not valid JSON, returning without caching.")
+                return generated_content
+        else:
+            raise TypeError("Cached content must be a JSON string, dict, or list.")
 
+        # 3. Store in cache
         async with aiosqlite.connect(self.db_path) as db:
             await db.execute(
-                "INSERT INTO cached_metadata (query_hash, metadata_json) VALUES (?, ?)",
-                (query_hash, json.dumps(metadata_dict))
+                "INSERT INTO api_cache (cache_key, category, content_json) VALUES (?, ?, ?)",
+                (cache_key, category, content_to_cache)
             )
             await db.commit()
-            logger.info(f"Cached new metadata for query: {query[:50]}...")
+            logger.info(f"Cached new content for {category} with key: {key_text[:50]}...")
 
-        return metadata_dict
+        return json.loads(content_to_cache)
 
-    def _generate_hash(self, query: str) -> str:
-        import hashlib
-        return hashlib.sha256(query.encode()).hexdigest()
-
-# Initialize the database cache
-db_cache = DatabaseCache()
+# Global API cache instance
+api_cache = ApiCache()

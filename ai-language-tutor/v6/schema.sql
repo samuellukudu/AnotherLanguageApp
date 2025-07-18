@@ -85,9 +85,14 @@ FROM curricula c
 LEFT JOIN learning_content lc ON c.id = lc.curriculum_id
 GROUP BY c.id;
 
--- Table for caching metadata extractions
-CREATE TABLE IF NOT EXISTS cached_metadata (
-    query_hash TEXT PRIMARY KEY,
-    metadata_json TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-); 
+-- Generic cache for API responses to reduce redundant AI calls
+CREATE TABLE IF NOT EXISTS api_cache (
+    cache_key TEXT NOT NULL,
+    category TEXT NOT NULL,
+    content_json TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (cache_key, category)
+);
+
+-- Index for faster cache lookups
+CREATE INDEX IF NOT EXISTS idx_api_cache_key_category ON api_cache(cache_key, category);

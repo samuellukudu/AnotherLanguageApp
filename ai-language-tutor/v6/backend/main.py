@@ -6,7 +6,7 @@ from backend.utils import generate_completions
 from backend import config
 from backend.db import db
 from backend.db_init import db_initializer
-from backend.db_cache import db_cache
+from backend.db_cache import api_cache
 from backend.content_generator import content_generator
 from typing import Union, List, Literal, Optional
 from datetime import datetime
@@ -159,8 +159,9 @@ async def extract_metadata(data: MetadataRequest):
     logging.info(f"Extracting metadata for query: {data.query[:50]}...")
     try:
         # Generate metadata using AI, with caching
-        metadata_dict = await db_cache.get_or_set_metadata(
-            query=data.query,
+        metadata_dict = await api_cache.get_or_set(
+            category="metadata",
+            key_text=data.query,
             coro=generate_completions.get_completions,
             prompt=data.query,
             instructions=config.language_metadata_extraction_prompt
