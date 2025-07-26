@@ -1,0 +1,202 @@
+{
+  "session_id": "b69c28ad-e181-45ea-931b-ee2ef2049665",
+  "query": "looking for a job as a structural engineer in Berlin",
+  "created_at": "2025-07-26 08:34:38",
+  "metadata": {
+    "native_language": "en",
+    "target_language": "de",
+    "proficiency": "intermediate",
+    "title": "Jobsuche als Bauingenieur in Berlin",
+    "description": "Vorbereitung auf die Jobsuche: Bauingenieurwesen, Berlin, Deutsch verbessern."
+  },
+  "curriculum": {
+    "lesson_topic": "Job Application and Professional Communication for Structural Engineers in Berlin",
+    "sub_topics": [
+      {
+        "sub_topic": "Reviewing German Grammar Essentials for Professional Writing",
+        "keywords": [
+          "Grammar",
+          "Sentence Structure",
+          "Formal Writing"
+        ],
+        "description": "This lesson revisits essential German grammar rules, focusing on sentence structure and formal writing conventions necessary for professional correspondence."
+      },
+      {
+        "sub_topic": "Understanding Job Postings and Company Profiles in German",
+        "keywords": [
+          "Job Ads",
+          "Company Research",
+          "Technical Terminology"
+        ],
+        "description": "Learn to effectively analyze German job postings for structural engineers, understand company profiles, and identify key technical terms."
+      },
+      {
+        "sub_topic": "Crafting a German CV and Cover Letter",
+        "keywords": [
+          "CV",
+          "Cover Letter",
+          "Application Documents"
+        ],
+        "description": "This lesson guides you through creating a compelling German CV and cover letter, highlighting your skills and experience relevant to structural engineering positions."
+      },
+      {
+        "sub_topic": "Practicing Common Interview Questions and Answers",
+        "keywords": [
+          "Interview",
+          "Question Answering",
+          "Professional Communication"
+        ],
+        "description": "Practice answering common interview questions in German, focusing on clear and concise communication of your qualifications and experience."
+      },
+      {
+        "sub_topic": "Discussing Technical Projects and Engineering Concepts in German",
+        "keywords": [
+          "Technical Language",
+          "Project Discussion",
+          "Engineering Concepts"
+        ],
+        "description": "Develop your ability to discuss technical projects and engineering concepts in German, using precise vocabulary and clear explanations."
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "sentence": "Während des Vorstellungsgesprächs hat sie ihre Stärken klar und präzise ___, um einen positiven Eindruck zu hinterlassen.",
+      "answer": "dargestellt",
+      "choices": [
+        "dargestellt",
+        "verstanden",
+        "geglaubt",
+        "gespielt"
+      ],
+      "explanation": "The correct answer is 'dargestellt' which means 'presented' in English. It fits the context of clearly presenting strengths in a job interview. The other options don't make sense in this context."
+    },
+    {
+      "sentence": "Der Personalchef fragte, wie ich mit schwierigen Situationen umgehe, und ich ___ ein Beispiel aus meiner vorherigen Arbeitsstelle.",
+      "answer": "nannte",
+      "choices": [
+        "nannte",
+        "vergaß",
+        "baute",
+        "rechnete"
+      ],
+      "explanation": "The correct answer is 'nannte' which means 'cited' or 'mentioned' in English. It's appropriate to cite an example when asked about handling difficult situations. The other options are not suitable in this context."
+    },
+    {
+      "sentence": "Ich habe mich gut auf das Interview vorbereitet, indem ich Informationen über das Unternehmen ___ habe.",
+      "answer": "recherchiert",
+      "choices": [
+        "recherchiert",
+        "verkauft",
+        "verloren",
+        "ignoriert"
+      ],
+      "explanation": "The correct answer is 'recherchiert' which means 'researched' in English. Researching a company is a common way to prepare for an interview. The other options don't fit the context."
+    },
+    {
+      "sentence": "Am Ende des Gesprächs hatte ich die Gelegenheit, eigene Fragen zu ___, was ich auch tat.",
+      "answer": "stellen",
+      "choices": [
+        "stellen",
+        "verlieren",
+        "finden",
+        "schreiben"
+      ],
+      "explanation": "The correct answer is 'stellen' which means 'to ask' in English. It is common to have the opportunity to ask your own questions at the end of an interview. The other options don't fit the context."
+    },
+    {
+      "sentence": "Obwohl ich nervös war, versuchte ich, selbstbewusst und ___ aufzutreten.",
+      "answer": "sicher",
+      "choices": [
+        "sicher",
+        "traurig",
+        "langsam",
+        "schlecht"
+      ],
+      "explanation": "The correct answer is 'sicher' which means 'confident' in English. Appearing confident is important in a job interview. The other options are not suitable in this context."
+    }
+  ],
+  "flashcards": [
+    {
+      "word": "Vorstellungsgespräch",
+      "definition": "Job interview",
+      "example": "Ich habe nächste Woche ein Vorstellungsgespräch bei einer großen Firma."
+    },
+    {
+      "word": "Stärken",
+      "definition": "Strengths",
+      "example": "Eine meiner größten Stärken ist meine Fähigkeit, Probleme zu lösen."
+    },
+    {
+      "word": "Schwächen",
+      "definition": "Weaknesses",
+      "example": "Ich arbeite daran, meine Schwächen zu verbessern, wie zum Beispiel meine Ungeduld."
+    },
+    {
+      "word": "Teamfähigkeit",
+      "definition": "Teamwork skills",
+      "example": "Teamfähigkeit ist entscheidend für den Erfolg in diesem Job."
+    },
+    {
+      "word": "Herausforderungen",
+      "definition": "Challenges",
+      "example": "Ich suche nach neuen Herausforderungen, um mich beruflich weiterzuentwickeln."
+    }
+  ],
+  "story": {
+    "title": "Begrüßungen in Peking",
+    "setting": "Lerne, wie man sich auf Deutsch in Peking begrüßt und vorstellt. Diese Geschichte spielt in einem kleinen Café in der Nähe der Verbotenen Stadt, wo zwei Reisende sich zum ersten Mal treffen.",
+    "content": [
+      {
+        "speaker": "Reisender 1 (Markus)",
+        "target_language_text": "Entschuldigung, ist dieser Platz frei?",
+        "base_language_translation": "Excuse me, is this seat free?"
+      },
+      {
+        "speaker": "Reisender 2 (Anna)",
+        "target_language_text": "Ja, bitte sehr. Setzen Sie sich.",
+        "base_language_translation": "Yes, please do. Sit down."
+      },
+      {
+        "speaker": "Markus",
+        "target_language_text": "Danke. Ich bin Markus, ein Tourist aus Deutschland.",
+        "base_language_translation": "Thank you. I'm Markus, a tourist from Germany."
+      },
+      {
+        "speaker": "Anna",
+        "target_language_text": "Freut mich, Markus. Ich heiße Anna und komme aus Österreich.",
+        "base_language_translation": "Nice to meet you, Markus. I'm Anna and I come from Austria."
+      },
+      {
+        "speaker": "Markus",
+        "target_language_text": "Österreich! Wie lange sind Sie schon in Peking?",
+        "base_language_translation": "Austria! How long have you been in Beijing?"
+      },
+      {
+        "speaker": "Anna",
+        "target_language_text": "Ich bin seit einer Woche hier. Und Sie?",
+        "base_language_translation": "I've been here for a week. And you?"
+      },
+      {
+        "speaker": "Markus",
+        "target_language_text": "Ich bin gerade erst angekommen. Haben Sie Empfehlungen?",
+        "base_language_translation": "I just arrived. Do you have any recommendations?"
+      },
+      {
+        "speaker": "Anna",
+        "target_language_text": "Unbedingt! Die Verbotene Stadt ist ein Muss, und der Sommerpalast ist wunderschön.",
+        "base_language_translation": "Definitely! The Forbidden City is a must-see, and the Summer Palace is beautiful."
+      },
+      {
+        "speaker": "Markus",
+        "target_language_text": "Das klingt toll. Vielen Dank für die Tipps!",
+        "base_language_translation": "That sounds great. Thank you very much for the tips!"
+      },
+      {
+        "speaker": "Anna",
+        "target_language_text": "Gern geschehen! Vielleicht sehen wir uns dort.",
+        "base_language_translation": "You're welcome! Maybe we'll see each other there."
+      }
+    ]
+  }
+}

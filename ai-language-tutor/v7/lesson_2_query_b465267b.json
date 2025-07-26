@@ -1,0 +1,173 @@
+{
+  "query_id": "b465267b-3ed1-436e-ad92-bf76e2b95832",
+  "lesson_index": 2,
+  "lesson_info": {
+    "sub_topic": "Hotel and Restaurant Essentials: Checking In and Ordering Food",
+    "keywords": [
+      "Hotel reservations",
+      "Restaurant phrases",
+      "Ordering food"
+    ],
+    "description": "Learn how to check into a hotel, order food and drinks in a restaurant, and understand common phrases related to dining and accommodation."
+  },
+  "exercises": [
+    {
+      "index": 0,
+      "sentence": "Para registrarme en el hotel, necesito mi ___ y una tarjeta de crédito.",
+      "answer": "pasaporte",
+      "choices": [
+        "pasaporte",
+        "dirección",
+        "número",
+        "teléfono"
+      ],
+      "explanation": "The correct answer is 'pasaporte' which means 'passport' in English. You need your passport to check into a hotel. The other options don't fit the context."
+    },
+    {
+      "index": 1,
+      "sentence": "En el restaurante, el camarero me pregunta: \"¿Qué desea ___?\"",
+      "answer": "ordenar",
+      "choices": [
+        "ordenar",
+        "comer",
+        "mirar",
+        "pagar"
+      ],
+      "explanation": "The correct answer is 'ordenar' which means 'to order' in English. The waiter is asking what you want to order. The other options don't fit the context."
+    },
+    {
+      "index": 2,
+      "sentence": "Quiero una habitación con una ___ grande, por favor.",
+      "answer": "cama",
+      "choices": [
+        "cama",
+        "silla",
+        "mesa",
+        "puerta"
+      ],
+      "explanation": "The correct answer is 'cama' which means 'bed' in English. You are requesting a room with a large bed. The other options don't fit the context."
+    },
+    {
+      "index": 3,
+      "sentence": "Para el desayuno, me gustaría un café con ___ y un croissant.",
+      "answer": "leche",
+      "choices": [
+        "leche",
+        "agua",
+        "vino",
+        "zumo"
+      ],
+      "explanation": "The correct answer is 'leche' which means 'milk' in English. You are ordering a coffee with milk. The other options don't fit the context."
+    },
+    {
+      "index": 4,
+      "sentence": "La ___ del hotel es muy amable y siempre ayuda a los clientes.",
+      "answer": "recepcionista",
+      "choices": [
+        "recepcionista",
+        "cocinero",
+        "camarero",
+        "conductor"
+      ],
+      "explanation": "The correct answer is 'recepcionista' which means 'receptionist' in English. The receptionist helps customers. The other options don't fit the context."
+    }
+  ],
+  "flashcards": [
+    {
+      "index": 0,
+      "word": "Habitación",
+      "definition": "Room",
+      "example": "¿Tiene una habitación disponible?"
+    },
+    {
+      "index": 1,
+      "word": "Reservación",
+      "definition": "Reservation",
+      "example": "Tengo una reservación a nombre de Juan Pérez."
+    },
+    {
+      "index": 2,
+      "word": "La cuenta",
+      "definition": "The bill",
+      "example": "Por favor, ¿me trae la cuenta?"
+    },
+    {
+      "index": 3,
+      "word": "El menú",
+      "definition": "The menu",
+      "example": "¿Puedo ver el menú, por favor?"
+    },
+    {
+      "index": 4,
+      "word": "Ordenar",
+      "definition": "To order",
+      "example": "¿Qué desea ordenar?"
+    }
+  ],
+  "story": {
+    "title": "Vacaciones en España",
+    "setting": "This story is about a tourist named Alex who is visiting Spain. Alex needs to check into a hotel and order some food. The story will help you learn basic Spanish phrases for these situations.",
+    "segments": [
+      {
+        "index": 0,
+        "speaker": "Receptionist",
+        "target_language_text": "¡Hola! Bienvenidos al Hotel Sol.",
+        "base_language_translation": "Hello! Welcome to Hotel Sol."
+      },
+      {
+        "index": 1,
+        "speaker": "Alex",
+        "target_language_text": "Hola. Tengo una reservación a nombre de Alex.",
+        "base_language_translation": "Hello. I have a reservation under the name Alex."
+      },
+      {
+        "index": 2,
+        "speaker": "Receptionist",
+        "target_language_text": "Sí, señor Alex. Aquí está su llave. Habitación número 10.",
+        "base_language_translation": "Yes, Mr. Alex. Here is your key. Room number 10."
+      },
+      {
+        "index": 3,
+        "speaker": "Alex",
+        "target_language_text": "Gracias. ¿Dónde está el restaurante?",
+        "base_language_translation": "Thank you. Where is the restaurant?"
+      },
+      {
+        "index": 4,
+        "speaker": "Receptionist",
+        "target_language_text": "Está a la derecha.",
+        "base_language_translation": "It's on the right."
+      },
+      {
+        "index": 5,
+        "speaker": "Alex",
+        "target_language_text": "Gracias.",
+        "base_language_translation": "Thank you."
+      },
+      {
+        "index": 6,
+        "speaker": "Waiter",
+        "target_language_text": "¡Hola! ¿Qué desea ordenar?",
+        "base_language_translation": "Hello! What would you like to order?"
+      },
+      {
+        "index": 7,
+        "speaker": "Alex",
+        "target_language_text": "Quiero una ensalada, por favor.",
+        "base_language_translation": "I want a salad, please."
+      },
+      {
+        "index": 8,
+        "speaker": "Waiter",
+        "target_language_text": "¿Algo más?",
+        "base_language_translation": "Anything else?"
+      },
+      {
+        "index": 9,
+        "speaker": "Alex",
+        "target_language_text": "No, gracias. Solo la ensalada.",
+        "base_language_translation": "No, thank you. Just the salad."
+      }
+    ]
+  }
+}
