@@ -246,7 +246,6 @@ class ContentGenerator:
             if existing_curriculum.get('user_id') == user_id:
                 logger.info(f"Found existing curriculum for user {user_id}: {existing_curriculum['id']}")
                 return {
-                    'extraction_id': extraction_id,
                     'curriculum_id': existing_curriculum['id'],
                     'content_generation_started': False,
                     'cached': True,
@@ -262,7 +261,6 @@ class ContentGenerator:
                     user_id=user_id
                 )
                 return {
-                    'extraction_id': extraction_id,
                     'curriculum_id': curriculum_id,
                     'content_generation_started': False,
                     'cached': True,
@@ -279,7 +277,6 @@ class ContentGenerator:
         )
         
         result = {
-            'extraction_id': extraction_id,
             'curriculum_id': curriculum_id,
             'content_generation_started': False,
             'cached': False,

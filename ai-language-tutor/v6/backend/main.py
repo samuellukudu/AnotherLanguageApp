@@ -188,7 +188,6 @@ async def extract_metadata(data: MetadataRequest):
         return JSONResponse(
             content={
                 "message": "Content generation has been initiated.",
-                "extraction_id": extraction_id,
                 "curriculum_id": curriculum_id,
                 "status_endpoint": f"/content/status/{curriculum_id}"
             },
@@ -200,10 +199,15 @@ async def extract_metadata(data: MetadataRequest):
 
 # ========== GET ENDPOINTS (Retrieval) ==========
 
-@app.get("/metadata/{extraction_id}")
-async def get_metadata_extraction(extraction_id: str = Path(..., description="Metadata extraction ID")):
-    """Get metadata extraction by ID"""
-    extraction = await db.get_metadata_extraction(extraction_id)
+@app.get("/curriculum/{curriculum_id}/metadata")
+async def get_curriculum_metadata(curriculum_id: str = Path(..., description="Curriculum ID")):
+    """Get metadata for a curriculum"""
+    curriculum = await db.get_curriculum(curriculum_id)
+    if not curriculum:
+        raise HTTPException(status_code=404, detail="Curriculum not found")
+    
+    # Get the full metadata extraction record
+    extraction = await db.get_metadata_extraction(curriculum['metadata_extraction_id'])
     if not extraction:
         raise HTTPException(status_code=404, detail="Metadata extraction not found")
     
