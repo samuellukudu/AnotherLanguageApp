@@ -167,6 +167,31 @@ async def extract_metadata(data: MetadataRequest):
             instructions=config.language_metadata_extraction_prompt
         )
 
+        # Check for existing curriculum first before creating new metadata extraction
+        existing_curriculum = await db.find_existing_curriculum(
+            query=data.query,
+            native_language=metadata_dict['native_language'],
+            target_language=metadata_dict['target_language'],
+            proficiency=metadata_dict['proficiency'],
+            user_id=None  # Make it user-independent
+        )
+
+        if existing_curriculum:
+            # Found existing curriculum - return it regardless of user
+            logging.info(f"Found existing curriculum for query '{data.query[:50]}...': {existing_curriculum['id']}")
+            return JSONResponse(
+                content={
+                    "message": "Found existing curriculum for your query.",
+                    "curriculum_id": existing_curriculum['id'],
+                    "status_endpoint": f"/content/status/{existing_curriculum['id']}",
+                    "cached": True
+                },
+                status_code=200
+            )
+
+        # No suitable existing curriculum found, generate new one
+        logging.info(f"No existing curriculum found, generating new one for user {data.user_id}")
+        
         # Save metadata to database
         extraction_id = await db.save_metadata_extraction(
             query=data.query,
@@ -189,7 +214,8 @@ async def extract_metadata(data: MetadataRequest):
             content={
                 "message": "Content generation has been initiated.",
                 "curriculum_id": curriculum_id,
-                "status_endpoint": f"/content/status/{curriculum_id}"
+                "status_endpoint": f"/content/status/{curriculum_id}",
+                "cached": False
             },
             status_code=202
         )

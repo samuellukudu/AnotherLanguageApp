@@ -41,8 +41,8 @@ class Database:
         async with aiosqlite.connect(self.db_path) as db:
             db.row_factory = aiosqlite.Row
             
-            # First try to find exact query match for the user
-            if user_id:
+            if user_id is not None:
+                # User-specific search: First try to find exact query match for the user
                 async with db.execute("""
                     SELECT c.*, m.native_language, m.target_language, m.proficiency, m.title, m.query
                     FROM curricula c
@@ -55,20 +55,33 @@ class Database:
                     row = await cursor.fetchone()
                     if row:
                         return dict(row)
-            
-            # Then try to find similar curriculum with same metadata (any user)
-            async with db.execute("""
-                SELECT c.*, m.native_language, m.target_language, m.proficiency, m.title, m.query
-                FROM curricula c
-                JOIN metadata_extractions m ON c.metadata_extraction_id = m.id
-                WHERE m.native_language = ? AND m.target_language = ? AND m.proficiency = ?
-                AND c.is_content_generated = 1
-                ORDER BY c.created_at DESC
-                LIMIT 1
-            """, (native_language, target_language, proficiency)) as cursor:
-                row = await cursor.fetchone()
-                if row:
-                    return dict(row)
+                
+                # Then try to find similar curriculum with same metadata (any user)
+                async with db.execute("""
+                    SELECT c.*, m.native_language, m.target_language, m.proficiency, m.title, m.query
+                    FROM curricula c
+                    JOIN metadata_extractions m ON c.metadata_extraction_id = m.id
+                    WHERE m.native_language = ? AND m.target_language = ? AND m.proficiency = ?
+                    AND c.is_content_generated = 1
+                    ORDER BY c.created_at DESC
+                    LIMIT 1
+                """, (native_language, target_language, proficiency)) as cursor:
+                    row = await cursor.fetchone()
+                    if row:
+                        return dict(row)
+            else:
+                # User-independent search: Find exact query match regardless of user
+                async with db.execute("""
+                    SELECT c.*, m.native_language, m.target_language, m.proficiency, m.title, m.query
+                    FROM curricula c
+                    JOIN metadata_extractions m ON c.metadata_extraction_id = m.id
+                    WHERE m.query = ? AND m.native_language = ? AND m.target_language = ? AND m.proficiency = ?
+                    ORDER BY c.created_at DESC
+                    LIMIT 1
+                """, (query, native_language, target_language, proficiency)) as cursor:
+                    row = await cursor.fetchone()
+                    if row:
+                        return dict(row)
         
         return None
 
