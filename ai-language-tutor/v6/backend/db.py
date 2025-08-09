@@ -22,7 +22,7 @@ class Database:
         """Initialize database with schema"""
         async with aiosqlite.connect(self.db_path) as db:
             # Read and execute schema - look for it in parent directory
-            schema_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'schema.sql')
+            schema_path = os.path.join(os.path.dirname(__file__), 'schema.sql')
             with open(schema_path, 'r') as f:
                 schema = f.read()
             await db.executescript(schema)

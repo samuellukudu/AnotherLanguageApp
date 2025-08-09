@@ -19,23 +19,14 @@ class DatabaseInitializer:
         self.schema_path = self._find_schema_file()
     
     def _find_schema_file(self) -> str:
-        """Find the schema.sql file in the project directory"""
-        # Look in current directory first
-        if os.path.exists("schema.sql"):
-            return "schema.sql"
-        
-        # Look in parent directory (for when running from backend/)
-        parent_schema = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'schema.sql')
-        if os.path.exists(parent_schema):
-            return parent_schema
-        
-        # Look in project root
-        project_root = Path(__file__).parent.parent.parent
-        root_schema = project_root / "schema.sql"
-        if root_schema.exists():
-            return str(root_schema)
-        
-        raise FileNotFoundError("schema.sql not found. Please ensure it exists in the project directory.")
+        """Return the path to the schema.sql file.
+
+        The schema.sql file is expected to be in the same directory as this script.
+        """
+        schema_path = os.path.join(os.path.dirname(__file__), 'schema.sql')
+        if not os.path.exists(schema_path):
+            raise FileNotFoundError(f"schema.sql not found at {schema_path}")
+        return schema_path
     
     async def check_database_exists(self) -> bool:
         """Check if database file exists"""
