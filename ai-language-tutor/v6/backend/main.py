@@ -90,6 +90,9 @@ async def health_check():
             },
             status_code=200 if is_healthy else 503
         )
+    except ValueError as ve:
+        logging.error(f"Invalid input: {ve}")
+        raise HTTPException(status_code=400, detail=str(ve))
     except Exception as e:
         return JSONResponse(
             content={

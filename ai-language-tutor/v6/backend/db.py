@@ -93,7 +93,17 @@ class Database:
     ) -> str:
         """Save extracted metadata and return extraction ID"""
         extraction_id = str(uuid.uuid4())
-        
+
+        # Validate proficiency before inserting into the database
+        allowed_proficiencies = {"beginner", "intermediate", "advanced"}
+        proficiency = metadata.get('proficiency')
+        if proficiency not in allowed_proficiencies:
+            logger.warning(
+                f"Unknown proficiency '{proficiency}' received; defaulting to 'beginner'."
+            )
+            proficiency = "beginner"
+            metadata["proficiency"] = "beginner"
+
         async with aiosqlite.connect(self.db_path) as db:
             await db.execute("""
                 INSERT INTO metadata_extractions 
