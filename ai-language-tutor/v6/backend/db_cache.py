@@ -86,10 +86,10 @@ class ApiCache:
         else:
             raise TypeError("Cached content must be a JSON string, dict, or list.")
 
-        # 3. Store in cache
+        # 3. Store in cache (use INSERT OR REPLACE to handle duplicates)
         async with aiosqlite.connect(self.db_path) as db:
             await db.execute(
-                "INSERT INTO api_cache (cache_key, category, content_json) VALUES (?, ?, ?)",
+                "INSERT OR REPLACE INTO api_cache (cache_key, category, content_json) VALUES (?, ?, ?)",
                 (cache_key, category, content_to_cache)
             )
             await db.commit()

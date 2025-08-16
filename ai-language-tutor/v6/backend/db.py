@@ -137,8 +137,8 @@ class Database:
         async with aiosqlite.connect(self.db_path) as db:
             await db.execute("""
                 INSERT INTO curricula 
-                (id, metadata_extraction_id, user_id, lesson_topic, curriculum_json)
-                VALUES (?, ?, ?, ?, ?)
+                (id, metadata_extraction_id, user_id, lesson_topic, curriculum_json, content_generation_status)
+                VALUES (?, ?, ?, ?, ?, 'pending')
             """, (
                 curriculum_id,
                 metadata_extraction_id,
@@ -174,8 +174,8 @@ class Database:
             # Create new curriculum
             await db.execute("""
                 INSERT INTO curricula 
-                (id, metadata_extraction_id, user_id, lesson_topic, curriculum_json, is_content_generated)
-                VALUES (?, ?, ?, ?, ?, 0)
+                (id, metadata_extraction_id, user_id, lesson_topic, curriculum_json, is_content_generated, content_generation_status)
+                VALUES (?, ?, ?, ?, ?, 0, 'pending')
             """, (
                 new_curriculum_id,
                 metadata_extraction_id,
@@ -202,7 +202,9 @@ class Database:
             # Mark as content generated
             await db.execute("""
                 UPDATE curricula 
-                SET is_content_generated = 1 
+                SET is_content_generated = 1,
+                    content_generation_status = 'completed',
+                    content_generation_completed_at = CURRENT_TIMESTAMP
                 WHERE id = ?
             """, (new_curriculum_id,))
             
@@ -245,10 +247,73 @@ class Database:
         async with aiosqlite.connect(self.db_path) as db:
             await db.execute("""
                 UPDATE curricula 
-                SET is_content_generated = 1 
+                SET is_content_generated = 1,
+                    content_generation_status = 'completed',
+                    content_generation_completed_at = CURRENT_TIMESTAMP
                 WHERE id = ?
             """, (curriculum_id,))
             await db.commit()
+    
+    async def update_content_generation_status(
+        self, 
+        curriculum_id: str, 
+        status: str, 
+        error_message: Optional[str] = None
+    ):
+        """Update content generation status for a curriculum"""
+        async with aiosqlite.connect(self.db_path) as db:
+            if status == 'generating':
+                await db.execute("""
+                    UPDATE curricula 
+                    SET content_generation_status = ?,
+                        content_generation_started_at = CURRENT_TIMESTAMP,
+                        content_generation_error = NULL
+                    WHERE id = ?
+                """, (status, curriculum_id))
+            elif status == 'completed':
+                await db.execute("""
+                    UPDATE curricula 
+                    SET content_generation_status = ?,
+                        content_generation_completed_at = CURRENT_TIMESTAMP,
+                        content_generation_error = NULL,
+                        is_content_generated = 1
+                    WHERE id = ?
+                """, (status, curriculum_id))
+            elif status == 'failed':
+                await db.execute("""
+                    UPDATE curricula 
+                    SET content_generation_status = ?,
+                        content_generation_error = ?
+                    WHERE id = ?
+                """, (status, error_message, curriculum_id))
+            else:
+                await db.execute("""
+                    UPDATE curricula 
+                    SET content_generation_status = ?,
+                        content_generation_error = ?
+                    WHERE id = ?
+                """, (status, error_message, curriculum_id))
+            await db.commit()
+    
+    async def get_content_generation_status(self, curriculum_id: str) -> Optional[Dict[str, Any]]:
+        """Get content generation status for a curriculum"""
+        async with aiosqlite.connect(self.db_path) as db:
+            db.row_factory = aiosqlite.Row
+            async with db.execute("""
+                SELECT 
+                    id,
+                    content_generation_status,
+                    content_generation_error,
+                    content_generation_started_at,
+                    content_generation_completed_at,
+                    is_content_generated
+                FROM curricula 
+                WHERE id = ?
+            """, (curriculum_id,)) as cursor:
+                row = await cursor.fetchone()
+                if row:
+                    return dict(row)
+        return None
     
     async def get_metadata_extraction(self, extraction_id: str) -> Optional[Dict[str, Any]]:
         """Get metadata extraction by ID"""

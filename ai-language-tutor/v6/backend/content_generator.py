@@ -171,56 +171,85 @@ class ContentGenerator:
         max_concurrent_lessons: int = 3
     ):
         """Generate all learning content for a curriculum"""
-        # Get curriculum details
-        curriculum_data = await db.get_curriculum(curriculum_id)
-        if not curriculum_data:
-            logger.error(f"Curriculum not found: {curriculum_id}")
-            return
-        
-        # Parse curriculum JSON
         try:
-            curriculum = json.loads(curriculum_data['curriculum_json'])
-            lessons = curriculum.get('sub_topics', [])
-        except json.JSONDecodeError:
-            logger.error(f"Failed to parse curriculum JSON for {curriculum_id}")
-            return
-        
-        # Prepare metadata
-        metadata = {
-            'native_language': curriculum_data['native_language'],
-            'target_language': curriculum_data['target_language'],
-            'proficiency': curriculum_data['proficiency']
-        }
-        
-        logger.info(f"Starting content generation for {len(lessons)} lessons")
-        
-        # Process lessons in batches to avoid overwhelming the API
-        for i in range(0, len(lessons), max_concurrent_lessons):
-            batch = lessons[i:i + max_concurrent_lessons]
-            batch_indices = list(range(i, min(i + max_concurrent_lessons, len(lessons))))
+            # Update status to generating
+            await db.update_content_generation_status(
+                curriculum_id=curriculum_id,
+                status='generating'
+            )
             
-            # Generate content for batch concurrently
-            tasks = [
-                self.generate_content_for_lesson(
+            # Get curriculum details
+            curriculum_data = await db.get_curriculum(curriculum_id)
+            if not curriculum_data:
+                logger.error(f"Curriculum not found: {curriculum_id}")
+                await db.update_content_generation_status(
                     curriculum_id=curriculum_id,
-                    lesson_index=idx,
-                    lesson=lesson,
-                    metadata=metadata
+                    status='failed',
+                    error_message="Curriculum not found"
                 )
-                for idx, lesson in zip(batch_indices, batch)
-            ]
-            
-            results = await asyncio.gather(*tasks, return_exceptions=True)
-            
-            for idx, result in zip(batch_indices, results):
-                if isinstance(result, Exception):
-                    logger.error(f"Failed to generate content for lesson {idx}: {result}")
-                else:
-                    logger.info(f"Generated content for lesson {idx}: {result}")
+                return
         
-        # Mark curriculum as content generated
-        await db.mark_curriculum_content_generated(curriculum_id)
-        logger.info(f"Completed content generation for curriculum {curriculum_id}")
+            # Parse curriculum JSON
+            try:
+                curriculum = json.loads(curriculum_data['curriculum_json'])
+                lessons = curriculum.get('sub_topics', [])
+            except json.JSONDecodeError:
+                logger.error(f"Failed to parse curriculum JSON for {curriculum_id}")
+                await db.update_content_generation_status(
+                    curriculum_id=curriculum_id,
+                    status='failed',
+                    error_message="Failed to parse curriculum JSON"
+                )
+                return
+        
+            # Prepare metadata
+            metadata = {
+                'native_language': curriculum_data['native_language'],
+                'target_language': curriculum_data['target_language'],
+                'proficiency': curriculum_data['proficiency']
+            }
+            
+            logger.info(f"Starting content generation for {len(lessons)} lessons")
+            
+            # Process lessons in batches to avoid overwhelming the API
+            for i in range(0, len(lessons), max_concurrent_lessons):
+                batch = lessons[i:i + max_concurrent_lessons]
+                batch_indices = list(range(i, min(i + max_concurrent_lessons, len(lessons))))
+                
+                # Generate content for batch concurrently
+                tasks = [
+                    self.generate_content_for_lesson(
+                        curriculum_id=curriculum_id,
+                        lesson_index=idx,
+                        lesson=lesson,
+                        metadata=metadata
+                    )
+                    for idx, lesson in zip(batch_indices, batch)
+                ]
+                
+                results = await asyncio.gather(*tasks, return_exceptions=True)
+                
+                for idx, result in zip(batch_indices, results):
+                    if isinstance(result, Exception):
+                        logger.error(f"Failed to generate content for lesson {idx}: {result}")
+                    else:
+                        logger.info(f"Generated content for lesson {idx}: {result}")
+            
+            # Mark curriculum as content generated
+            await db.mark_curriculum_content_generated(curriculum_id)
+            await db.update_content_generation_status(
+                curriculum_id=curriculum_id,
+                status='completed'
+            )
+            logger.info(f"Completed content generation for curriculum {curriculum_id}")
+            
+        except Exception as e:
+            logger.error(f"Failed to generate content for curriculum {curriculum_id}: {e}")
+            await db.update_content_generation_status(
+                curriculum_id=curriculum_id,
+                status='failed',
+                error_message=str(e)
+            )
     
     async def process_metadata_extraction(
         self,

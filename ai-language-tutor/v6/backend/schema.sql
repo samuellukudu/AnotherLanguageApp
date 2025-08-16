@@ -26,6 +26,10 @@ CREATE TABLE IF NOT EXISTS curricula (
     lesson_topic TEXT,
     curriculum_json TEXT NOT NULL, -- Full curriculum JSON with 25 lessons
     is_content_generated INTEGER DEFAULT 0, -- Boolean: has all content been generated?
+    content_generation_status TEXT DEFAULT 'pending' CHECK(content_generation_status IN ('pending', 'generating', 'completed', 'failed')),
+    content_generation_error TEXT, -- Store error message if generation fails
+    content_generation_started_at TIMESTAMP,
+    content_generation_completed_at TIMESTAMP,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (metadata_extraction_id) REFERENCES metadata_extractions(id) ON DELETE CASCADE
 );
@@ -65,6 +69,10 @@ SELECT
     c.id as curriculum_id,
     c.lesson_topic,
     c.is_content_generated,
+    c.content_generation_status,
+    c.content_generation_error,
+    c.content_generation_started_at,
+    c.content_generation_completed_at,
     m.created_at
 FROM metadata_extractions m
 LEFT JOIN curricula c ON m.id = c.metadata_extraction_id
@@ -76,6 +84,10 @@ SELECT
     c.id as curriculum_id,
     c.user_id,
     c.lesson_topic,
+    c.content_generation_status,
+    c.content_generation_error,
+    c.content_generation_started_at,
+    c.content_generation_completed_at,
     COUNT(DISTINCT lc.lesson_index) as lessons_with_content,
     COUNT(DISTINCT CASE WHEN lc.content_type = 'flashcards' THEN lc.lesson_index END) as lessons_with_flashcards,
     COUNT(DISTINCT CASE WHEN lc.content_type = 'exercises' THEN lc.lesson_index END) as lessons_with_exercises,
@@ -92,7 +104,7 @@ CREATE TABLE IF NOT EXISTS api_cache (
     content_json TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (cache_key, category)
-);
+) WITHOUT ROWID;
 
 -- Index for faster cache lookups
 CREATE INDEX IF NOT EXISTS idx_api_cache_key_category ON api_cache(cache_key, category);

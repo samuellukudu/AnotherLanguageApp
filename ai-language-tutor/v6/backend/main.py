@@ -203,25 +203,36 @@ async def extract_metadata(data: MetadataRequest):
         )
 
         # Process extraction (generate curriculum and start content generation)
-        processing_result = await content_generator.process_metadata_extraction(
-            extraction_id=extraction_id,
-            query=data.query,
-            metadata=metadata_dict,
-            user_id=data.user_id,
-            generate_content=True  # Automatically generate all content
-        )
+        try:
+            processing_result = await content_generator.process_metadata_extraction(
+                extraction_id=extraction_id,
+                query=data.query,
+                metadata=metadata_dict,
+                user_id=data.user_id,
+                generate_content=True  # Automatically generate all content
+            )
 
-        curriculum_id = processing_result['curriculum_id']
+            curriculum_id = processing_result['curriculum_id']
+            
+            # Update status to generating
+            await db.update_content_generation_status(curriculum_id, 'generating')
 
-        return JSONResponse(
-            content={
-                "message": "Content generation has been initiated.",
-                "curriculum_id": curriculum_id,
-                "status_endpoint": f"/content/status/{curriculum_id}",
-                "cached": False
-            },
-            status_code=202
-        )
+            return JSONResponse(
+                content={
+                    "message": "Content generation has been initiated.",
+                    "curriculum_id": curriculum_id,
+                    "status_endpoint": f"/content/status/{curriculum_id}",
+                    "cached": False
+                },
+                status_code=202
+            )
+        except Exception as content_error:
+            # If content generation fails, update status to failed
+            if 'curriculum_id' in locals():
+                await db.update_content_generation_status(
+                    curriculum_id, 'failed', str(content_error)
+                )
+            raise content_error
     except Exception as e:
         logging.error(f"Error extracting metadata: {e}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -259,6 +270,22 @@ async def get_curriculum(curriculum_id: str = Path(..., description="Curriculum 
         curriculum['content_status'] = status
     
     return JSONResponse(content=curriculum, status_code=200)
+
+@app.get("/content/status/{curriculum_id}")
+async def get_content_generation_status(curriculum_id: str = Path(..., description="Curriculum ID")):
+    """Get content generation status for a curriculum"""
+    status = await db.get_content_generation_status(curriculum_id)
+    if not status:
+        raise HTTPException(status_code=404, detail="Curriculum not found")
+    
+    return JSONResponse(content={
+        "curriculum_id": status['id'],
+        "status": status['content_generation_status'],
+        "error": status['content_generation_error'],
+        "started_at": status['content_generation_started_at'],
+        "completed_at": status['content_generation_completed_at'],
+        "is_content_generated": bool(status['is_content_generated'])
+    }, status_code=200)
 
 
 async def _get_lesson_content_by_type(
