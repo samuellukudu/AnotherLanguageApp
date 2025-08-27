@@ -107,7 +107,7 @@ async def health_check():
 async def repair_database():
     """Repair database issues (admin endpoint)"""
     try:
-        # repair_result = await db.repair_database() # This method doesn't exist on the Database class
+        repair_result = await db_initializer.repair_database()
         
         return JSONResponse(
             content={
@@ -161,11 +161,14 @@ async def extract_metadata(data: MetadataRequest):
     """Extract language learning metadata from user query"""
     logging.info(f"Extracting metadata for query: {data.query[:50]}...")
     try:
-        # Generate metadata using AI, with caching
+        # Generate metadata using AI, with caching (include user context)
         metadata_dict = await api_cache.get_or_set(
             category="metadata",
             key_text=data.query,
             coro=generate_completions.get_completions,
+            context={
+                'user_id': data.user_id
+            },
             prompt=data.query,
             instructions=config.language_metadata_extraction_prompt
         )
@@ -176,7 +179,7 @@ async def extract_metadata(data: MetadataRequest):
             native_language=metadata_dict['native_language'],
             target_language=metadata_dict['target_language'],
             proficiency=metadata_dict['proficiency'],
-            user_id=None  # Make it user-independent
+            user_id=data.user_id  # Use the actual user_id for consistent lookup
         )
 
         if existing_curriculum:
@@ -209,7 +212,8 @@ async def extract_metadata(data: MetadataRequest):
                 query=data.query,
                 metadata=metadata_dict,
                 user_id=data.user_id,
-                generate_content=True  # Automatically generate all content
+                generate_content=True,  # Automatically generate all content
+                skip_curriculum_lookup=True  # Skip lookup since we already did it above
             )
 
             curriculum_id = processing_result['curriculum_id']

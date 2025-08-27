@@ -163,7 +163,7 @@ class ContentGenerator:
         except Exception as e:
             logger.error(f"Failed to generate simulation for lesson {lesson_index}: {e}")
         
-        return content
+        return content_ids
     
     async def generate_all_content_for_curriculum(
         self,
@@ -257,44 +257,46 @@ class ContentGenerator:
         query: str,
         metadata: Dict[str, Any],
         user_id: Optional[int] = None,
-        generate_content: bool = True
+        generate_content: bool = True,
+        skip_curriculum_lookup: bool = False
     ) -> Dict[str, Any]:
         """Process a metadata extraction by checking for existing curriculum or generating new one"""
         
-        # Check for existing curriculum first
-        existing_curriculum = await db.find_existing_curriculum(
-            query=query,
-            native_language=metadata['native_language'],
-            target_language=metadata['target_language'],
-            proficiency=metadata['proficiency'],
-            user_id=user_id
-        )
-        
-        if existing_curriculum:
-            # If we found an exact match for this user, return it
-            if existing_curriculum.get('user_id') == user_id:
-                logger.info(f"Found existing curriculum for user {user_id}: {existing_curriculum['id']}")
-                return {
-                    'curriculum_id': existing_curriculum['id'],
-                    'content_generation_started': False,
-                    'cached': True,
-                    'cache_type': 'user_exact_match'
-                }
+        if not skip_curriculum_lookup:
+            # Check for existing curriculum first
+            existing_curriculum = await db.find_existing_curriculum(
+                query=query,
+                native_language=metadata['native_language'],
+                target_language=metadata['target_language'],
+                proficiency=metadata['proficiency'],
+                user_id=user_id
+            )
             
-            # If we found a similar curriculum from another user, copy it
-            elif existing_curriculum.get('is_content_generated') == 1:
-                logger.info(f"Copying existing curriculum {existing_curriculum['id']} for user {user_id}")
-                curriculum_id = await db.copy_curriculum_for_user(
-                    source_curriculum_id=existing_curriculum['id'],
-                    metadata_extraction_id=extraction_id,
-                    user_id=user_id
-                )
-                return {
-                    'curriculum_id': curriculum_id,
-                    'content_generation_started': False,
-                    'cached': True,
-                    'cache_type': 'copied_from_similar'
-                }
+            if existing_curriculum:
+                # If we found an exact match for this user, return it
+                if existing_curriculum.get('user_id') == user_id:
+                    logger.info(f"Found existing curriculum for user {user_id}: {existing_curriculum['id']}")
+                    return {
+                        'curriculum_id': existing_curriculum['id'],
+                        'content_generation_started': False,
+                        'cached': True,
+                        'cache_type': 'user_exact_match'
+                    }
+                
+                # If we found a similar curriculum from another user, copy it
+                elif existing_curriculum.get('is_content_generated') == 1:
+                    logger.info(f"Copying existing curriculum {existing_curriculum['id']} for user {user_id}")
+                    curriculum_id = await db.copy_curriculum_for_user(
+                        source_curriculum_id=existing_curriculum['id'],
+                        metadata_extraction_id=extraction_id,
+                        user_id=user_id
+                    )
+                    return {
+                        'curriculum_id': curriculum_id,
+                        'content_generation_started': False,
+                        'cached': True,
+                        'cache_type': 'copied_from_similar'
+                    }
         
         # No suitable existing curriculum found, generate new one
         logger.info(f"No existing curriculum found, generating new one for user {user_id}")

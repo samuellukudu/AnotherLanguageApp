@@ -37,12 +37,16 @@ class Database:
         proficiency: str,
         user_id: Optional[int] = None
     ) -> Optional[Dict[str, Any]]:
-        """Find existing curriculum for similar query and metadata"""
+        """Find existing curriculum for exact query and metadata match"""
+        logger.info(f"Looking for curriculum: query='{query[:50]}...', native={native_language}, target={target_language}, proficiency={proficiency}, user_id={user_id}")
+        
         async with aiosqlite.connect(self.db_path) as db:
             db.row_factory = aiosqlite.Row
             
+            # Always look for exact query matches first, prioritizing user-specific matches
             if user_id is not None:
-                # User-specific search: First try to find exact query match for the user
+                # User-specific search: Find exact query match for the user
+                logger.info(f"Searching for exact match for user {user_id}")
                 async with db.execute("""
                     SELECT c.*, m.native_language, m.target_language, m.proficiency, m.title, m.query
                     FROM curricula c
@@ -54,35 +58,27 @@ class Database:
                 """, (user_id, query, native_language, target_language, proficiency)) as cursor:
                     row = await cursor.fetchone()
                     if row:
+                        logger.info(f"Found exact user match: {dict(row)['id']}")
                         return dict(row)
-                
-                # Then try to find similar curriculum with same metadata (any user)
-                async with db.execute("""
-                    SELECT c.*, m.native_language, m.target_language, m.proficiency, m.title, m.query
-                    FROM curricula c
-                    JOIN metadata_extractions m ON c.metadata_extraction_id = m.id
-                    WHERE m.native_language = ? AND m.target_language = ? AND m.proficiency = ?
-                    AND c.is_content_generated = 1
-                    ORDER BY c.created_at DESC
-                    LIMIT 1
-                """, (native_language, target_language, proficiency)) as cursor:
-                    row = await cursor.fetchone()
-                    if row:
-                        return dict(row)
-            else:
-                # User-independent search: Find exact query match regardless of user
-                async with db.execute("""
-                    SELECT c.*, m.native_language, m.target_language, m.proficiency, m.title, m.query
-                    FROM curricula c
-                    JOIN metadata_extractions m ON c.metadata_extraction_id = m.id
-                    WHERE m.query = ? AND m.native_language = ? AND m.target_language = ? AND m.proficiency = ?
-                    ORDER BY c.created_at DESC
-                    LIMIT 1
-                """, (query, native_language, target_language, proficiency)) as cursor:
-                    row = await cursor.fetchone()
-                    if row:
-                        return dict(row)
+            
+            # Look for exact query match from any user (only if the query is exactly the same)
+            logger.info("Searching for exact query match (any user)")
+            async with db.execute("""
+                SELECT c.*, m.native_language, m.target_language, m.proficiency, m.title, m.query
+                FROM curricula c
+                JOIN metadata_extractions m ON c.metadata_extraction_id = m.id
+                WHERE m.query = ? AND m.native_language = ? AND m.target_language = ? AND m.proficiency = ?
+                ORDER BY c.created_at DESC
+                LIMIT 1
+            """, (query, native_language, target_language, proficiency)) as cursor:
+                row = await cursor.fetchone()
+                if row:
+                    logger.info(f"Found exact query match: {dict(row)['id']}")
+                    return dict(row)
+                else:
+                    logger.info("No exact query match found")
         
+        logger.info("No existing curriculum found")
         return None
 
     async def save_metadata_extraction(
